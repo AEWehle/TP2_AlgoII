@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <string>
 #include <fstream> 
+#include "funciones_main.h"
 using namespace std; 
 
 
@@ -25,16 +26,16 @@ int main(){
 
     cout << "Hola,\nEn este programa te aseguramos una Reserva Soñada.\n     DISFRUTALO!" << endl;
     
-    // Biblioteca* mi_biblioteca  =  leer_archivo();
-    // int eleccion = 0;
+    Guarderia* mi_guarderia  =  leer_archivo();
+    int eleccion = 0;
 
-    // while ( mi_biblioteca -> lista_de_libros != nullptr ){
-    //     eleccion = pedir_eleccion();
-    //     cout << "Elegiste la opcion "<< eleccion << endl << endl;
-    //     ejecutar_eleccion( mi_biblioteca, eleccion );
-    // }
+    while ( mi_guarderia -> lista_de_animales != nullptr ){
+        eleccion = pedir_eleccion();
+        cout << "Elegiste la opcion "<< eleccion << endl << endl;
+        ejecutar_eleccion( mi_guarderia, eleccion );
+    }
     
-    // delete mi_biblioteca;
-    // mi_biblioteca = nullptr;
+    delete mi_guarderia;
+    mi_guarderia = nullptr;
     return 0;
 }
