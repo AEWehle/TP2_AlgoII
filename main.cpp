@@ -4,16 +4,18 @@
 using namespace std; 
 
 
-//./TP2 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
 // COMANDO: g++ main.cpp -o TP2 -Wall -Werror -Wconversion
+//./TP2
 // valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./TP1
 // gdb ./Prueba
 
-// git status        Para ver lo que esta para subirse
-// git add .         Para agregar a las cosas a subirse
-// git commit -m "mensaje para nuestro grupo"       Para guardarlo y en un futuro subirlo con git push
-// git log --oneline        Para ver el historial de Commits
-
+// git status                                   Para ver lo que esta para subirse
+// git add .                                    Para agregar a las cosas a subirse
+// git commit -m "mensaje para nuestro grupo"   Para guardarlo y en un futuro subirlo con git push
+// git log --oneline                            Para ver el historial de Commits
+// git push                                     Lo sube a la nube 
+//          ponen su nombre de usuario
+//          ponen la siguiente clave --->  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
 
 // Para comentar automaticamente pueden usar ctrl + ç
 
