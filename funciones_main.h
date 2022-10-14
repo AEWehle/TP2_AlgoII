@@ -26,10 +26,13 @@ const int CANTIDAD_OPCIONES = 6;
  El genero, char mayuscula respetando relacion GENEROS_CHAR <-> GENEROS_STRING
  El puntaje, valor de 0 a PUNTAJE_MAX
 _______________________________________________________________________________*/
-struct Animal{
-    string titulo;
-    char genero;
-    int puntaje;
+struct Animal{ //nombre,edad,tamaño,especie,personalidad 
+// TIENE ESTA FORA PPOR AHORA, ES SOLO PARA QUE NO ME APAREZCAN ERRORES
+    string nombre;
+    int edad;   
+    string tamaño;
+    char especie;
+    string personalidad;
 };
 
 

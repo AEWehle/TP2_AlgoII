@@ -27,22 +27,22 @@ void crear_archivo( ifstream &archivo_animales ){
  POST: Lee del archivo las lineas y las guarda en la Guarderia
 _______________________________________________________________________________*/
 void guardar_lineas( Guarderia* mi_guarderia, ifstream &archivo_animales ){
+    //nombre,edad,tamaño,especie,personalidad
     mi_guarderia -> lista_de_animales = new Animal*[ BLOQUE_ANIMALES ];
     mi_guarderia -> cantidad_de_animales = 0;
     
-    string* linea_aux = new string;
+    string linea_aux;
 
-    while( getline(archivo_animales, *linea_aux, DELIMITADOR_ARCHIVO_CSV) && ( *linea_aux != "") ){
-        guardar_un_animal( mi_guarderia, *linea_aux );
+    while( getline(archivo_animales, linea_aux, DELIMITADOR_ARCHIVO_CSV) && ( linea_aux != "") ){
+        guardar_un_animal( mi_guarderia, linea_aux );
     }
 
-    delete(linea_aux);
     linea_aux = nullptr;
 }
 
 
 
-Guarderia* leer_archivo(){
+Guarderia* leer_archivo(){ 
     Guarderia* mi_guarderia = new Guarderia;
     ifstream archivo_animales(RUTA_ARCHIVO);
 
@@ -150,18 +150,24 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion ){
 
 
 
-void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){
+void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamaño,especie,personalidad ---> Loni,2,mediano,P,sociable
     int primer_coma = (int)  (animales_csv.find(','));
-    int segunda_coma = (int)  animales_csv.find(',', primer_coma+1);
+    int segunda_coma = (int)  animales_csv.find(',', primer_coma + 1);
+    int tercera_coma = (int)  animales_csv.find(',', segunda_coma + primer_coma + 1);
+    int cuarta_coma = (int)  animales_csv.find(',', tercera_coma + segunda_coma + primer_coma + 1);
     int fin_linea = (int)  (animales_csv.length());
 
-    animal* animal_dela_linea = new animal;
-    // Guardo el titulo en mayusculas, evita problema en comparaciones futuras
-    animal_dela_linea -> titulo = string_a_mayuscula( animales_csv.substr( 0, primer_coma ) );
+    Animal* animal_dela_linea = new Animal;
+    // Guardo el nombre en mayusculas, evita problema en comparaciones futuras
+    animal_dela_linea -> nombre = string_a_mayuscula( animales_csv.substr( 0, primer_coma ) );
     
-    animal_dela_linea -> genero = char_a_mayuscula( elimina_espacios(   animales_csv.substr(primer_coma+1, segunda_coma-(primer_coma+1) )  )[0] );  
+    animal_dela_linea -> edad = string_a_entero( animales_csv.substr(primer_coma+1, segunda_coma-(primer_coma+1) ) );  
     
-    animal_dela_linea -> puntaje = string_a_entero( animales_csv.substr( segunda_coma+1, fin_linea ) );
+    animal_dela_linea -> tamaño = string_a_mayuscula( animales_csv.substr( segunda_coma + primer_coma, tercera_coma - (segunda_coma + primer_coma + 1) ) );
+    
+    animal_dela_linea -> especie = char_a_mayuscula( animales_csv.substr( tercera_coma + segunda_coma + primer_coma + 1, cuarta_coma - (tercera_coma + segunda_coma + primer_coma + 1) )[0] );
+    
+    animal_dela_linea -> personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) );
 
     mi_guarderia -> lista_de_animales[ (mi_guarderia -> cantidad_de_animales)++] = animal_dela_linea;
 
@@ -174,10 +180,10 @@ void verificar_almacenamiento( Guarderia* mi_guarderia ){
     if ( (mi_guarderia -> cantidad_de_animales % (BLOQUE_ANIMALES)) == 0 ){ 
          
         int cantidad_bloques = mi_guarderia -> cantidad_de_animales / (BLOQUE_ANIMALES) + 1;
-        animal** ptr_ptr_aux = new animal*[ cantidad_bloques* BLOQUE_ANIMALES ];
+        Animal** ptr_ptr_aux = new Animal*[ cantidad_bloques* BLOQUE_ANIMALES ];
 
         for( int i = 0; i < mi_guarderia -> cantidad_de_animales ; i++){
-            animal * ptr_aux = new animal;
+            Animal * ptr_aux = new Animal;
             *ptr_aux = *(mi_guarderia -> lista_de_animales[i]);
             ptr_ptr_aux[i] = ptr_aux;
             delete mi_guarderia -> lista_de_animales[i];
@@ -193,21 +199,23 @@ void verificar_almacenamiento( Guarderia* mi_guarderia ){
 
 
 /*  Devuelve un string formato csv del animal correspondiente al numero_de_animal
-    (int), si se desea con la palabra del genero de forma completa se indica 
-    con true en genero_completo (bool) */
+    (int), lo devuelve listo parasubirlo al archivo o para imprimirlo (bool)
+    si se desea con la palabra del genero de forma completa se indica con true 
+    en genero_completo (bool) */
 string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool genero_completo ){
-    string genero_string;
-    string separador = COMA_ESPACIO;
-    if ( genero_completo ){
-        genero_string = GENEROS_STRING [ GENEROS_CHAR.find( mi_guarderia -> lista_de_animales[numero_de_animal] -> genero ) ];
-    }
-    else { 
-        genero_string =  mi_guarderia -> lista_de_animales[numero_de_animal] -> genero ; 
-        separador = ",";
-    }
+    // string genero_string;
+    // string separador = COMA_ESPACIO;
+    // if ( genero_completo ){
+    //     genero_string = GENEROS_STRING [ GENEROS_CHAR.find( mi_guarderia -> lista_de_animales[numero_de_animal] -> genero ) ];
+    // }
+    // else { 
+    //     genero_string =  mi_guarderia -> lista_de_animales[numero_de_animal] -> genero ; 
+    //     separador = ",";
+    // }
     
-    string linea_animal = mi_guarderia -> lista_de_animales[numero_de_animal] -> titulo + separador + genero_string;
-    linea_animal = (linea_animal + separador) + to_string( mi_guarderia -> lista_de_animales[numero_de_animal] -> puntaje );
+    // string linea_animal = mi_guarderia -> lista_de_animales[numero_de_animal] -> titulo + separador + genero_string;
+    // linea_animal = (linea_animal + separador) + to_string( mi_guarderia -> lista_de_animales[numero_de_animal] -> puntaje );
+    string linea_animal = "nada";
     return linea_animal;
 }
 
@@ -240,10 +248,10 @@ void escribir_archivo( Guarderia* mi_guarderia ){
 
 
 
-int buscar_titulo ( Guarderia* mi_guarderia, string titulo_buscado ){
+int buscar_nombre ( Guarderia* mi_guarderia, string titulo_buscado ){
     int numero_de_animal = 0;
 
-    while( (numero_de_animal < mi_guarderia -> cantidad_de_animales) && (mi_guarderia -> lista_de_animales[numero_de_animal] -> titulo != titulo_buscado) ){
+    while( (numero_de_animal < mi_guarderia -> cantidad_de_animales) && (mi_guarderia -> lista_de_animales[numero_de_animal] -> nombre != titulo_buscado) ){
         numero_de_animal++;
     }
     // numero de animal es igual a la cantidad de animales si no lo encontró
