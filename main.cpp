@@ -17,7 +17,8 @@ using namespace std;
 // git push                                     Lo sube a la nube 
 //          ponen su nombre de usuario
 //          ponen la siguiente clave --->  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
-
+// git pull                                     Ponerlo para verificar si alguine del grupo pusheó algún cambio
+//                                              te asegurás tenes la úlrima versión
 // Para comentar automaticamente pueden usar ctrl + ç
 
 
