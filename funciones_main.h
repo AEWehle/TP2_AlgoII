@@ -2,14 +2,6 @@
 #define _FUNCIONES_MAIN_H_
 #include <string>
 #include "Guarderia.h"
-// #include "Animal.h"
-// #include "Especies/Perro.h"
-// #include "Especies/Gato.h"
-// #include "Especies/Caballo.h"
-// #include "Especies/Roedor.h"
-// #include "Especies/Conejo.h"
-// #include "Especies/Erizo.h"
-// #include "Especies/Lagartija.h"
 using namespace std; 
 
 // Podemos cambiarle el nombre a este archivo#ifndef _FUNCIONES_EDL_H_
