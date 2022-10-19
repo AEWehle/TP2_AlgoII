@@ -3,11 +3,13 @@
 #include "Caballo.h"
 using namespace std; 
 
-Caballo::Caballo(){
+Caballo::Caballo(  ): Animal(  ){
     comida = "manzanas";
     es_domestico = true;
 }
 
-void Caballo::mostrar(){
-    mostrar_animal("CABALLO");
+Caballo::Caballo( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+    especie = 'C';
+    comida = "manzanas";
+    es_domestico = true;
 }

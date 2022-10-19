@@ -7,7 +7,8 @@ Perro::Perro(){
     comida = "huesos";
     es_domestico = true;
 }
-
-void Perro::mostrar(){
-    mostrar_animal("PERRO");
+Perro::Perro( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+    especie = 'P';
+    comida = "huesos";
+    es_domestico = true;
 }

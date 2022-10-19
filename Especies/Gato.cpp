@@ -7,7 +7,8 @@ Gato::Gato(){
     comida = "atún";
     es_domestico = true;
 }
-
-void Gato::mostrar(){
-    mostrar_animal("GATO");
+Gato::Gato( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+    especie = 'G';
+    comida = "atún";
+    es_domestico = true;
 }

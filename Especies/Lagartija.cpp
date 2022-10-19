@@ -7,7 +7,8 @@ Lagartija::Lagartija(){
     comida = "insectos";
     es_domestico = true;
 }
-
-void Lagartija::mostrar(){
-    mostrar_animal("LAGARTIJA");
+Lagartija::Lagartija( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+    especie = 'L';
+    comida = "insectos";
+    es_domestico = true;
 }

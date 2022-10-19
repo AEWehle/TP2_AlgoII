@@ -26,13 +26,6 @@ Animal::Animal( string nombre, int edad, string tamano, string personalidad ){
 }
 
 
-// Animal* Animal::crear_animal( char especie, string nombre, string edad, string tamano, string personalidad ){
-//     // Validar llamando a las funciones de validacion correspondientes 
-//     // y llamar al constructor
-//     Animal * nuevo_animal = new Perro; 
-//     return nuevo_animal;
-// }
-
 
 void Animal::alimentar(){  
     hambre = 0;
@@ -40,7 +33,7 @@ void Animal::alimentar(){
 }
 
 
-void Animal::mostrar_animal( string especie ){
+void Animal::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________"<< especie << "______________________________" << endl;
     cout << "       - " << "Nombre: " << nombre << "." << endl;

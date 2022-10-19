@@ -7,7 +7,8 @@ Roedor::Roedor(){
     comida = "queso";
     es_domestico = true;
 }
-
-void Roedor::mostrar(){
-    mostrar_animal("ROEDOR");
+Roedor::Roedor( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+    especie = 'R';
+    comida = "queso";
+    es_domestico = false;
 }

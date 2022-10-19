@@ -3,6 +3,10 @@
 #include <string>
 using namespace std; 
 
+const int EDAD_MAX = 100;
+const int HAMBRE_MAX = 100;
+const int HIGIENE_MAX = 100;
+
 
 class Animal{
 protected:
@@ -13,6 +17,7 @@ protected:
     bool   es_domestico;	//  [lo define la especie, indica si es adoptable]
     int    hambre; 	        //	[0-100]
     int    higiene;	        //	[0-100]
+    char   especie;
     string comida;	        //	[lo define la especie, es lo que va a imprimir]
 public:
 
@@ -31,14 +36,6 @@ _______________________________________________________________________________*
     Animal( string nombre, int edad, string tamano, string personalidad );
 
 
-/*________crear_animal()_______________________________________________________
- PRE: Los datos ingresados no necesitan ser validados
- POST: En el objeto Animal carga los datos ingresados validandolos previamente
-       Establece higiene = 100 y hambre = 0
-_______________________________________________________________________________*/
-    // Animal* crear_animal( char especie, string nombre, string edad, string tamano, string personalidad );
-
-
 /*________alimentar()_______________________________________________________
  PRE: -
  POST: Establece hambre = 0 y muestra al usuario su nombre y comida
@@ -54,19 +51,19 @@ _______________________________________________________________________________*
 
 
 /*________mostrar_animal()_____________________________________________________
- PRE:   Necesita saber qué especie es, por lo que las clases hijas deben pasa-
-      rle este parametro
+ PRE: -
  POST:  El Animal se muestra individualmente,
         nombre, edad, tamano, especie, personalidad, hambre e higiene.
 _______________________________________________________________________________*/
-    void mostrar_animal( string especie );
+    void mostrar();
 
 /*________mostrar()___________________________________________________________
  PRE:   Las clases hijas deben tener este método
  POST:  Le pasa al método mostrar_animal() la especie
     esta última se encargará de mostrarlo
 _______________________________________________________________________________*/
-    virtual void mostrar() = 0;
+    // virtual void mostrar() = 0;
+
 
 };
 #endif // SISTEMA_H

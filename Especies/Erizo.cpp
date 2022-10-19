@@ -8,6 +8,8 @@ Erizo::Erizo(){
     es_domestico = true;
 }
 
-void Erizo::mostrar(){
-    mostrar_animal("ERIZO");
+Erizo::Erizo( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+    especie ='E';
+    comida = "insectos";
+    es_domestico = true;
 }

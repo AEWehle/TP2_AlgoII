@@ -9,8 +9,8 @@ using namespace std;
 class Erizo: public Animal{
 public:
     Erizo();
+    Erizo( string nombre, int edad, string tamano, string personalidad );
     ~Erizo();
-    void mostrar();
 };
 
 

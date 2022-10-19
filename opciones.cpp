@@ -17,7 +17,7 @@ void listar_animales( Guarderia* mi_guarderia ){
         cout << "Salvaste los siguientes animales:\n";
         
         for( int i= 0; i < cantidad ; i++){
-            lista_animales[i] -> mostrar();
+            lista_animales[i] -> mostrar(); 
         }
     }
     else{

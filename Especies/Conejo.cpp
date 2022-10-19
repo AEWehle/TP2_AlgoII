@@ -8,6 +8,8 @@ Conejo::Conejo(){
     es_domestico = true;
 }
 
-void Conejo::mostrar(){
-    mostrar_animal("CONEJO");
+Conejo::Conejo( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+    especie = 'O';
+    comida = "lechuga";
+    es_domestico = true;
 }
