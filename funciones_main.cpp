@@ -7,8 +7,8 @@
 #include "Guarderia.h"
 using namespace std; 
 
-const int CANTIDAD_ESPECIES = 7;
-const string ESPECIE_CHAR= { 'P', 'G', 'C', 'R', 'O', 'E', 'L' };
+// Podemos cambiarle el nombre a este archivo
+
 
 /*________crear_archivo_lectura()______________________________________________
  PRE: No existe un archivo con esa ruta
@@ -37,6 +37,8 @@ void guardar_lineas( Guarderia* mi_guarderia, ifstream &archivo_animales ){
     while( getline(archivo_animales, linea_aux, DELIMITADOR_ARCHIVO_CSV) && ( linea_aux != "") ){
         guardar_un_animal( mi_guarderia, linea_aux );
     }
+
+    linea_aux = nullptr;
 }
 
 
@@ -50,11 +52,11 @@ Guarderia* leer_archivo(){
         archivo_animales.open( RUTA_ARCHIVO, ios::in);
         mi_guarderia -> hubo_cambios = true;
     }
-    else{  cout << "Se ecnontró la lista de animales correctamente."; }
+    else{  cout << "Encontramos tu lista de animales."; }
 
     guardar_lineas( mi_guarderia, archivo_animales );
 
-    cout << " Se mantienen " << mi_guarderia -> cantidad_de_animales << " animales en la reserva.\n\n";
+    cout << " Tenés guardados " << mi_guarderia -> cantidad_de_animales << " animales!\n\n";
     cout << "Qué te gustaría hacer? " << endl;
     
     archivo_animales.close();
@@ -69,10 +71,10 @@ Guarderia* leer_archivo(){
 _______________________________________________________________________________*/
 void imprimir_menu(){
     cout << "   1. Listar animales.\n";
-    cout << "   2. Rescatar un animal\n";
-    cout << "   3. Buscar un animal.\n";
+    cout << "   2. Rescatar animal\n";
+    cout << "   3. Buscar animal.\n";
     cout << "   4. Cuidar animales.\n";
-    cout << "   5. Adoptar un animal.\n";
+    cout << "   5. Adoptar animal.\n";
     cout << "   6. Guardar y salir.\n";
 }
 
@@ -116,7 +118,7 @@ void preguntar_agregar_animal( Guarderia* mi_guarderia ){
     }
 
     if (string_a_mayuscula(linea_aux) == "SI"){
-        rescatar_animal( mi_guarderia );
+        // agregar_animal( mi_guarderia );
     }
     else {
         cout << "Ok, no agregamos nada." << endl; 
@@ -134,7 +136,7 @@ POST: Si la cantidad de animales guardados es 0 devuelve false y pregunta al usu
 _______________________________________________________________________________*/
 bool es_lista_vacia( Guarderia* mi_guarderia ){
     if ( mi_guarderia -> cantidad_de_animales == 0 ){
-        cout << "Por ahora no tenes animales en la reserva, podés agregar ya mismo.\n" << endl;
+        cout << "Por ahora no tenes animales guardados, podés empezar a agregar ya mismo.\n" << endl;
         preguntar_agregar_animal( mi_guarderia );
     }
     return ( mi_guarderia -> cantidad_de_animales == 0 );
@@ -148,79 +150,49 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion ){
 }
 
 
-Animal* nuevo_animal( char especie_char, string nombre, int edad, string tamano, string personalidad ){
-    Animal* nuevo_animal = nullptr;
-    switch (ESPECIE_CHAR.find( especie_char )){
-        case 0:
-            nuevo_animal = new Perro( nombre, edad, tamano, personalidad );
-            break;
-        case 1:
-            nuevo_animal = new Gato( nombre, edad, tamano, personalidad );
-            break;
-        case 2:
-            nuevo_animal = new Caballo( nombre, edad, tamano, personalidad );
-            break;
-        case 3:
-            nuevo_animal = new Roedor( nombre, edad, tamano, personalidad );
-            break;
-        case 4:
-            nuevo_animal = new Conejo( nombre, edad, tamano, personalidad );
-            break;
-        case 5:
-            nuevo_animal = new Erizo( nombre, edad, tamano, personalidad );
-            break;
-        case 6:
-            nuevo_animal = new Lagartija( nombre, edad, tamano, personalidad );
-            break;
-    }
-    return nuevo_animal;
-}
-
 
 void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable
-    int primer_coma     = (int)  animales_csv.find(',');
-    int segunda_coma    = (int)  animales_csv.find(',', primer_coma + 1);
-    int tercera_coma    = (int)  animales_csv.find(',', segunda_coma + primer_coma + 1);
-    int cuarta_coma     = (int)  animales_csv.find(',', tercera_coma + segunda_coma + primer_coma + 1);
-    int fin_linea       = (int)  animales_csv.length();
+    // int primer_coma = (int)  (animales_csv.find(','));
+    // int segunda_coma = (int)  animales_csv.find(',', primer_coma + 1);
+    // int tercera_coma = (int)  animales_csv.find(',', segunda_coma + primer_coma + 1);
+    // int cuarta_coma = (int)  animales_csv.find(',', tercera_coma + segunda_coma + primer_coma + 1);
+    // int fin_linea = (int)  (animales_csv.length());
 
-    char especie_char =  char_a_mayuscula( animales_csv.substr( tercera_coma + segunda_coma + primer_coma, cuarta_coma - (tercera_coma + segunda_coma + primer_coma + 1) )[0] );
-
-    // Guardo el nombre en mayusculas, evita problema en comparaciones futuras
-    string nombre = string_a_mayuscula( animales_csv.substr( 0, primer_coma ) );
+    // Animal* animal_dela_linea = new Animal;
+    // // Guardo el nombre en mayusculas, evita problema en comparaciones futuras
+    // animal_dela_linea -> nombre = string_a_mayuscula( animales_csv.substr( 0, primer_coma ) );
     
-    int edad = string_a_entero( animales_csv.substr( primer_coma + 1, segunda_coma - ( primer_coma + 1) ) );  
+    // animal_dela_linea -> edad = string_a_entero( animales_csv.substr(primer_coma+1, segunda_coma-(primer_coma+1) ) );  
     
-    string tamano = string_a_mayuscula( animales_csv.substr( segunda_coma + primer_coma, tercera_coma - (segunda_coma + primer_coma + 1) ) );
+    // animal_dela_linea -> tamano = string_a_mayuscula( animales_csv.substr( segunda_coma + primer_coma, tercera_coma - (segunda_coma + primer_coma + 1) ) );
     
-    string personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) );
+    // animal_dela_linea -> personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) );
 
-    Animal* animal_dela_linea = nuevo_animal( especie_char, nombre, edad, tamano, personalidad );
+    // mi_guarderia -> lista_de_animales[ (mi_guarderia -> cantidad_de_animales)++] = animal_dela_linea;
 
-    mi_guarderia -> lista_de_animales[ (mi_guarderia -> cantidad_de_animales)++] = animal_dela_linea;
-    verificar_almacenamiento( mi_guarderia );
+    // verificar_almacenamiento( mi_guarderia );
 }
 
 
 
 void verificar_almacenamiento( Guarderia* mi_guarderia ){
-    if ( (mi_guarderia -> cantidad_de_animales % (BLOQUE_ANIMALES)) == 0 ){ 
+    // if ( (mi_guarderia -> cantidad_de_animales % (BLOQUE_ANIMALES)) == 0 ){ 
          
-        int cantidad_bloques = mi_guarderia -> cantidad_de_animales / (BLOQUE_ANIMALES) + 1;
-        Animal** ptr_ptr_aux = new Animal*[ cantidad_bloques* BLOQUE_ANIMALES ];
+    //     int cantidad_bloques = mi_guarderia -> cantidad_de_animales / (BLOQUE_ANIMALES) + 1;
+    //     Animal** ptr_ptr_aux = new Animal*[ cantidad_bloques* BLOQUE_ANIMALES ];
 
-        for( int i = 0; i < mi_guarderia -> cantidad_de_animales ; i++){
-            Animal * ptr_aux = new Animal; 
-            *ptr_aux = *(mi_guarderia -> lista_de_animales[i]);
-            ptr_ptr_aux[i] = ptr_aux;
-            delete mi_guarderia -> lista_de_animales[i];
-            mi_guarderia -> lista_de_animales[i] = nullptr;
-        }
+    //     for( int i = 0; i < mi_guarderia -> cantidad_de_animales ; i++){
+    //         Animal * ptr_aux = new Perro; 
+    //         *ptr_aux = *(mi_guarderia -> lista_de_animales[i]);
+    //         ptr_ptr_aux[i] = ptr_aux;
+    //         delete mi_guarderia -> lista_de_animales[i];
+    //         mi_guarderia -> lista_de_animales[i] = nullptr;
+    //     }
 
-        delete [] (mi_guarderia -> lista_de_animales);
-        mi_guarderia -> lista_de_animales = ptr_ptr_aux;
-        ptr_ptr_aux = nullptr; 
-    }
+    //     delete [] (mi_guarderia -> lista_de_animales);
+    //     mi_guarderia -> lista_de_animales = ptr_ptr_aux;
+    //     ptr_ptr_aux = nullptr; 
+    // }
 }
 
 

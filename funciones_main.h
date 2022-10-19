@@ -4,6 +4,8 @@
 #include "Guarderia.h"
 using namespace std; 
 
+// Podemos cambiarle el nombre a este archivo#ifndef _FUNCIONES_EDL_H_
+
 /* ________________________Funciones_EDL.h_____________________________________
 _______________________________________________________________________________*/
 
@@ -14,6 +16,8 @@ const string COMA_ESPACIO = ", ";
 const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir.
 const char DELIMITADOR_ARCHIVO_CSV = '\n';
 const int CANTIDAD_OPCIONES = 6;
+// const int CANTIDAD_GENEROS = 6;
+// const int EDAD_MAX = 100;
 
 
 
@@ -46,8 +50,8 @@ void escribir_archivo( Guarderia* mi_Guarderia );
 
 
 /*________guardar_un_animal()___________________________________________________
- PRES:  - A partir de la linea csv guarda el animal con esos datos
-        - Necesita la estructura tipo Guarderia actual.
+ PRES: Recibe:
+        - Puntero a la estructura tipo Guarderia actual.
         - String con los datos del animal a agregar en formato csv:
             titulo, genero, puntaje
  POST: Guarda en la base de datos actual el animal (en el arreglo de Animales) con

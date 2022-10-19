@@ -5,7 +5,7 @@
 using namespace std; 
 
 
-// COMANDO: g++ *.cpp Especies/Perro.cpp -o TP2 -Wall -Werror -Wconversion
+// COMANDO: g++ *.cpp Especies/*.cpp -o TP2 -Wall -Werror -Wconversion
 //./TP2
 // valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./TP1
 // gdb ./Prueba
@@ -19,8 +19,9 @@ using namespace std;
 //          ponen la siguiente clave --->  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
 // git pull                                     Ponerlo para verificar si alguine del grupo pusheó algún cambio
 //                                              te asegurás tenes la úlrima versión
-// Para comentar automaticamente pueden usar ctrl + ç
-
+// git checkout nombre_branch                   Primero hacerlo con la main y despues con la brunch en la que estás trabajando
+// git chechout -b nombre_nueva_brunch          Crear brunch
+// git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 /*_____________________________TP2: LA RESERVA SOÑADA____________________*/
 int main(){
