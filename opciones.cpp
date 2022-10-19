@@ -14,18 +14,17 @@ void listar_animales( Guarderia* mi_guarderia ){
     int cantidad = mi_guarderia -> cantidad_de_animales;
     
     if (cantidad > 0){
-        cout << "Salvaste los siguientes animales:\n";}
+        cout << "Salvaste los siguientes animales:\n";
         
-    //     for( int i= 0; i<cantidad; i++){
-    //         string genero = GENEROS_STRING [GENEROS_CHAR.find( lista_animales[i] -> genero ) ];
-    //         cout << "   -  " << lista_animales[i] -> titulo << COMA_ESPACIO << genero << COMA_ESPACIO << lista_animales[i] -> puntaje << endl;
-    //     }
-    // }
-    // else{
-    //     cout << "No tienes animales guardados, podés empezar a agregar ya mismo." << endl;
-    //     preguntar_agregar_animal( mi_guarderia );
-    // }
-    // cout << "\nQué te gustaria hacer?\n";
+        for( int i= 0; i < cantidad ; i++){
+            lista_animales[i] -> mostrar();
+        }
+    }
+    else{
+        cout << "No tienes animales guardados, podés empezar a agregar ya mismo." << endl;
+        preguntar_agregar_animal( mi_guarderia );
+    }
+    cout << "\nQué te gustaria hacer?\n";
 }
 
 
@@ -53,7 +52,7 @@ string pedir_titulo(){
     POST: Devuelve true o false si está o no respectivamente
 _______________________________________________________________________________*/
 bool es_genero_posible ( string genero ) {
-    // bool todo_bien = false;
+    bool todo_bien = false;
     // long unsigned int posicion = buscar_en_array_de_string( GENEROS_STRING, genero, CANTIDAD_GENEROS );
     //     if (posicion != CANTIDAD_GENEROS){
     //         todo_bien = true;
@@ -68,7 +67,7 @@ bool es_genero_posible ( string genero ) {
     //         cout << "No tengo ese genero, debe ser según la siguiente tabla:\n";
     //         imprimir_tabla_generos();
     //     }
-    // return todo_bien;
+    return todo_bien;
 }
 
 
@@ -97,17 +96,17 @@ char pedir_genero(){
 PRE:  Le pide al usuario el puntaje hasta que cumpla que va de 0 a PUNTAJE_MAX
 POST: Devuelve int con el valor.
 _______________________________________________________________________________*/
-int pedir_puntaje(){
-    // string puntaje_string; 
-    // getline( cin, puntaje_string, '\n');
-    // int puntaje = string_a_entero( puntaje_string );
-    // while( ( puntaje > PUNTAJE_MAX) || ( puntaje < 0) || ( puntaje_string == "" ) ){
-    //     cout << "Tiene que ser entre 0 y "<< PUNTAJE_MAX << ", volvé a ingresar el puntaje:\n >> ";
-    //     getline( cin, puntaje_string, '\n');
-    //     puntaje = string_a_entero( puntaje_string );
-    // }
-    // return puntaje;
-}
+// int pedir_puntaje(){
+//     // string puntaje_string; 
+//     // getline( cin, puntaje_string, '\n');
+//     // int puntaje = string_a_entero( puntaje_string );
+//     // while( ( puntaje > PUNTAJE_MAX) || ( puntaje < 0) || ( puntaje_string == "" ) ){
+//     //     cout << "Tiene que ser entre 0 y "<< PUNTAJE_MAX << ", volvé a ingresar el puntaje:\n >> ";
+//     //     getline( cin, puntaje_string, '\n');
+//     //     puntaje = string_a_entero( puntaje_string );
+//     // }
+//     return puntaje;
+// }
 
 
 
@@ -382,22 +381,22 @@ POST: Deja en generos_mejor_promedio los generos con mejor e igual promedio
       Deja en cant_maximos la cantidad de genero en el array anterior
       Devuelve (float) el valor del promedio que tienen los genero en el array
 _______________________________________________________________________________*/
-float me_quedo_mayor_iguales( string* generos_mejor_promedio, int& cant_maximos, double* suma_puntajes_genero, int* veces_genero ){
-    // float promedio_max = -1;
-    // float promedio_genero;
-    // for( int i = 0; i < CANTIDAD_GENEROS ; i++ ){
-    //     promedio_genero = (float) (suma_puntajes_genero[i] / veces_genero[i]);
-    //     if( promedio_max == promedio_genero ){
-    //         generos_mejor_promedio[ ++cant_maximos ] = GENEROS_STRING[i];
-    //     }
-    //     if( promedio_max < promedio_genero ){
-    //         cant_maximos  = 0;
-    //         generos_mejor_promedio[ cant_maximos ] = GENEROS_STRING[i];
-    //         promedio_max = promedio_genero;
-    //     }
-    // }
-    // return promedio_max;
-}
+// float me_quedo_mayor_iguales( string* generos_mejor_promedio, int& cant_maximos, double* suma_puntajes_genero, int* veces_genero ){
+//     // float promedio_max = -1;
+//     // float promedio_genero;
+//     // for( int i = 0; i < CANTIDAD_GENEROS ; i++ ){
+//     //     promedio_genero = (float) (suma_puntajes_genero[i] / veces_genero[i]);
+//     //     if( promedio_max == promedio_genero ){
+//     //         generos_mejor_promedio[ ++cant_maximos ] = GENEROS_STRING[i];
+//     //     }
+//     //     if( promedio_max < promedio_genero ){
+//     //         cant_maximos  = 0;
+//     //         generos_mejor_promedio[ cant_maximos ] = GENEROS_STRING[i];
+//     //         promedio_max = promedio_genero;
+//     //     }
+//     // }
+//     // return promedio_max;
+// }
 
 
 
@@ -426,18 +425,18 @@ void genero_favorito( Guarderia* mi_guarderia ){
 
 
 void guardar_salir( Guarderia* mi_guarderia ){
-    cout << "Guardando...\n";
-    if ( mi_guarderia -> hubo_cambios == true ){
-        escribir_archivo( mi_guarderia );
-    }
+    // cout << "Guardando...\n";
+    // if ( mi_guarderia -> hubo_cambios == true ){
+    //     escribir_archivo( mi_guarderia );
+    // }
 
-    cout << "Listo, tu registro de animales esta terminado.\nHasta la proxima!\n";
+    // cout << "Listo, tu registro de animales esta terminado.\nHasta la proxima!\n";
 
-    for( int numero_animal = 0; numero_animal < mi_guarderia -> cantidad_de_animales; numero_animal++){
-        delete mi_guarderia -> lista_de_animales[ numero_animal ];
-        mi_guarderia -> lista_de_animales[ numero_animal ] = nullptr;
-    }
+    // for( int numero_animal = 0; numero_animal < mi_guarderia -> cantidad_de_animales; numero_animal++){
+    //     delete mi_guarderia -> lista_de_animales[ numero_animal ];
+    //     mi_guarderia -> lista_de_animales[ numero_animal ] = nullptr;
+    // }
 
-    delete [] (mi_guarderia -> lista_de_animales);
-    mi_guarderia -> lista_de_animales = nullptr;
+    // delete [] (mi_guarderia -> lista_de_animales);
+    // mi_guarderia -> lista_de_animales = nullptr;
 }
