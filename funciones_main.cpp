@@ -4,6 +4,7 @@
 #include "funciones_main.h"
 #include "funciones_auxiliares.h"
 #include "opciones.h"
+#include "Guarderia.h"
 using namespace std; 
 
 // Podemos cambiarle el nombre a este archivo
@@ -27,7 +28,7 @@ void crear_archivo( ifstream &archivo_animales ){
  POST: Lee del archivo las lineas y las guarda en la Guarderia
 _______________________________________________________________________________*/
 void guardar_lineas( Guarderia* mi_guarderia, ifstream &archivo_animales ){
-    //nombre,edad,tamaño,especie,personalidad
+    //nombre,edad,tamano,especie,personalidad
     mi_guarderia -> lista_de_animales = new Animal*[ BLOQUE_ANIMALES ];
     mi_guarderia -> cantidad_de_animales = 0;
     
@@ -109,20 +110,20 @@ bool verificar_eleccion( int eleccion ){
 
 
 void preguntar_agregar_animal( Guarderia* mi_guarderia ){
-    // cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> ";
-    // string linea_aux;
-    // while ( linea_aux.length() == 0 ){
-    //     cout << " >> ";
-    //     getline( cin, linea_aux, '\n' );
-    // }
+    cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> ";
+    string linea_aux;
+    while ( linea_aux.length() == 0 ){
+        cout << " >> ";
+        getline( cin, linea_aux, '\n' );
+    }
 
-    // if (string_a_mayuscula(linea_aux) == "SI"){
-    //     agregar_animal( mi_guarderia );
-    // }
-    // else {
-    //     cout << "Ok, no agregamos nada." << endl; 
-    //     cout << endl << "Qué mas te gustaría hacer?\n";
-    // }
+    if (string_a_mayuscula(linea_aux) == "SI"){
+        // agregar_animal( mi_guarderia );
+    }
+    else {
+        cout << "Ok, no agregamos nada." << endl; 
+        cout << endl << "Qué mas te gustaría hacer?\n";
+    }
 }
 
 
@@ -150,50 +151,48 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion ){
 
 
 
-void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamaño,especie,personalidad ---> Loni,2,mediano,P,sociable
-    int primer_coma = (int)  (animales_csv.find(','));
-    int segunda_coma = (int)  animales_csv.find(',', primer_coma + 1);
-    int tercera_coma = (int)  animales_csv.find(',', segunda_coma + primer_coma + 1);
-    int cuarta_coma = (int)  animales_csv.find(',', tercera_coma + segunda_coma + primer_coma + 1);
-    int fin_linea = (int)  (animales_csv.length());
+void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable
+    // int primer_coma = (int)  (animales_csv.find(','));
+    // int segunda_coma = (int)  animales_csv.find(',', primer_coma + 1);
+    // int tercera_coma = (int)  animales_csv.find(',', segunda_coma + primer_coma + 1);
+    // int cuarta_coma = (int)  animales_csv.find(',', tercera_coma + segunda_coma + primer_coma + 1);
+    // int fin_linea = (int)  (animales_csv.length());
 
-    Animal* animal_dela_linea = new Animal;
-    // Guardo el nombre en mayusculas, evita problema en comparaciones futuras
-    animal_dela_linea -> nombre = string_a_mayuscula( animales_csv.substr( 0, primer_coma ) );
+    // Animal* animal_dela_linea = new Animal;
+    // // Guardo el nombre en mayusculas, evita problema en comparaciones futuras
+    // animal_dela_linea -> nombre = string_a_mayuscula( animales_csv.substr( 0, primer_coma ) );
     
-    animal_dela_linea -> edad = string_a_entero( animales_csv.substr(primer_coma+1, segunda_coma-(primer_coma+1) ) );  
+    // animal_dela_linea -> edad = string_a_entero( animales_csv.substr(primer_coma+1, segunda_coma-(primer_coma+1) ) );  
     
-    animal_dela_linea -> tamaño = string_a_mayuscula( animales_csv.substr( segunda_coma + primer_coma, tercera_coma - (segunda_coma + primer_coma + 1) ) );
+    // animal_dela_linea -> tamano = string_a_mayuscula( animales_csv.substr( segunda_coma + primer_coma, tercera_coma - (segunda_coma + primer_coma + 1) ) );
     
-    animal_dela_linea -> especie = char_a_mayuscula( animales_csv.substr( tercera_coma + segunda_coma + primer_coma + 1, cuarta_coma - (tercera_coma + segunda_coma + primer_coma + 1) )[0] );
-    
-    animal_dela_linea -> personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) );
+    // animal_dela_linea -> personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) );
 
-    mi_guarderia -> lista_de_animales[ (mi_guarderia -> cantidad_de_animales)++] = animal_dela_linea;
+    // mi_guarderia -> lista_de_animales[ (mi_guarderia -> cantidad_de_animales)++] = animal_dela_linea;
 
-    verificar_almacenamiento( mi_guarderia );
+    // verificar_almacenamiento( mi_guarderia );
 }
 
 
 
 void verificar_almacenamiento( Guarderia* mi_guarderia ){
-    if ( (mi_guarderia -> cantidad_de_animales % (BLOQUE_ANIMALES)) == 0 ){ 
+    // if ( (mi_guarderia -> cantidad_de_animales % (BLOQUE_ANIMALES)) == 0 ){ 
          
-        int cantidad_bloques = mi_guarderia -> cantidad_de_animales / (BLOQUE_ANIMALES) + 1;
-        Animal** ptr_ptr_aux = new Animal*[ cantidad_bloques* BLOQUE_ANIMALES ];
+    //     int cantidad_bloques = mi_guarderia -> cantidad_de_animales / (BLOQUE_ANIMALES) + 1;
+    //     Animal** ptr_ptr_aux = new Animal*[ cantidad_bloques* BLOQUE_ANIMALES ];
 
-        for( int i = 0; i < mi_guarderia -> cantidad_de_animales ; i++){
-            Animal * ptr_aux = new Animal;
-            *ptr_aux = *(mi_guarderia -> lista_de_animales[i]);
-            ptr_ptr_aux[i] = ptr_aux;
-            delete mi_guarderia -> lista_de_animales[i];
-            mi_guarderia -> lista_de_animales[i] = nullptr;
-        }
+    //     for( int i = 0; i < mi_guarderia -> cantidad_de_animales ; i++){
+    //         Animal * ptr_aux = new Perro; 
+    //         *ptr_aux = *(mi_guarderia -> lista_de_animales[i]);
+    //         ptr_ptr_aux[i] = ptr_aux;
+    //         delete mi_guarderia -> lista_de_animales[i];
+    //         mi_guarderia -> lista_de_animales[i] = nullptr;
+    //     }
 
-        delete [] (mi_guarderia -> lista_de_animales);
-        mi_guarderia -> lista_de_animales = ptr_ptr_aux;
-        ptr_ptr_aux = nullptr; 
-    }
+    //     delete [] (mi_guarderia -> lista_de_animales);
+    //     mi_guarderia -> lista_de_animales = ptr_ptr_aux;
+    //     ptr_ptr_aux = nullptr; 
+    // }
 }
 
 
@@ -229,21 +228,21 @@ void mostrar_un_animal( Guarderia* mi_guarderia, int numero_de_animal ){
 
 
 void escribir_archivo( Guarderia* mi_guarderia ){
-    ifstream is_archivo_animales(RUTA_ARCHIVO);
+    // ifstream is_archivo_animales(RUTA_ARCHIVO);
 
-    if ( !is_archivo_animales.is_open() ) {
-        crear_archivo( is_archivo_animales );
-        mi_guarderia -> hubo_cambios = true;
-    }
+    // if ( !is_archivo_animales.is_open() ) {
+    //     crear_archivo( is_archivo_animales );
+    //     mi_guarderia -> hubo_cambios = true;
+    // }
 
-    ofstream archivo_animales( RUTA_ARCHIVO );
+    // ofstream archivo_animales( RUTA_ARCHIVO );
 
-    for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia -> cantidad_de_animales) ; numero_de_animal++ ){
-        archivo_animales << armar_linea_animal( mi_guarderia, numero_de_animal, false ) << endl; 
-        // Va a quedar con una linea vacia al final del archivo
-    }
+    // for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia -> cantidad_de_animales) ; numero_de_animal++ ){
+    //     archivo_animales << armar_linea_animal( mi_guarderia, numero_de_animal, false ) << endl; 
+    //     // Va a quedar con una linea vacia al final del archivo
+    // }
 
-    archivo_animales.close();
+    // archivo_animales.close();
 }
 
 
@@ -251,9 +250,9 @@ void escribir_archivo( Guarderia* mi_guarderia ){
 int buscar_nombre ( Guarderia* mi_guarderia, string titulo_buscado ){
     int numero_de_animal = 0;
 
-    while( (numero_de_animal < mi_guarderia -> cantidad_de_animales) && (mi_guarderia -> lista_de_animales[numero_de_animal] -> nombre != titulo_buscado) ){
-        numero_de_animal++;
-    }
+    // while( (numero_de_animal < mi_guarderia -> cantidad_de_animales) && (mi_guarderia -> lista_de_animales[numero_de_animal] -> nombre != titulo_buscado) ){
+    //     numero_de_animal++;
+    // }
     // numero de animal es igual a la cantidad de animales si no lo encontró
     return numero_de_animal;
 }

@@ -5,7 +5,7 @@
 using namespace std; 
 
 
-// COMANDO: g++ main.cpp -o TP2 -Wall -Werror -Wconversion
+// COMANDO: g++ *.cpp Especies/Perro.cpp -o TP2 -Wall -Werror -Wconversion
 //./TP2
 // valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./TP1
 // gdb ./Prueba

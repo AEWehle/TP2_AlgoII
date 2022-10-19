@@ -1,6 +1,15 @@
 #ifndef _FUNCIONES_MAIN_H_
 #define _FUNCIONES_MAIN_H_
 #include <string>
+#include "Guarderia.h"
+// #include "Animal.h"
+// #include "Especies/Perro.h"
+// #include "Especies/Gato.h"
+// #include "Especies/Caballo.h"
+// #include "Especies/Roedor.h"
+// #include "Especies/Conejo.h"
+// #include "Especies/Erizo.h"
+// #include "Especies/Lagartija.h"
 using namespace std; 
 
 // Podemos cambiarle el nombre a este archivo#ifndef _FUNCIONES_EDL_H_
@@ -10,44 +19,13 @@ _______________________________________________________________________________*
 
 
 
-const string RUTA_ARCHIVO = "Animales.csv";
+const string RUTA_ARCHIVO = "animales.csv";
 const string COMA_ESPACIO = ", ";
 const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir.
 const char DELIMITADOR_ARCHIVO_CSV = '\n';
-const string RUTA_ARCHIVO = "animales.csv";
 const int CANTIDAD_OPCIONES = 6;
 // const int CANTIDAD_GENEROS = 6;
 // const int EDAD_MAX = 100;
-
-
-/*________Animal________________________________________________________________
- La estructura guarda la informacion de un animal
- El titulo, todo en mayusculas
- El genero, char mayuscula respetando relacion GENEROS_CHAR <-> GENEROS_STRING
- El puntaje, valor de 0 a PUNTAJE_MAX
-_______________________________________________________________________________*/
-struct Animal{ //nombre,edad,tamaño,especie,personalidad 
-// TIENE ESTA FORA PPOR AHORA, ES SOLO PARA QUE NO ME APAREZCAN ERRORES
-    string nombre;
-    int edad;   
-    string tamaño;
-    char especie;
-    string personalidad;
-};
-
-
-/*________Guarderia___________________________________________________________
- Esta estructura va a guarda toda la informacion extraida del archivo en una 
- lista de Animales.
- Tiene la cantidad de Animales guardados y por 'ultimo una bool que indica si se 
- realizaron cambios en los datos, justificando reescribir el archivo original
- al cerrar el programa.
-_______________________________________________________________________________*/
-struct Guarderia{
-    Animal ** lista_de_animales;
-    int cantidad_de_animales;
-    bool hubo_cambios = false;
-};
 
 
 
