@@ -1,6 +1,6 @@
 #include "lista.h"
 
-
+//
 //constructor
 Lista::Lista() {
     primero = 0;
@@ -73,7 +73,7 @@ Nodo* Lista::obtener_nodo(int pos) {
 }
 
 
-// hay algún elemento más?
+// hay algÃºn elemento mï¿½s?
 bool Lista::hay_siguiente() {
     return (actual != 0);
 }
