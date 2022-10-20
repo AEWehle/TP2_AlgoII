@@ -31,3 +31,10 @@
 *.out
 *.app
 TP2
+
+#Drive
+*.ini
+
+# VStudio
+*.json
+*.vscode
