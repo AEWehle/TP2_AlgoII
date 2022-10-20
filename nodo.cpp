@@ -1,14 +1,14 @@
 #include "nodo.h"
 
 // Constructor
-Nodo::Nodo(Dato d) {
-    dato = d;
-    siguiente = 0;
+Nodo::Nodo(Dato dato) {
+    dato = dato;
+    siguiente = nullptr;
 }
 
 // cambiar siguiente
-void Nodo::cambiar_siguiente(Nodo* pn) {
-    siguiente = pn;
+void Nodo::cambiar_siguiente(Nodo* nuevo_siguiente) {
+    siguiente = nuevo_siguiente;
 }
 
 // obtener siguiente

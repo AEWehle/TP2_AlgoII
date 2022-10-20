@@ -1,5 +1,5 @@
-#ifndef LISTA_H_INCLUDED
-#define LISTA_H_INCLUDED
+#ifndef LISTA_H
+#define LISTA_H
 
 #include "nodo.h"
 
@@ -7,9 +7,11 @@
 class Lista {
     //atributos
 private:
+    // Puntero al primer Nodo
     Nodo* primero;
+    // Cantidad de Nodos
     int cantidad;
-    // Puntero actual
+    // Puntero al Nodo actual
     Nodo* actual;
 
     //metodos
@@ -44,8 +46,8 @@ public:
     ~Lista();
 
     // Agregado Lista con cursores
-    // pos: True si hay algún dato más en la lista, False si
-    //      la lista es vacía o si llegué al final de la lista
+    // pos: True si hay algï¿½n dato mï¿½s en la lista, False si
+    //      la lista es vacï¿½a o si lleguï¿½ al final de la lista
     bool hay_siguiente();
 
     // pre: hay_siguiente() es True
@@ -63,4 +65,4 @@ private:
 };
 
 
-#endif // LISTA_H_INCLUDED
+#endif // LISTA_H

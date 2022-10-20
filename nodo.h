@@ -1,7 +1,7 @@
-#ifndef NODO_H_INCLUDED
-#define NODO_H_INCLUDED
+#ifndef NODO_H
+#define NODO_H
 
-typedef char Dato;
+typedef char Dato; //Cambiar por el tipo de dato que vayamos a usar
 
 class Nodo {
     // Atributos
@@ -12,13 +12,13 @@ private:
 public:
     // Constructor
     // crea un nodo con dato = d y siguiente = 0
-    Nodo(Dato d);
+    Nodo(Dato dato);
 
-    void cambiar_siguiente(Nodo* pn);
+    void cambiar_siguiente(Nodo* nuevo_siguiente);
 
     Dato obtener_dato();
 
     Nodo* obtener_siguiente();
 };
 
-#endif // NODO_H_INCLUDED
+#endif // NODO_H
