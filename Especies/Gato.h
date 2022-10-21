@@ -10,6 +10,7 @@ class Gato: public Animal{
 public:
     Gato();
     Gato( string nombre, int edad, string tamano, string personalidad );
+    void mostrar() override;
     ~Gato();
 };
 

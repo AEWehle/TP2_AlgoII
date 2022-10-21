@@ -10,6 +10,7 @@ class Roedor: public Animal{
 public:
     Roedor();
     Roedor( string nombre, int edad, string tamano, string personalidad );
+    void mostrar() override;
     ~Roedor();
 };
 

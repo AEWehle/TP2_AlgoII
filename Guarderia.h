@@ -11,6 +11,7 @@
 #include "Especies/Lagartija.h"
 using namespace std; 
 
+
 struct Guarderia{
     Animal ** lista_de_animales;
     int cantidad_de_animales;

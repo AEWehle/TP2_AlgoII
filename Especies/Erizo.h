@@ -10,6 +10,7 @@ class Erizo: public Animal{
 public:
     Erizo();
     Erizo( string nombre, int edad, string tamano, string personalidad );
+    void mostrar() override;
     ~Erizo();
 };
 

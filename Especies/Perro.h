@@ -10,8 +10,8 @@ class Perro: public Animal{
 public:
     Perro();
     Perro( string nombre, int edad, string tamano, string personalidad );
+    void mostrar() override;
     ~Perro();
-    void mostrar();
 };
 
 

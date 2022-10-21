@@ -6,7 +6,11 @@ using namespace std;
 const int EDAD_MAX = 100;
 const int HAMBRE_MAX = 100;
 const int HIGIENE_MAX = 100;
-
+const int CANTIDAD_ESPECIES = 7; 
+const string ESPECIE_CHAR= { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
+const string ESPECIE_STRING[ CANTIDAD_ESPECIES ]= { "PERRO", "GATO", "CABALLO", "ROEDOR", "CONEJO", "ERIZO", "AGARTIJA" }; 
+const int CANTIDAD_PERSONALIDADES = 4;
+const string PERSONALIDADES[ CANTIDAD_PERSONALIDADES ] = { "DORMILON", "JUGUETON", "SOCIABLE", "TRAVIESO" };
 
 class Animal{
 protected:
@@ -17,7 +21,7 @@ protected:
     bool   es_domestico;	//  [lo define la especie, indica si es adoptable]
     int    hambre; 	        //	[0-100]
     int    higiene;	        //	[0-100]
-    char   especie;
+    // char   especie;
     string comida;	        //	[lo define la especie, es lo que va a imprimir]
 public:
 
@@ -50,20 +54,19 @@ _______________________________________________________________________________*
     void duchar();
 
 
-/*________mostrar_animal()_____________________________________________________
+/*________mostrar()_____________________________________________________
  PRE: -
  POST:  El Animal se muestra individualmente,
         nombre, edad, tamano, especie, personalidad, hambre e higiene.
 _______________________________________________________________________________*/
-    void mostrar();
+    virtual void mostrar();
 
-/*________mostrar()___________________________________________________________
- PRE:   Las clases hijas deben tener este método
- POST:  Le pasa al método mostrar_animal() la especie
-    esta última se encargará de mostrarlo
+
+/*________obtener_nombre()_____________________________________________________
+ PRE: -
+ POST:  Devuelve el nombre del animal
 _______________________________________________________________________________*/
-    // virtual void mostrar() = 0;
-
+    string obtener_nombre();
 
 };
 #endif // SISTEMA_H

@@ -10,6 +10,7 @@ class Lagartija: public Animal{
 public:
     Lagartija();
     Lagartija( string nombre, int edad, string tamano, string personalidad );
+    void mostrar() override;
     ~Lagartija();
 };
 

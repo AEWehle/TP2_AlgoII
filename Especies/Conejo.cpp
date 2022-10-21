@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "../Animal.h"
 #include "Conejo.h"
 using namespace std; 
@@ -9,7 +10,13 @@ Conejo::Conejo(){
 }
 
 Conejo::Conejo( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
-    especie = 'O';
+    // especie = 'O';
     comida = "lechuga";
     es_domestico = true;
+}
+
+void Conejo::mostrar(){
+    // especie, nombre, edad, tamano, personalidad, hambre e higiene.
+    cout << "____________________CONEJO_______________________________" << endl;
+    Animal::mostrar();
 }
