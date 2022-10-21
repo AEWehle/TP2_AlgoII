@@ -9,7 +9,7 @@ using namespace std;
 class Lagartija: public Animal{
 public:
     Lagartija();
-    Lagartija( string nombre, int edad, string tamano, string personalidad );
+    Lagartija( string nombre, int edad, int tamano, string personalidad );
     void mostrar() override;
     ~Lagartija();
 };

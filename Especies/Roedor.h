@@ -9,7 +9,7 @@ using namespace std;
 class Roedor: public Animal{
 public:
     Roedor();
-    Roedor( string nombre, int edad, string tamano, string personalidad );
+    Roedor( string nombre, int edad, int tamano, string personalidad );
     void mostrar() override;
     ~Roedor();
 };

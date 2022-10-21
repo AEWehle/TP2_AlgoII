@@ -9,7 +9,7 @@ Caballo::Caballo(  ): Animal(  ){
     es_domestico = true;
 }
 
-Caballo::Caballo( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+Caballo::Caballo( string nombre, int edad, int tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
     // especie = 'C';
     comida = "manzanas";
     es_domestico = true;

@@ -9,7 +9,7 @@ Conejo::Conejo(){
     es_domestico = true;
 }
 
-Conejo::Conejo( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+Conejo::Conejo( string nombre, int edad, int tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
     // especie = 'O';
     comida = "lechuga";
     es_domestico = true;

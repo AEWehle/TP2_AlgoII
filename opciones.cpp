@@ -16,7 +16,7 @@ void listar_animales( Guarderia* mi_guarderia ){
     if (cantidad > 0){ 
         cout << "Salvaste los siguientes animales:\n"; 
          
-        for( int i= 0; i < cantidad ; i++){ 
+        for( int i = 0; i < cantidad ; i++){ 
             lista_animales[i] -> mostrar();  
         } 
     } 
@@ -50,6 +50,7 @@ PRE:  Le pide al usuario la edad hasta que cumpla que va de 0 a EDAD_MAX
 POST: Devuelve int con el valor. 
 _______________________________________________________________________________*/ 
 int pedir_edad(){ 
+    cout << "Cuántos años tiene?\n >> ";
     string edad_string;  
     getline( cin, edad_string, '\n'); 
     int edad = string_a_entero( edad_string ); 
@@ -62,17 +63,25 @@ int pedir_edad(){
 } 
  
 
-string numero_a_tamano( int numero ){
-    cout << "CREAR ESTA FUNCION, tiene que devolver el tamaño que le corresponde segun el numero" << endl;
-    return "tu tia";
+string numero_a_tamano_string( int numero ){
+    //	[ D <2, P<10, M >= 10, Gr>= 20, Gi >= 50 ]
+    // es 0 -> D, 1 -> P , 2 -> M , 3 -> Gr , 4 -> Gi
+    int i = (int)( numero >= 50) + (int)( numero >= 20) + (int)( numero >= 10) + (int)( numero >= 2);
+    return TAMANOS_STRING[i];
 }
- 
+
+int numero_a_tamano( int numero ){
+    return (int)( numero >= 50) + (int)( numero >= 20) + (int)( numero >= 10) + (int)( numero >= 2);
+}
+
+
 /*________pedir_tamano()______________________________________________________ 
 PRE:  Le pide al usuario el yamano hasta que sea un numero.
     Si ingresa un número negativo ignora el signo.
-POST: Devuelve string con la calsificación correspondiente con el valor. 
+POST: Devuelve la calsificación correspondiente con el valor. 
 _______________________________________________________________________________*/ 
-string pedir_tamano(){ 
+int pedir_tamano(){ 
+    cout << "Cuánto espacio en m2 necesita para vivir cómodo?\n >> ";
     string tamano_string;  
     getline( cin, tamano_string, '\n'); 
     int tamano = string_a_entero( tamano_string ); 
@@ -81,13 +90,15 @@ string pedir_tamano(){
         getline( cin, tamano_string, '\n'); 
         tamano = string_a_entero( tamano_string ); 
     }
-    tamano_string = numero_a_tamano(tamano);
-    return tamano_string; 
+    tamano = numero_a_tamano(tamano);
+    return tamano; 
 } 
 
 
 void imprimir_tabla_especies(){
-    cout << "PONER TABLA DE ESPECIES, CON SU CARACTER CARACTERISTICO" << endl;
+    for (int i = 0 ; i < CANTIDAD_ESPECIES ; i++ ){
+        cout << "  " << ESPECIE_CHAR[i] << " - " << ESPECIE_STRING[i] << endl;
+    }
 }
 
 
@@ -109,7 +120,7 @@ bool es_especie_posible ( string especie ) {
             } 
         } 
         else{ 
-            cout << "No se recastan animales de esa especie, debe ser según la siguiente tabla:\n"; 
+            cout << "No se recastan animales de esa especie, puede ser:\n"; 
             imprimir_tabla_especies(); 
         } 
     return todo_bien; 
@@ -124,7 +135,8 @@ char pedir_especie(){
     string especie; 
     cout << "Decime el especie.\n"; 
     cout << "Puede ser de las siguientes, podes poner su caracter caracteístico o completo, sin restricción:" << endl;
- 
+    imprimir_tabla_especies(); 
+
     bool todo_bien = false;  
     while( !todo_bien ){ 
         cout << " >> "; 
@@ -137,8 +149,10 @@ char pedir_especie(){
 
 
 void imprimir_personalidades(){
-    cout << "Seleccioná un número de la lista:" << endl;
-    cout << "CREAR ESTA TABLA ENUMERANDO LAS PERSONALIDADES, EL USUARIO ELIGIRÁ POR NUMERO" << endl;
+    cout << "Seleccioná un número de la lista de personalidades:" << endl;
+    for ( int i = 0 ; i < CANTIDAD_PERSONALIDADES ; i++){
+        cout << "      " << i+1 << "-  " << PERSONALIDADES[i] << endl;
+    }
 }
 
 /*________pedir_especie()______________________________________________________ 
@@ -148,15 +162,15 @@ _______________________________________________________________________________*
 string pedir_personalidad(){
     cout << "Decime cómo se comporta.\n"; 
     imprimir_personalidades();
-    string opcion;
-    int opcion_int = -1;
-    while( (opcion_int <= CANTIDAD_PERSONALIDADES) & ( opcion_int >0 )){ 
+    string opcion = "";
+    int opcion_int = CANTIDAD_PERSONALIDADES+1;
+    while( (opcion_int > CANTIDAD_PERSONALIDADES) | ( opcion == "" ) ){ 
         cout << " >> "; 
         getline( cin, opcion); 
         opcion_int = string_a_entero( opcion ); 
     } 
-    string personalidad = PERSONALIDADES[ opcion_int ]; 
-    return personalidad;
+    opcion = PERSONALIDADES[ opcion_int -1 ]; 
+    return opcion;
 }
  
  
@@ -172,15 +186,15 @@ void rescatar_animal( Guarderia* mi_guarderia ){
     } 
     else{ // No esta en mi_guarderia 
         int edad = pedir_edad();
-        string tamano = pedir_tamano(); 
+        int tamano = pedir_tamano(); 
         char especie = pedir_especie();
         string personalidad = pedir_personalidad();
  
-        string animal_csv = nombre + ',' + to_string(edad) + ',' + tamano + ',' + especie + ',' + personalidad;
+        string animal_csv = nombre + ',' + to_string(edad) + ',' + TAMANOS_STRING[ tamano ] + ',' + especie + ',' + personalidad;
         guardar_un_animal( mi_guarderia, animal_csv ); 
  
         cout << "\nSe agregó a tu reserva de animales el siguiente animal:" << endl; 
-        mi_guarderia -> lista_de_animales[numero_de_animal] -> mostrar(); 
+        ( mi_guarderia -> lista_de_animales[numero_de_animal] ) -> mostrar(); 
         mi_guarderia -> hubo_cambios = true; 
     } 
     cout << "\nQué mas te gustaria hacer?\n"; 

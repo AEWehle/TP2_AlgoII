@@ -9,7 +9,7 @@ using namespace std;
 class Conejo: public Animal{
 public:
     Conejo();
-    Conejo( string nombre, int edad, string tamano, string personalidad );
+    Conejo( string nombre, int edad, int tamano, string personalidad );
     void mostrar() override;
     ~Conejo();
 };

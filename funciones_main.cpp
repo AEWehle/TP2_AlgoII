@@ -146,7 +146,7 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion ){
 } 
  
  
-Animal* nuevo_animal( char especie_char, string nombre, int edad, string tamano, string personalidad ){ 
+Animal* nuevo_animal( char especie_char, string nombre, int edad, int tamano, string personalidad ){ 
     Animal* nuevo_animal = nullptr; 
     switch (ESPECIE_CHAR.find( especie_char )){ 
         case 0: 
@@ -189,13 +189,14 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
      
     int edad = string_a_entero( animales_csv.substr( primer_coma + 1, segunda_coma - ( primer_coma + 1) ) );   
      
-    string tamano = string_a_mayuscula( animales_csv.substr( segunda_coma + primer_coma, tercera_coma - (segunda_coma + primer_coma + 1) ) ); 
+    int tamano = buscar_en_array_de_string( TAMANOS_STRING , animales_csv.substr( segunda_coma + primer_coma, tercera_coma - (segunda_coma + primer_coma + 1) ) , CANTIDAD_TAMANOS ); 
      
     string personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) ); 
  
     Animal* animal_dela_linea = nuevo_animal( especie_char, nombre, edad, tamano, personalidad ); 
  
     mi_guarderia -> lista_de_animales[ (mi_guarderia -> cantidad_de_animales)++] = animal_dela_linea; 
+    
     verificar_almacenamiento( mi_guarderia ); 
 } 
  

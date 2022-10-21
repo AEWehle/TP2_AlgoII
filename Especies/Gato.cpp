@@ -8,7 +8,7 @@ Gato::Gato(){
     comida = "atún";
     es_domestico = true;
 }
-Gato::Gato( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+Gato::Gato( string nombre, int edad, int tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
     // especie = 'G';
     comida = "atún";
     es_domestico = true;
