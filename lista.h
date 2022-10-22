@@ -70,13 +70,13 @@ Lista<Dato>::Lista() {
 
 template <typename Dato>
 void Lista<Dato>::alta(Dato dato, int pos) {
-    Nodo* nuevo = new Nodo(dato);
-    Nodo* siguiente = primero;
+    Nodo<Dato>* nuevo = new Nodo(dato);
+    Nodo<Dato>* siguiente = primero;
     if (pos == 1) {
         primero = nuevo;
     }
     else {
-        Nodo* anterior = obtener_nodo(pos - 1);
+        Nodo<Dato>* anterior = obtener_nodo(pos - 1);
         siguiente = anterior->obtener_siguiente();
         anterior->cambiar_siguiente(nuevo);
     }
@@ -86,18 +86,18 @@ void Lista<Dato>::alta(Dato dato, int pos) {
 
 template <typename Dato>
 Dato Lista<Dato>::consulta(int pos) {
-    Nodo* nodo = obtener_nodo(pos);
+    Nodo<Dato>* nodo = obtener_nodo(pos);
     return (nodo->obtener_dato());
 }
 
 template <typename Dato>
 void Lista<Dato>::baja(int pos) {
-    Nodo* a_borrar = primero;
+    Nodo<Dato>* a_borrar = primero;
     if (pos == 1) {
         primero = a_borrar->obtener_siguiente();
     }
     else {
-        Nodo* anterior = obtener_nodo(pos - 1);
+        Nodo<Dato>* anterior = obtener_nodo(pos - 1);
         a_borrar = anterior->obtener_siguiente();
         anterior->cambiar_siguiente(a_borrar->obtener_siguiente());
     }
@@ -124,7 +124,7 @@ int Lista<Dato>::obtener_cantidad() {
 
 template <typename Dato>
 Nodo<Dato>* Lista<Dato>::obtener_nodo(int pos) {
-    Nodo* auxiliar = primero;
+    Nodo<Dato>* auxiliar = primero;
     for(int i = 1; i < pos; i++)
         auxiliar = auxiliar->obtener_siguiente();
     return auxiliar;
