@@ -1,5 +1,5 @@
 #include "lista.h"
-
+// Comentario
 Lista::Lista() {
     primero = nullptr;
     cantidad = 0;
