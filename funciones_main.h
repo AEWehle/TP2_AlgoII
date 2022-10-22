@@ -116,5 +116,5 @@ POST: Si repsonde Si llama a agregar_animal
       Si responde cualuqier otra cosa no agrega nada y termina 
 _______________________________________________________________________________*/ 
 void preguntar_agregar_animal( Guarderia* mi_Guarderia ); 
- 
+
 #endif

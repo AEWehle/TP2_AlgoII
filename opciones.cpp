@@ -95,6 +95,7 @@ int pedir_tamano(){
 } 
 
 
+
 void imprimir_tabla_especies(){
     for (int i = 0 ; i < CANTIDAD_ESPECIES ; i++ ){
         cout << "  " << ESPECIE_CHAR[i] << " - " << ESPECIE_STRING[i] << endl;
@@ -153,6 +154,8 @@ void imprimir_personalidades(){
     for ( int i = 0 ; i < CANTIDAD_PERSONALIDADES ; i++){
         cout << "      " << i+1 << "-  " << PERSONALIDADES[i] << endl;
     }
+
+
 }
 
 /*________pedir_especie()______________________________________________________ 

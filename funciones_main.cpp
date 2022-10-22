@@ -271,6 +271,3 @@ int buscar_nombre ( Guarderia* mi_guarderia, string nombre_buscado ){
     return numero_de_animal; 
 } 
  
- 
- 
- 
