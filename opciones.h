@@ -19,45 +19,32 @@ void listar_animales      ( Guarderia* mi_guarderia );
 
 
 /*________rescatar_animal()______________________________________________________
- PRE:  
- POST: 
+ PRE:  Serescató un animal y hay que agregarlo a la lista de animales en la rese-
+ rva recibe una structura tipo Guarderia con la informacion actual.
+ POST: Guarda el animal.
 _______________________________________________________________________________*/
 void rescatar_animal      ( Guarderia* mi_guarderia );
 
 
-/*________editar_puntaje()______________________________________________________
- PRE:  
- POST:
-_______________________________________________________________________________*/
-void editar_puntaje     ( Guarderia* mi_guarderia );
-
-
-/*________animal_favorito()_____________________________________________________
+/*________buscar_animal()______________________________________________________
  PRE:  
  POST: 
 _______________________________________________________________________________*/
-void animal_favorito     ( Guarderia* mi_guarderia );
+void buscar_animal        ( Guarderia* mi_guarderia );
+ 
 
-
-/*________tres_menor_puntaje()_________________________________________________
+ /*________cuidar_animal()______________________________________________________
  PRE:  
  POST: 
 _______________________________________________________________________________*/
-void tres_menor_puntaje ( Guarderia* mi_guarderia );
+void cuidar_animales      ( Guarderia* mi_guarderia );
+ 
 
-
-/*________genero_mas_leido()___________________________________________________
+ /*________adoptar_animal()______________________________________________________
  PRE:  
  POST: 
 _______________________________________________________________________________*/
-void genero_mas_leido   ( Guarderia* mi_guarderia );
-
-
-/*________genero_favorito()____________________________________________________
- PRE:  
- POST: 
-_______________________________________________________________________________*/
-void genero_favorito    ( Guarderia* mi_guarderia );
+void adoptar_animal       ( Guarderia* mi_guarderia );
 
 
 /*________guardar_salir()______________________________________________________
@@ -72,10 +59,10 @@ typedef void (*Manejo_Guarderia) (Guarderia* mi_guarderia );
 const Manejo_Guarderia funcion_elegida[ CANTIDAD_OPCIONES ] = {
     listar_animales, 
     rescatar_animal,
-    editar_puntaje,
-    animal_favorito,
-    tres_menor_puntaje,
-    genero_mas_leido,
+    buscar_animal,
+    cuidar_animales,
+    adoptar_animal,
+    guardar_salir,
 };
 
 #endif
