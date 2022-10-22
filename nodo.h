@@ -4,6 +4,7 @@
 //Cambiar a Template, todo en .h
 typedef char Dato; //Cambiar por el tipo de dato que vayamos a usar
 
+//prueba
 class Nodo {
     // Atributos
 private:
