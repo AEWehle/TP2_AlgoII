@@ -63,9 +63,9 @@ class Lista {
 
 template <typename Dato>
 Lista<Dato>::Lista() {
-    primero = nullptr;
-    cantidad = 0;
-    actual = primero;
+    this -> primero = nullptr;
+    this -> cantidad = 0;
+    this -> actual = primero;
 }
 
 template <typename Dato>
@@ -73,7 +73,7 @@ void Lista<Dato>::alta(Dato dato, int pos) {
     Nodo<Dato>* nuevo = new Nodo(dato);
     Nodo<Dato>* siguiente = primero;
     if (pos == 1) {
-        primero = nuevo;
+        this -> primero = nuevo;
     }
     else {
         Nodo<Dato>* anterior = obtener_nodo(pos - 1);
@@ -81,7 +81,7 @@ void Lista<Dato>::alta(Dato dato, int pos) {
         anterior->cambiar_siguiente(nuevo);
     }
     nuevo->cambiar_siguiente(siguiente);
-    cantidad++;
+    this -> cantidad++;
 }
 
 template <typename Dato>
@@ -92,9 +92,9 @@ Dato Lista<Dato>::consulta(int pos) {
 
 template <typename Dato>
 void Lista<Dato>::baja(int pos) {
-    Nodo<Dato>* a_borrar = primero;
+    Nodo<Dato>* a_borrar = this -> primero;
     if (pos == 1) {
-        primero = a_borrar->obtener_siguiente();
+        this -> primero = a_borrar->obtener_siguiente();
     }
     else {
         Nodo<Dato>* anterior = obtener_nodo(pos - 1);
@@ -102,12 +102,12 @@ void Lista<Dato>::baja(int pos) {
         anterior->cambiar_siguiente(a_borrar->obtener_siguiente());
     }
     delete a_borrar; // Ojo si dentro de los nodos pedimos memoria
-    cantidad--;
+    this -> cantidad--;
 }
 
 template <typename Dato>
 bool Lista<Dato>::vacia() {
-    return (cantidad == 0);
+    return (this -> cantidad == 0);
 }
 
 template <typename Dato>
@@ -119,12 +119,12 @@ Lista<Dato>::~Lista() {
 
 template <typename Dato>
 int Lista<Dato>::obtener_cantidad() {
-    return cantidad;
+    return this -> cantidad;
 }
 
 template <typename Dato>
 Nodo<Dato>* Lista<Dato>::obtener_nodo(int pos) {
-    Nodo<Dato>* auxiliar = primero;
+    Nodo<Dato>* auxiliar = this -> primero;
     for(int i = 1; i < pos; i++)
         auxiliar = auxiliar->obtener_siguiente();
     return auxiliar;
@@ -132,19 +132,19 @@ Nodo<Dato>* Lista<Dato>::obtener_nodo(int pos) {
 
 template <typename Dato>
 bool Lista<Dato>::hay_siguiente() {
-    return (actual != nullptr);
+    return (this -> actual != nullptr);
 }
 
 template <typename Dato>
 Dato Lista<Dato>::siguiente() {
-    Dato dato = actual->obtener_dato();
-    actual = actual->obtener_siguiente();
+    Dato dato = this -> actual->obtener_dato();
+    this -> actual = this -> actual->obtener_siguiente();
     return dato;
 }
 
 template <typename Dato>
 void Lista<Dato>::iniciar() {
-    actual = primero;
+    this -> actual = this -> primero;
 }
 
 

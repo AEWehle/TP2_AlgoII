@@ -25,26 +25,26 @@ class Nodo{
 // Constructor
 template <typename Dato>
 Nodo<Dato>::Nodo(Dato dato){
-    dato = dato;
-    siguiente = nullptr;
+    this -> dato = dato;
+    this -> siguiente = nullptr;
 }
 
 // cambiar siguiente
 template <typename Dato>
 void Nodo<Dato>::cambiar_siguiente(Nodo* nuevo_siguiente){
-    siguiente = nuevo_siguiente;
+    this -> siguiente = nuevo_siguiente;
 }
 
 // obtener siguiente
 template <typename Dato>
 Nodo<Dato>* Nodo<Dato>::obtener_siguiente(){
-    return siguiente;
+    return this -> siguiente;
 }
 
 // obtener dato
 template <typename Dato>
 Dato Nodo<Dato>::obtener_dato() {
-    return dato;
+    return this -> dato;
 }
 
 #endif // NODO_TEMPLATE
