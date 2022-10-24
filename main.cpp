@@ -31,7 +31,7 @@ int main(){
     Guarderia* mi_guarderia  =  leer_archivo();
     int eleccion = 0;
 
-    while ( mi_guarderia -> lista_de_animales != nullptr ){
+    while ( mi_guarderia->ver_lista()!= nullptr ){
         eleccion = pedir_eleccion();
         cout << "Elegiste la opcion "<< eleccion << endl << endl;
         ejecutar_eleccion( mi_guarderia, eleccion );

@@ -10,7 +10,8 @@ const int CANTIDAD_ESPECIES = 7;
 const int CANTIDAD_PERSONALIDADES = 4;
 const int CANTIDAD_TAMANOS = 5;
 
-const string ESPECIE_CHAR= { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
+const char ESPECIE_CHAR [ CANTIDAD_ESPECIES ] = { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
+enum Especie { P = 0, G, C, R, O, E, L, ESPECIE_INVALIDA }; 
 const string ESPECIE_STRING[ CANTIDAD_ESPECIES ]= { "PERRO", "GATO", "CABALLO", "ROEDOR", "CONEJO", "ERIZO", "LAGARTIJA" }; 
 const string PERSONALIDADES[ CANTIDAD_PERSONALIDADES ] = { "Dormilón", "Juguetón", "Sociable", "Travieso" };
 const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "diminuto", "pequeño", "mediano", "grande", "gigante" };
@@ -42,6 +43,12 @@ _______________________________________________________________________________*
 _______________________________________________________________________________*/
     Animal( string nombre, int edad, int tamano, string personalidad );
 
+/*________destructor Animal con parametros____________________________________
+ PRE: 
+ POST: 
+_______________________________________________________________________________*/
+    virtual ~Animal() = 0;
+
 
 /*________alimentar()_______________________________________________________
  PRE: -
@@ -70,6 +77,8 @@ _______________________________________________________________________________*
  POST:  Devuelve el nombre del animal
 _______________________________________________________________________________*/
     string obtener_nombre();
+
+    virtual Especie resolver_especie() = 0;
 
 };
 #endif // SISTEMA_H

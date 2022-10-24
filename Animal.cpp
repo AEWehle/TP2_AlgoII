@@ -25,6 +25,9 @@ Animal::Animal( string nombre, int edad, int tamano, string personalidad ){
     hambre = 0;
 }
 
+Animal::~Animal(){
+    
+}
 
 
 void Animal::alimentar(){  
@@ -47,3 +50,4 @@ void Animal::mostrar(){
 string Animal::obtener_nombre(){
     return nombre;
 }
+

@@ -24,6 +24,7 @@ const int CANTIDAD_OPCIONES = 6;
  POST: Devuelve .... 
 _______________________________________________________________________________*/ 
 Guarderia* leer_archivo(); 
+
  
  
 /*________verificar_almacenamiento()___________________________________________ 
