@@ -11,6 +11,7 @@ public:
     Caballo();
     Caballo( string nombre, int edad, int tamano, string personalidad );
     void mostrar() override ;
+    Especie resolver_especie() override;
     ~Caballo();
 
 };

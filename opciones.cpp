@@ -2,6 +2,14 @@
 #include <string> 
 #include <fstream> 
 #include "Animal.h"
+#include "Especies/Perro.h"
+#include "Especies/Gato.h"
+#include "Especies/Caballo.h"
+#include "Especies/Roedor.h"
+#include "Especies/Conejo.h"
+#include "Especies/Erizo.h"
+#include "Especies/Lagartija.h"
+#include "nodo.h"
 #include "funciones_main.h" 
 #include "funciones_auxiliares.h" 
 using namespace std;  

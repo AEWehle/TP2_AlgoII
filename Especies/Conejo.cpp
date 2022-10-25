@@ -15,8 +15,16 @@ Conejo::Conejo( string nombre, int edad, int tamano, string personalidad ) : Ani
     es_domestico = true;
 }
 
+Conejo::~Conejo(){
+    
+}
+
 void Conejo::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________CONEJO_______________________________" << endl;
     Animal::mostrar();
+}
+
+Especie Conejo::resolver_especie(){
+    return O;
 }

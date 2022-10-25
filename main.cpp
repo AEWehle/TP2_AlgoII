@@ -2,6 +2,8 @@
 #include <string>
 #include <fstream> 
 #include "funciones_main.h"
+#include "Animal.h"
+#include "Guarderia.h"
 using namespace std; 
 
 

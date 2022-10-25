@@ -5,7 +5,15 @@
 #include "funciones_main.h" 
 #include "funciones_auxiliares.h" 
 #include "opciones.h" 
-#include "Guarderia.h" 
+#include "Guarderia.h"
+#include "Especies/Perro.h"
+#include "Especies/Gato.h"
+#include "Especies/Caballo.h"
+#include "Especies/Roedor.h"
+#include "Especies/Conejo.h"
+#include "Especies/Erizo.h"
+#include "Especies/Lagartija.h"
+#include "nodo.h" 
 using namespace std;  
  
  
@@ -148,7 +156,7 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion ){
 } 
  
  
-Animal* nuevo_animal( char especie_char, string nombre, int edad, int tamano, string personalidad ){ 
+Animal* crear_nuevo_animal( char especie_char, string nombre, int edad, int tamano, string personalidad ){ 
     Animal* nuevo_animal = nullptr; 
     switch (especie_char){ 
         case P: 
@@ -195,7 +203,7 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
      
     string personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) ); 
  
-    Animal* animal_dela_linea = nuevo_animal( especie_char, nombre, edad, tamano, personalidad ); 
+    Animal* animal_dela_linea = crear_nuevo_animal( especie_char, nombre, edad, tamano, personalidad ); 
  
     mi_guarderia->agregar(animal_dela_linea); 
     
@@ -263,4 +271,6 @@ void escribir_archivo( Guarderia* mi_guarderia ){
     archivo_animales.close(); 
 } 
  
- 
+ int buscar_nombre (Guarderia* mi_Guarderia, string titulo_buscado){
+    return mi_Guarderia->obtener_posicion(titulo_buscado);
+ }

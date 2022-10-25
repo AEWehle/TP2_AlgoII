@@ -1,13 +1,6 @@
 #include <string>
 #include <iostream> 
 #include "Animal.h"
-#include "Especies/Perro.h"
-#include "Especies/Gato.h"
-#include "Especies/Caballo.h"
-#include "Especies/Roedor.h"
-#include "Especies/Conejo.h"
-#include "Especies/Erizo.h"
-#include "Especies/Lagartija.h"
 using namespace std; 
 
 

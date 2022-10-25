@@ -1,7 +1,15 @@
 #ifndef _FUNCIONES_MAIN_H_ 
 #define _FUNCIONES_MAIN_H_ 
 #include <string> 
-#include "Guarderia.h" 
+#include "Guarderia.h"
+#include "Especies/Perro.h"
+#include "Especies/Gato.h"
+#include "Especies/Caballo.h"
+#include "Especies/Roedor.h"
+#include "Especies/Conejo.h"
+#include "Especies/Erizo.h"
+#include "Especies/Lagartija.h"
+#include "nodo.h" 
 using namespace std;  
  
 /* ________________________Funciones_EDL.h_____________________________________ 

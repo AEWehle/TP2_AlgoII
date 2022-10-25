@@ -14,8 +14,16 @@ Roedor::Roedor( string nombre, int edad, int tamano, string personalidad ) : Ani
     es_domestico = false;
 }
 
+Roedor::~Roedor(){
+    
+}
+
 void Roedor::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________ROEDOR_______________________________" << endl;
     Animal::mostrar();
     }
+
+Especie Roedor::resolver_especie(){
+    return R;
+}
