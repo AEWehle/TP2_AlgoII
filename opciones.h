@@ -1,11 +1,11 @@
-#ifndef _OPCIONES_EDL_H_
-#define _OPCIONES_EDL_H_
+#ifndef OPCIONES_MENU_H
+#define OPCIONES_MENU_H
 #include <string>
 #include "funciones_main.h"
 using namespace std; 
 
 
-/* ________________________Opciones_EDL.h_____________________________________
+/* ________________________opciones.h_____________________________________
   En este .h se encuentran declaradas las funciones que se ejecutan según la 
 elección del usuario.
 _______________________________________________________________________________*/
