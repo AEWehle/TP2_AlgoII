@@ -259,7 +259,9 @@ void escribir_archivo( Guarderia* mi_guarderia ){
     archivo_animales.close(); 
 } 
  
- 
+//int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
+//    return mi_guarderia->obtener_posicion(animal_buscado);
+//}
  
 int buscar_nombre ( Guarderia* mi_guarderia, string nombre_buscado ){ 
     int numero_de_animal = 0; 
