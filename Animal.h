@@ -1,5 +1,5 @@
-#ifndef _ANIMAL_H
-#define _ANIMAL_H
+#ifndef ANIMAL_H
+#define ANIMAL_H
 #include <string>
 using namespace std; 
 
@@ -72,4 +72,4 @@ _______________________________________________________________________________*
     string obtener_nombre();
 
 };
-#endif // SISTEMA_H
+#endif
