@@ -1,5 +1,5 @@
-#ifndef OPCIONES_MENU_H
-#define OPCIONES_MENU_H
+#ifndef OPCIONES_H
+#define OPCIONES_H
 #include <string>
 #include "funciones_main.h"
 using namespace std; 
