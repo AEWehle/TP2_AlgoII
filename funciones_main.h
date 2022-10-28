@@ -1,10 +1,10 @@
-#ifndef _FUNCIONES_MAIN_H_ 
-#define _FUNCIONES_MAIN_H_ 
+#ifndef FUNCIONES_MAIN_H_ 
+#define FUNCIONES_MAIN_H_ 
 #include <string> 
 #include "Guarderia.h" 
 using namespace std;  
  
-/* ________________________Funciones_EDL.h_____________________________________ 
+/* ________________________funciones_main.h_____________________________________ 
 _______________________________________________________________________________*/ 
  
  
@@ -56,16 +56,6 @@ _______________________________________________________________________________*
 void guardar_un_animal( Guarderia* mi_Guarderia,  string animal_csv); 
  
  
-/*________buscar_titulo()______________________________________________________ 
-PRE:  Recibe la base de datos (puntero a estructura tipo Guarderia) y el titu- 
- lo de animal buscado (string) 
-POST: Devuelve el numero de animal correspondiente en la lista de Animales de la  
- Base de Datos, si el animal no lo encuentra devuelve la Cantidad de Animales en  
- la base de datos. 
-_______________________________________________________________________________*/ 
-int buscar_titulo (Guarderia* mi_Guarderia, string titulo_buscado); 
- 
- 
 /*________verificar_eleccion()_________________________________________________ 
  PRE:  Recibe la eleccion del ususario recibida como int 
  POST: Devuelve true si es valida y false si no. 
@@ -83,13 +73,12 @@ void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion );
  
  
 /*________buscar_nombre()______________________________________________________ 
-PRE:  Recibe la base de datos (puntero a estructura tipo Guarderia) y el nombre
+PRE:  Recibe la base de datos (puntero a clase Guarderia) y el nombre
     del animal buscado (string) 
 POST: Devuelve el numero de animal correspondiente en la lista de Animales de la  
- Base de Datos, si no lo encuentra devuelve la Cantidad de Animales en la base 
-    de datos. 
+ Base de Datos, si no lo encuentra devuelve -1. 
 _______________________________________________________________________________*/ 
-int buscar_nombre (Guarderia* mi_Guarderia, string titulo_buscado); 
+int buscar_nombre (Guarderia* mi_Guarderia, string animal_buscado); 
  
  
 /*________mostrar_un_animal()___________________________________________________ 
