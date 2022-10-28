@@ -207,7 +207,18 @@ void rescatar_animal( Guarderia* mi_guarderia ){
  
 /*************************************** FUNCIONES DE LA OPCION 3 ***************************************/ 
 
-void buscar_animal( Guarderia* mi_guarderia ){}
+void buscar_animal( Guarderia* mi_guarderia ){
+//    string nombre;
+
+//    cout << "Ingrese el nombre del animal que busca:";
+//    getline(cin,nombre,'\n');
+
+//    if(buscar_nombre(mi_guarderia,nombre) == NO_SE_ENCUENTRA){
+//        cout << nombre << "no se encuentra en la guardería." << endl;
+//    }else{
+//        mi_guarderia->mostrar(buscar_nombre(mi_guarderia,nombre));
+//    }
+}
  
 /*************************************** FUNCIONES DE LA OPCION 4 ***************************************/ 
  
