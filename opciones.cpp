@@ -45,6 +45,23 @@ void listar_animales( Guarderia* mi_guarderia ){
 }
  
  
+void preguntar_agregar_animal( Guarderia* mi_guarderia ){ 
+    cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> "; 
+    string linea_aux; 
+    while ( linea_aux.length() == 0 ){ 
+        cout << " >> "; 
+        getline( cin, linea_aux, '\n' ); 
+    } 
+ 
+    if (string_a_mayuscula(linea_aux) == "SI"){ 
+        rescatar_animal( mi_guarderia ); 
+    } 
+    else { 
+        cout << "Ok, no agregamos nada." << endl;  
+        cout << endl << "Qué mas te gustaría hacer?\n"; 
+    } 
+} 
+
  
 /*************************************** FUNCIONES DE LA OPCION 2 ***************************************/ 
  

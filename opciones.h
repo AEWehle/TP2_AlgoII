@@ -4,8 +4,6 @@
 #include "funciones_main.h"
 using namespace std; 
 
-const int OPCION_GUARDAR_Y_SALIR = 7;
-
 
 /* ________________________opciones.h_____________________________________
   En este .h se encuentran declaradas las funciones que se ejecutan según la 
@@ -58,6 +56,7 @@ void guardar_salir( Guarderia* mi_guarderia );
 
 
 typedef void (*Manejo_Guarderia) (Guarderia* mi_guarderia );
+
 const Manejo_Guarderia funcion_elegida[ CANTIDAD_OPCIONES ] = {
     listar_animales, 
     rescatar_animal,
