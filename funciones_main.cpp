@@ -154,8 +154,8 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion, int* estado_guard
     if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
     else{  funcion_elegida[ eleccion - 1 ]( mi_guarderia ); } 
 
-    if(eleccion = OPCION_GUARDAR_Y_SALIR){
-        &estado_guarderia = ESTADO_CERRADA;
+    if(eleccion == OPCION_GUARDAR_Y_SALIR){
+        *estado_guarderia = ESTADO_CERRADA;
     }
 } 
  
