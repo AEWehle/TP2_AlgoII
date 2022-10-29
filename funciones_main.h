@@ -37,7 +37,7 @@ Guarderia* leer_archivo();
  
  
 /*________verificar_almacenamiento()___________________________________________ 
- PRE: Recibe puntero a la estructura tipo Guarderia actual. 
+ PRE: Recibe puntero a la Guarderia actual. 
  Controlo si se lleno lo que reserve, si es asi reservo mas 
  POST: Si tiene la cantidad de memoria dinamica reservada llena, pide mas. 
 _______________________________________________________________________________*/ 
@@ -48,7 +48,7 @@ void verificar_almacenamiento( Guarderia* mi_Guarderia );
  PRE:   Necesita el archivo llamado RUTA_ARCHIVO para guaradr la información  
     de los Animales en formato csv:  
             titulo, genero, puntaje \n 
-        Recibe un puntero a la strudtura tipo Guarderia con la informacion ac- 
+        Recibe un puntero a la Guarderia con la informacion ac- 
     tual de los Animales 
  POST:  
 _______________________________________________________________________________*/ 
@@ -57,23 +57,13 @@ void escribir_archivo( Guarderia* mi_Guarderia );
  
 /*________guardar_un_animal()___________________________________________________ 
  PRES:  - A partir de la linea csv guarda el animal con esos datos 
-        - Necesita la estructura tipo Guarderia actual. 
+        - Necesita la Guarderia actual. 
         - String con los datos del animal a agregar en formato csv: 
             titulo, genero, puntaje 
  POST: Guarda en la base de datos actual el animal (en el arreglo de Animales) con 
 sus datos (titulo, genero, puntaje y posicion), y la cantidad de Animales actual. 
 _______________________________________________________________________________*/ 
 void guardar_un_animal( Guarderia* mi_Guarderia,  string animal_csv); 
- 
- 
-/*________buscar_titulo()______________________________________________________ 
-PRE:  Recibe la base de datos (puntero a estructura tipo Guarderia) y el titu- 
- lo de animal buscado (string) 
-POST: Devuelve el numero de animal correspondiente en la lista de Animales de la  
- Base de Datos, si el animal no lo encuentra devuelve la Cantidad de Animales en  
- la base de datos. 
-_______________________________________________________________________________*/ 
-int buscar_titulo (Guarderia* mi_Guarderia, string titulo_buscado); 
  
  
 /*________verificar_eleccion()_________________________________________________ 
@@ -84,7 +74,7 @@ bool verificar_eleccion( int eleccion );
  
  
 /*________ejecutar_eleccion()__________________________________________________ 
- PRE:  Recibe un puntero a la mi_Guarderia (Una estructura tipo Guarderia con la 
+ PRE:  Recibe un puntero mi_Guarderia (Una Guarderia con la 
   lista de Animales y la cantidad). 
        Recibe la eleccion del usuario verificada (int) entre 1 y CANTIDAD_OPCIONES 
  POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
@@ -93,7 +83,7 @@ void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion, int* estado_guard
  
  
 /*________buscar_nombre()______________________________________________________ 
-PRE:  Recibe la base de datos (puntero a estructura tipo Guarderia) y el nombre
+PRE:  Recibe la base de datos (puntero a Guarderia) y el nombre
     del animal buscado (string) 
 POST: Devuelve el numero de animal correspondiente en la lista de Animales de la  
  Base de Datos, si no lo encuentra devuelve la Cantidad de Animales en la base 
@@ -103,7 +93,7 @@ int buscar_nombre (Guarderia* mi_Guarderia, string titulo_buscado);
  
  
 /*________mostrar_un_animal()___________________________________________________ 
-PRE:  Recibe la base de datos (puntero a estructura tipo Guarderia) y el nume- 
+PRE:  Recibe la base de datos (puntero a Guarderia) y el nume- 
 ro_de_animal en la lista (int) 
 POST: Imprime en terminal una linea con los datos de animal de forma completa 
 _______________________________________________________________________________*/ 
