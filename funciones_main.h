@@ -1,5 +1,5 @@
-#ifndef _FUNCIONES_MAIN_H_ 
-#define _FUNCIONES_MAIN_H_ 
+#ifndef FUNCIONES_MAIN_H_ 
+#define FUNCIONES_MAIN_H_ 
 #include <string> 
 #include "Guarderia.h"
 #include "Especies/Perro.h"
@@ -12,7 +12,7 @@
 #include "nodo.h" 
 using namespace std;  
  
-/* ________________________Funciones_EDL.h_____________________________________ 
+/* ________________________funciones_main.h_____________________________________ 
 _______________________________________________________________________________*/ 
  
  
@@ -83,13 +83,13 @@ void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion, int* estado_guard
  
  
 /*________buscar_nombre()______________________________________________________ 
-PRE:  Recibe la base de datos (puntero a Guarderia) y el nombre
+
+PRE:  Recibe la base de datos (puntero a clase Guarderia) y el nombre
     del animal buscado (string) 
 POST: Devuelve el numero de animal correspondiente en la lista de Animales de la  
- Base de Datos, si no lo encuentra devuelve la Cantidad de Animales en la base 
-    de datos. 
+ Base de Datos, si no lo encuentra devuelve -1. 
 _______________________________________________________________________________*/ 
-int buscar_nombre (Guarderia* mi_Guarderia, string titulo_buscado); 
+int buscar_nombre (Guarderia* mi_Guarderia, string animal_buscado); 
  
  
 /*________mostrar_un_animal()___________________________________________________ 

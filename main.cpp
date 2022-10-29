@@ -6,7 +6,6 @@
 #include "Guarderia.h"
 using namespace std; 
 
-
 /*_____________________________TP2: LA RESERVA SOÑADA____________________*/
 int main(){
 

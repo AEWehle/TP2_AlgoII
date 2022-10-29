@@ -1,5 +1,5 @@
-#ifndef _ANIMAL_H
-#define _ANIMAL_H
+#ifndef ANIMAL_H
+#define ANIMAL_H
 #include <string>
 using namespace std; 
 
@@ -83,4 +83,4 @@ _______________________________________________________________________________*
     virtual Especie resolver_especie() = 0;
 
 };
-#endif // SISTEMA_H
+#endif

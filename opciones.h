@@ -7,7 +7,7 @@ using namespace std;
 const int OPCION_GUARDAR_Y_SALIR = 7;
 
 
-/* ________________________Opciones_EDL.h_____________________________________
+/* ________________________opciones.h_____________________________________
   En este .h se encuentran declaradas las funciones que se ejecutan según la 
 elección del usuario.
 _______________________________________________________________________________*/
