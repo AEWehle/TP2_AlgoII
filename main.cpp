@@ -14,8 +14,9 @@ int main(){
 // VER COMO MANEJAMOS EL MAIN, DONDE LEEMOS EL ARCHIVO?
 // HACEMOS UN CONSTRUCTOR QUE RECIBA LA RUTA DEL ARCHIVO?
 
-    // Guarderia* mi_guarderia  =  leer_archivo();
-    // Guarderia mi_guarderia;
+    Guarderia* mi_guarderia  =  new Guarderia;
+    cargar_guarderia(mi_guarderia); //Cargo la guardería con la información del archivo
+    
     int eleccion = 0;
     int estado_guarderia = ESTADO_ABIERTA;
 

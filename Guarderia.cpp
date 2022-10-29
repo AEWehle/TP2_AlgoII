@@ -11,9 +11,6 @@ Guarderia::Guarderia(){
     //se crea una lista vacía
 }
 
-Guarderia::Guarderia(const string archivo){
-    
-}
 
 Guarderia::~Guarderia(){
     // if(cantidad_de_animales > 0){

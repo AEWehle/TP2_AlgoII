@@ -66,6 +66,36 @@ Guarderia* leer_archivo(){
     archivo_animales.close(); 
     return mi_guarderia; 
 } 
+
+void cargar_guarderia(Guarderia* mi_guarderia){
+
+    fstream archivo_guarderia(RUTA_ARCHIVO, io::in);
+
+    if(!archivo_guarderia.is_open()){
+        cout << "No se encontro un archivo con nombre \"" << RUTA_ARCHIVO << "\", se va a crear el archivo" << endl;
+        archivo_guarderia.open(RUTA_ARCHIVO, ios::out);     //Si no existe el archivo lo creo
+        archivo_guarderia.close();
+        archivo_guarderia.open(RUTA_ARCHIVO, ios::in);
+    }
+
+    string nombre, edad, tamano, especie, personalidad;
+
+    while(getline(archivo_guarderia, nombre, ',')){    //Cuando ya no encuentra un nombre se terminó el archivo
+
+        getline(archivo_guarderia, edad, ',');
+        getline(archivo_guarderia, tamano, ',');
+        getline(archivo_guarderia, especie, ',');
+        getline(archivo_guarderia, personalidad);    //El último lo leo hasta encontrar un \n, no una coma.
+
+        Animal* nuevo_animal = crear_nuevo_animal(especie[0], nombre, stoi(edad), tamano, personalidad);
+
+        mi_guarderia.agregar_animal(nuevo_animal)
+
+    }
+
+    archivo_guarderia.close();
+
+}
  
  
  
@@ -159,32 +189,24 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion, int* estado_guard
     }
 } 
  
- 
-Animal* crear_nuevo_animal( char especie_char, string nombre, int edad, int tamano, string personalidad ){ 
-    Animal* nuevo_animal = nullptr; 
-    switch (especie_char){ 
-        case P: 
-            nuevo_animal = new Perro( nombre, edad, tamano, personalidad ); 
-            break; 
-        case G: 
-            nuevo_animal = new Gato( nombre, edad, tamano, personalidad ); 
-            break; 
-        case C: 
-            nuevo_animal = new Caballo( nombre, edad, tamano, personalidad ); 
-            break; 
-        case R: 
-            nuevo_animal = new Roedor( nombre, edad, tamano, personalidad ); 
-            break; 
-        case O: 
-            nuevo_animal = new Conejo( nombre, edad, tamano, personalidad ); 
-            break; 
-        case E: 
-            nuevo_animal = new Erizo( nombre, edad, tamano, personalidad ); 
-            break; 
-        case L: 
-            nuevo_animal = new Lagartija( nombre, edad, tamano, personalidad ); 
-            break; 
-    } 
+
+Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano, string personalidad ){ 
+    Animal* nuevo_animal; 
+    if(especie == 'P')
+        nuevo_animal = new Perro( nombre, edad, tamano, personalidad );
+    else if(especie == 'G')
+        nuevo_animal = new Gato( nombre, edad, tamano, personalidad );
+    else if(especie == 'C')
+        nuevo_animal = new Caballo( nombre, edad, tamano, personalidad );
+    else if(especie == 'R')
+        nuevo_animal = new Roedor( nombre, edad, tamano, personalidad );
+    else if(especie == 'O')
+        nuevo_animal = new Conejo( nombre, edad, tamano, personalidad );
+    else if(especie == 'E')
+        nuevo_animal = new Erizo( nombre, edad, tamano, personalidad );
+    else(especie == 'L')
+        nuevo_animal = new Lagartija( nombre, edad, tamano, personalidad );
+
     return nuevo_animal; 
 } 
  
