@@ -9,7 +9,7 @@ Erizo::Erizo(){
     es_domestico = false;
 }
 
-Erizo::Erizo( string nombre, int edad, int tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
+Erizo::Erizo( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
     // especie ='E';
     comida = "insectos";
     es_domestico = false;

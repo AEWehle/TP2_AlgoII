@@ -29,11 +29,6 @@ class Guarderia{
             //POS: Crea guarderia vacia (cantidad_de_animales = 0)
             Guarderia();
 
-            //Con Parametros
-            //PRE: Cantidad de animales > 0, el archivo esta en formato correcto
-            //POS: Crea guarderia con los elementos
-            Guarderia(const string archivo);
-
         //Destructor
             ~Guarderia();
 

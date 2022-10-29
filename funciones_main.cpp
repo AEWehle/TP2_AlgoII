@@ -16,57 +16,58 @@
 #include "nodo.h" 
 using namespace std;  
  
- 
-/*________crear_archivo_lectura()______________________________________________ 
- PRE: No existe un archivo con esa ruta 
- POST: Lo crea y lo pasa como lectura 
-_______________________________________________________________________________*/ 
-void crear_archivo( ifstream &archivo_animales ){ 
-    cout << "\n     Hubo un problema, no hay un archivo con tus animales que se llame " << RUTA_ARCHIVO << endl; 
-    cout << "       Creo un archivo nuevo."; 
-    archivo_animales.open( RUTA_ARCHIVO, ios::out ); 
-    archivo_animales.close(); 
+
+
+void cargar_guarderia(Guarderia* mi_guarderia){
+
+    fstream archivo_guarderia(RUTA_ARCHIVO, io::in);
+
+    if(!archivo_guarderia.is_open()){
+        cout << "No se encontro un archivo con nombre \"" << RUTA_ARCHIVO << "\", se va a crear el archivo" << endl;
+        archivo_guarderia.open(RUTA_ARCHIVO, ios::out);     //Si no existe el archivo lo creo
+        archivo_guarderia.close();
+        archivo_guarderia.open(RUTA_ARCHIVO, ios::in);
+    }
+
+    string nombre, edad, tamano, especie, personalidad;
+
+    while(getline(archivo_guarderia, nombre, ',')){    //Cuando ya no encuentra un nombre se terminó el archivo
+
+        getline(archivo_guarderia, edad, ',');
+        getline(archivo_guarderia, tamano, ',');
+        getline(archivo_guarderia, especie, ',');
+        getline(archivo_guarderia, personalidad);    //El último lo leo hasta encontrar un \n, no una coma.
+
+        Animal* nuevo_animal = crear_nuevo_animal(especie[0], nombre, stoi(edad), tamano, personalidad);
+
+        mi_guarderia.agregar_animal(nuevo_animal)
+
+    }
+
+    archivo_guarderia.close();
+
+}
+
+
+Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano, string personalidad ){ 
+    Animal* nuevo_animal; 
+    if(especie == 'P')
+        nuevo_animal = new Perro( nombre, edad, tamano, personalidad );
+    else if(especie == 'G')
+        nuevo_animal = new Gato( nombre, edad, tamano, personalidad );
+    else if(especie == 'C')
+        nuevo_animal = new Caballo( nombre, edad, tamano, personalidad );
+    else if(especie == 'R')
+        nuevo_animal = new Roedor( nombre, edad, tamano, personalidad );
+    else if(especie == 'O')
+        nuevo_animal = new Conejo( nombre, edad, tamano, personalidad );
+    else if(especie == 'E')
+        nuevo_animal = new Erizo( nombre, edad, tamano, personalidad );
+    else(especie == 'L')
+        nuevo_animal = new Lagartija( nombre, edad, tamano, personalidad );
+
+    return nuevo_animal; 
 } 
- 
- 
- 
-/*________guardar_lineas()_____________________________________________________ 
- PRE: Recibe la Guarderia y el archivo ya existenete 
- POST: Lee del archivo las lineas y las guarda en la Guarderia 
-_______________________________________________________________________________*/ 
-void guardar_lineas( Guarderia* mi_guarderia, ifstream &archivo_animales ){ 
-    //nombre,edad,tamano,especie,personalidad 
-    //mi_guarderia -> lista_de_animales = new Animal*[ BLOQUE_ANIMALES ]; 
-    //mi_guarderia -> cantidad_de_animales = 0; 
-     
-    string linea_aux; 
- 
-    while( getline(archivo_animales, linea_aux, DELIMITADOR_ARCHIVO_CSV) && ( linea_aux != "") ){ 
-        guardar_un_animal( mi_guarderia, linea_aux ); 
-    } 
-} 
- 
- 
- 
-Guarderia* leer_archivo(){  
-    Guarderia* mi_guarderia = new Guarderia; 
-    ifstream archivo_animales(RUTA_ARCHIVO); 
- 
-    if ( !archivo_animales.is_open() ) { 
-        crear_archivo( archivo_animales ); 
-        archivo_animales.open( RUTA_ARCHIVO, ios::in); 
-    } 
-    else{  cout << "Se encontró la lista de animales correctamente."; } 
- 
-    guardar_lineas( mi_guarderia, archivo_animales ); 
- 
-    cout << " Se mantienen " << mi_guarderia->obtener_cantidad() << " animales en la reserva.\n\n"; 
-    cout << "Qué te gustaría hacer? " << endl; 
-     
-    archivo_animales.close(); 
-    return mi_guarderia; 
-} 
- 
  
  
 /*________imprimir_menu()______________________________________________________ 
@@ -81,8 +82,6 @@ void imprimir_menu(){
     cout << "   5. Adoptar un animal.\n"; 
     cout << "   6. Guardar y salir.\n"; 
 } 
- 
-
  
  
 int pedir_eleccion(){ 
@@ -106,14 +105,11 @@ int pedir_eleccion(){
 } 
  
  
- 
- 
 bool verificar_eleccion( int eleccion ){ 
     return ( (1 <= eleccion) && (eleccion <= CANTIDAD_OPCIONES) ); 
 } 
  
- 
- 
+
 void preguntar_agregar_animal( Guarderia* mi_guarderia ){ 
     cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> "; 
     string linea_aux; 
@@ -130,8 +126,7 @@ void preguntar_agregar_animal( Guarderia* mi_guarderia ){
         cout << endl << "Qué mas te gustaría hacer?\n"; 
     } 
 } 
- 
- 
+
  
 /*________es_lista_vacia()_____________________________________________________ 
 PRE:   
@@ -147,9 +142,8 @@ bool es_lista_vacia( Guarderia* mi_guarderia ){
     } 
     return ( cantidad_animales == 0 ); 
 } 
- 
- 
- 
+
+
 void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion, int* estado_guarderia ){ 
     if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
     else{  funcion_elegida[ eleccion - 1 ]( mi_guarderia ); } 
@@ -158,37 +152,8 @@ void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion, int* estado_guard
         *estado_guarderia = ESTADO_CERRADA;
     }
 } 
- 
- 
-Animal* crear_nuevo_animal( char especie_char, string nombre, int edad, int tamano, string personalidad ){ 
-    Animal* nuevo_animal = nullptr; 
-    switch (especie_char){ 
-        case P: 
-            nuevo_animal = new Perro( nombre, edad, tamano, personalidad ); 
-            break; 
-        case G: 
-            nuevo_animal = new Gato( nombre, edad, tamano, personalidad ); 
-            break; 
-        case C: 
-            nuevo_animal = new Caballo( nombre, edad, tamano, personalidad ); 
-            break; 
-        case R: 
-            nuevo_animal = new Roedor( nombre, edad, tamano, personalidad ); 
-            break; 
-        case O: 
-            nuevo_animal = new Conejo( nombre, edad, tamano, personalidad ); 
-            break; 
-        case E: 
-            nuevo_animal = new Erizo( nombre, edad, tamano, personalidad ); 
-            break; 
-        case L: 
-            nuevo_animal = new Lagartija( nombre, edad, tamano, personalidad ); 
-            break; 
-    } 
-    return nuevo_animal; 
-} 
- 
- 
+
+
 void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable 
     unsigned long primer_coma     = (unsigned long)  animales_csv.find(','); 
     unsigned long segunda_coma    = (unsigned long)  animales_csv.find(',', (primer_coma + 1)); 
@@ -213,9 +178,8 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
     
     verificar_almacenamiento( mi_guarderia ); 
 } 
- 
- 
- 
+
+
 void verificar_almacenamiento( Guarderia* mi_guarderia ){ 
     int cant_animales = mi_guarderia->obtener_cantidad();
     if ( (cant_animales  % (BLOQUE_ANIMALES)) == 0 ){  
@@ -234,9 +198,8 @@ void verificar_almacenamiento( Guarderia* mi_guarderia ){
         ptr_ptr_aux = nullptr;  
     } 
 } 
- 
 
- 
+
 /*  Devuelve un string formato csv del animal correspondiente al numero_de_animal 
     (int), lo devuelve listo parasubirlo al archivo o para imprimirlo (bool) 
     si se desea con la palabra de la especie de forma completa se indica con 
@@ -256,8 +219,8 @@ string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool e
     string linea_animal = "nada"; 
     return linea_animal; 
 } 
- 
- 
+
+
 void escribir_archivo( Guarderia* mi_guarderia ){ 
     ifstream is_archivo_animales(RUTA_ARCHIVO); 
  
@@ -274,7 +237,8 @@ void escribir_archivo( Guarderia* mi_guarderia ){
  
     archivo_animales.close(); 
 } 
- 
+
+
 int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
     return mi_guarderia->obtener_posicion(animal_buscado);
 }
