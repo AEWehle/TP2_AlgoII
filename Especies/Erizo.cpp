@@ -15,8 +15,16 @@ Erizo::Erizo( string nombre, int edad, int tamano, string personalidad ) : Anima
     es_domestico = false;
 }
 
+Erizo::~Erizo(){
+    
+}
+
 void Erizo::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________ERIZO________________________________" << endl;
     Animal::mostrar();
     }
+
+Especie Erizo::resolver_especie(){
+    return E;
+}

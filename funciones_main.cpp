@@ -1,10 +1,19 @@
 #include <iostream>  
 #include <string> 
 #include <fstream> 
+#include "Animal.h"
 #include "funciones_main.h" 
 #include "funciones_auxiliares.h" 
 #include "opciones.h" 
-#include "Guarderia.h" 
+#include "Guarderia.h"
+#include "Especies/Perro.h"
+#include "Especies/Gato.h"
+#include "Especies/Caballo.h"
+#include "Especies/Roedor.h"
+#include "Especies/Conejo.h"
+#include "Especies/Erizo.h"
+#include "Especies/Lagartija.h"
+#include "nodo.h" 
 using namespace std;  
  
  
@@ -27,8 +36,8 @@ void crear_archivo( ifstream &archivo_animales ){
 _______________________________________________________________________________*/ 
 void guardar_lineas( Guarderia* mi_guarderia, ifstream &archivo_animales ){ 
     //nombre,edad,tamano,especie,personalidad 
-    mi_guarderia -> lista_de_animales = new Animal*[ BLOQUE_ANIMALES ]; 
-    mi_guarderia -> cantidad_de_animales = 0; 
+    //mi_guarderia -> lista_de_animales = new Animal*[ BLOQUE_ANIMALES ]; 
+    //mi_guarderia -> cantidad_de_animales = 0; 
      
     string linea_aux; 
  
@@ -46,13 +55,12 @@ Guarderia* leer_archivo(){
     if ( !archivo_animales.is_open() ) { 
         crear_archivo( archivo_animales ); 
         archivo_animales.open( RUTA_ARCHIVO, ios::in); 
-        mi_guarderia -> hubo_cambios = true; 
     } 
-    else{  cout << "Se ecnontró la lista de animales correctamente."; } 
+    else{  cout << "Se encontró la lista de animales correctamente."; } 
  
     guardar_lineas( mi_guarderia, archivo_animales ); 
  
-    cout << " Se mantienen " << mi_guarderia -> cantidad_de_animales << " animales en la reserva.\n\n"; 
+    cout << " Se mantienen " << mi_guarderia->obtener_cantidad() << " animales en la reserva.\n\n"; 
     cout << "Qué te gustaría hacer? " << endl; 
      
     archivo_animales.close(); 
@@ -74,6 +82,7 @@ void imprimir_menu(){
     cout << "   6. Guardar y salir.\n"; 
 } 
  
+
  
  
 int pedir_eleccion(){ 
@@ -131,43 +140,48 @@ POST: Si la cantidad de animales guardados es 0 devuelve false y pregunta al usu
     De lo contrario devuelve true 
 _______________________________________________________________________________*/ 
 bool es_lista_vacia( Guarderia* mi_guarderia ){ 
-    if ( mi_guarderia -> cantidad_de_animales == 0 ){ 
+    int cantidad_animales = mi_guarderia->obtener_cantidad();
+    if ( cantidad_animales == 0 ){ 
         cout << "Por ahora no tenes animales en la reserva, podés agregar ya mismo.\n" << endl; 
         preguntar_agregar_animal( mi_guarderia ); 
     } 
-    return ( mi_guarderia -> cantidad_de_animales == 0 ); 
+    return ( cantidad_animales == 0 ); 
 } 
  
  
  
-void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion ){ 
+void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion, int* estado_guarderia ){ 
     if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
     else{  funcion_elegida[ eleccion - 1 ]( mi_guarderia ); } 
+
+    if(eleccion == OPCION_GUARDAR_Y_SALIR){
+        *estado_guarderia = ESTADO_CERRADA;
+    }
 } 
  
  
-Animal* nuevo_animal( char especie_char, string nombre, int edad, int tamano, string personalidad ){ 
+Animal* crear_nuevo_animal( char especie_char, string nombre, int edad, int tamano, string personalidad ){ 
     Animal* nuevo_animal = nullptr; 
-    switch (ESPECIE_CHAR.find( especie_char )){ 
-        case 0: 
+    switch (especie_char){ 
+        case P: 
             nuevo_animal = new Perro( nombre, edad, tamano, personalidad ); 
             break; 
-        case 1: 
+        case G: 
             nuevo_animal = new Gato( nombre, edad, tamano, personalidad ); 
             break; 
-        case 2: 
+        case C: 
             nuevo_animal = new Caballo( nombre, edad, tamano, personalidad ); 
             break; 
-        case 3: 
+        case R: 
             nuevo_animal = new Roedor( nombre, edad, tamano, personalidad ); 
             break; 
-        case 4: 
+        case O: 
             nuevo_animal = new Conejo( nombre, edad, tamano, personalidad ); 
             break; 
-        case 5: 
+        case E: 
             nuevo_animal = new Erizo( nombre, edad, tamano, personalidad ); 
             break; 
-        case 6: 
+        case L: 
             nuevo_animal = new Lagartija( nombre, edad, tamano, personalidad ); 
             break; 
     } 
@@ -176,11 +190,11 @@ Animal* nuevo_animal( char especie_char, string nombre, int edad, int tamano, st
  
  
 void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable 
-    int primer_coma     = (int)  animales_csv.find(','); 
-    int segunda_coma    = (int)  animales_csv.find(',', primer_coma + 1); 
-    int tercera_coma    = (int)  animales_csv.find(',', segunda_coma + primer_coma + 1); 
-    int cuarta_coma     = (int)  animales_csv.find(',', tercera_coma + segunda_coma + primer_coma + 1); 
-    int fin_linea       = (int)  animales_csv.length(); 
+    unsigned long primer_coma     = (unsigned long)  animales_csv.find(','); 
+    unsigned long segunda_coma    = (unsigned long)  animales_csv.find(',', (primer_coma + 1)); 
+    unsigned long tercera_coma    = (unsigned long)  animales_csv.find(',', (segunda_coma + primer_coma + 1)); 
+    unsigned long cuarta_coma     = (unsigned long)  animales_csv.find(',', (tercera_coma + segunda_coma + primer_coma + 1)); 
+    unsigned long fin_linea       = (unsigned long)  animales_csv.length(); 
  
     char especie_char =  char_a_mayuscula( animales_csv.substr( tercera_coma + segunda_coma + primer_coma, cuarta_coma - (tercera_coma + segunda_coma + primer_coma + 1) )[0] ); 
  
@@ -193,9 +207,9 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
      
     string personalidad = string_a_mayuscula( animales_csv.substr( cuarta_coma + tercera_coma + segunda_coma + primer_coma + 1, fin_linea ) ); 
  
-    Animal* animal_dela_linea = nuevo_animal( especie_char, nombre, edad, tamano, personalidad ); 
+    Animal* animal_dela_linea = crear_nuevo_animal( especie_char, nombre, edad, tamano, personalidad ); 
  
-    mi_guarderia -> lista_de_animales[ (mi_guarderia -> cantidad_de_animales)++] = animal_dela_linea; 
+    mi_guarderia->agregar_animal(animal_dela_linea); 
     
     verificar_almacenamiento( mi_guarderia ); 
 } 
@@ -203,17 +217,20 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
  
  
 void verificar_almacenamiento( Guarderia* mi_guarderia ){ 
-    if ( (mi_guarderia -> cantidad_de_animales % (BLOQUE_ANIMALES)) == 0 ){  
+    int cant_animales = mi_guarderia->obtener_cantidad();
+    if ( (cant_animales  % (BLOQUE_ANIMALES)) == 0 ){  
           
-        int cantidad_bloques = mi_guarderia -> cantidad_de_animales / (BLOQUE_ANIMALES) + 1; 
+        int cantidad_bloques = cant_animales / (BLOQUE_ANIMALES) + 1; 
         Animal** ptr_ptr_aux = new Animal*[ cantidad_bloques* BLOQUE_ANIMALES ]; 
  
-        for( int i = 0; i < mi_guarderia -> cantidad_de_animales ; i++){ 
-            ptr_ptr_aux[i] = mi_guarderia -> lista_de_animales[i]; 
-        } 
+        /*for( int i = 0; i < cant_animales ; i++){ 
+            ptr_ptr_aux[i] = mi_guarderia -> lista_de_animales[i];
+        } */
+
+        mi_guarderia->copiar(ptr_ptr_aux); 
  
-        delete [] (mi_guarderia -> lista_de_animales); 
-        mi_guarderia -> lista_de_animales = ptr_ptr_aux; 
+        delete [] mi_guarderia; 
+        //mi_guarderia. = ptr_ptr_aux; 
         ptr_ptr_aux = nullptr;  
     } 
 } 
@@ -246,12 +263,11 @@ void escribir_archivo( Guarderia* mi_guarderia ){
  
     if ( !is_archivo_animales.is_open() ) { 
         crear_archivo( is_archivo_animales ); 
-        mi_guarderia -> hubo_cambios = true; 
     } 
  
     ofstream archivo_animales( RUTA_ARCHIVO ); 
  
-    for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia -> cantidad_de_animales) ; numero_de_animal++ ){ 
+    for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia->obtener_cantidad()) ; numero_de_animal++ ){ 
         archivo_animales << armar_linea_animal( mi_guarderia, numero_de_animal, false ) << endl;  
         // Va a quedar con una linea vacia al final del archivo, el programa enteinde que es el final
     } 
@@ -259,17 +275,6 @@ void escribir_archivo( Guarderia* mi_guarderia ){
     archivo_animales.close(); 
 } 
  
-//int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
-//    return mi_guarderia->obtener_posicion(animal_buscado);
-//}
- 
-int buscar_nombre ( Guarderia* mi_guarderia, string nombre_buscado ){ 
-    int numero_de_animal = 0; 
- 
-    while( (numero_de_animal < mi_guarderia -> cantidad_de_animales) && (mi_guarderia -> lista_de_animales[numero_de_animal] -> obtener_nombre() != nombre_buscado) ){ 
-        numero_de_animal++; 
-    } 
-    // numero de animal es igual a la cantidad de animales si no lo encontró 
-    return numero_de_animal; 
-} 
- 
+int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
+    return mi_guarderia->obtener_posicion(animal_buscado);
+}

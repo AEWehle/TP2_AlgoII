@@ -4,6 +4,8 @@
 #include "funciones_main.h"
 using namespace std; 
 
+const int OPCION_GUARDAR_Y_SALIR = 7;
+
 
 /* ________________________opciones.h_____________________________________
   En este .h se encuentran declaradas las funciones que se ejecutan según la 
@@ -15,7 +17,7 @@ _______________________________________________________________________________*
  con la informacion actual.
  POST: Imprime en terminal los datos de los animales guardados.
 _______________________________________________________________________________*/
-void listar_animales      ( Guarderia* mi_guarderia );
+void listar_animales( Guarderia* mi_guarderia );
 
 
 /*________rescatar_animal()______________________________________________________
@@ -52,7 +54,7 @@ void adoptar_animal       ( Guarderia* mi_guarderia );
  POST: Guarda en el archivo llamado RUTA_ARCHIVO la informacion en la base de
   datos y libera la memoria.
 _______________________________________________________________________________*/
-void guardar_salir      ( Guarderia* mi_guarderia );
+void guardar_salir( Guarderia* mi_guarderia );
 
 
 typedef void (*Manejo_Guarderia) (Guarderia* mi_guarderia );

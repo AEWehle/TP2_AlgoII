@@ -14,8 +14,16 @@ Perro::Perro( string nombre, int edad, int tamano, string personalidad ) : Anima
     es_domestico = true;
 }
 
+Perro::~Perro(){
+    
+}
+
 void Perro::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________PERRO________________________________" << endl;
     Animal::mostrar();
     }
+
+Especie Perro::resolver_especie(){
+    return P;
+}

@@ -1,6 +1,15 @@
 #include <iostream>  
 #include <string> 
 #include <fstream> 
+#include "Animal.h"
+#include "Especies/Perro.h"
+#include "Especies/Gato.h"
+#include "Especies/Caballo.h"
+#include "Especies/Roedor.h"
+#include "Especies/Conejo.h"
+#include "Especies/Erizo.h"
+#include "Especies/Lagartija.h"
+#include "nodo.h"
 #include "funciones_main.h" 
 #include "funciones_auxiliares.h" 
 using namespace std;  
@@ -9,7 +18,7 @@ using namespace std;
  
 /*************************************** FUNCIONES DE LA OPCION 1 ***************************************/ 
  
-void listar_animales( Guarderia* mi_guarderia ){ 
+/*void listar_animales( Guarderia* mi_guarderia ){ 
     Animal** lista_animales = mi_guarderia -> lista_de_animales; 
     int cantidad = mi_guarderia -> cantidad_de_animales; 
      
@@ -25,7 +34,15 @@ void listar_animales( Guarderia* mi_guarderia ){
         preguntar_agregar_animal( mi_guarderia ); 
     } 
     cout << "\nQué te gustaria hacer?\n"; 
-} 
+} */
+
+void listar_animales( Guarderia* mi_guarderia ){ 
+    mi_guarderia->mostrar();
+
+    if (mi_guarderia->obtener_cantidad()==0) {
+        preguntar_agregar_animal( mi_guarderia ); 
+    }
+}
  
  
  
@@ -110,12 +127,12 @@ void imprimir_tabla_especies(){
 _______________________________________________________________________________*/ 
 bool es_especie_posible ( string especie ) { 
     bool todo_bien = false; 
-    long unsigned int posicion = buscar_en_array_de_string( ESPECIE_STRING, especie, CANTIDAD_ESPECIES ); 
+    int posicion = buscar_en_array_de_string( ESPECIE_STRING, especie, CANTIDAD_ESPECIES ); 
         if (posicion != CANTIDAD_ESPECIES){ 
             todo_bien = true; 
         } 
         else if ( especie.length() == 1 ){ 
-            posicion = ESPECIE_CHAR.find( especie[0] ); 
+            //posicion = ESPECIE_CHAR.find( especie[0] ); 
             if (posicion < CANTIDAD_ESPECIES && posicion >= 0){ 
                 todo_bien = true; 
             } 
@@ -183,9 +200,9 @@ void rescatar_animal( Guarderia* mi_guarderia ){
     string nombre = pedir_nombre(); 
  
     int numero_de_animal = buscar_nombre( mi_guarderia, nombre ); 
-    if (numero_de_animal != mi_guarderia -> cantidad_de_animales){  
+    if (numero_de_animal != mi_guarderia->obtener_cantidad()){  
         cout << "Este nombre ya lo tiene otro animal:\n"; 
-        mi_guarderia -> lista_de_animales[numero_de_animal] -> mostrar(); 
+        mi_guarderia->mostrar(numero_de_animal); 
     } 
     else{ // No esta en mi_guarderia 
         int edad = pedir_edad();
@@ -197,8 +214,7 @@ void rescatar_animal( Guarderia* mi_guarderia ){
         guardar_un_animal( mi_guarderia, animal_csv ); 
  
         cout << "\nSe agregó a tu reserva de animales el siguiente animal:" << endl; 
-        ( mi_guarderia -> lista_de_animales[numero_de_animal] ) -> mostrar(); 
-        mi_guarderia -> hubo_cambios = true; 
+        ( mi_guarderia -> mostrar(numero_de_animal) ); 
     } 
     cout << "\nQué mas te gustaria hacer?\n"; 
 } 
@@ -208,16 +224,16 @@ void rescatar_animal( Guarderia* mi_guarderia ){
 /*************************************** FUNCIONES DE LA OPCION 3 ***************************************/ 
 
 void buscar_animal( Guarderia* mi_guarderia ){
-//    string nombre;
+    string nombre;
 
-//    cout << "Ingrese el nombre del animal que busca:";
-//    getline(cin,nombre,'\n');
+    cout << "Ingrese el nombre del animal que busca:";
+    getline(cin,nombre,'\n');
 
-//    if(buscar_nombre(mi_guarderia,nombre) == NO_SE_ENCUENTRA){
-//        cout << nombre << "no se encuentra en la guardería." << endl;
-//    }else{
-//        mi_guarderia->mostrar(buscar_nombre(mi_guarderia,nombre));
-//    }
+    if(buscar_nombre(mi_guarderia,nombre) == NO_SE_ENCUENTRA){
+        cout << nombre << "no se encuentra en la guardería." << endl;
+    }else{
+        mi_guarderia->mostrar(buscar_nombre(mi_guarderia,nombre));
+    }
 }
  
 /*************************************** FUNCIONES DE LA OPCION 4 ***************************************/ 
@@ -234,18 +250,18 @@ void adoptar_animal( Guarderia* mi_guarderia ){}
  
  
 void guardar_salir( Guarderia* mi_guarderia ){ 
-    // cout << "Guardando...\n"; 
-    // if ( mi_guarderia -> hubo_cambios == true ){ 
-    //     escribir_archivo( mi_guarderia ); 
-    // } 
+    cout << "Guardando...\n"; 
+
+    escribir_archivo( mi_guarderia );
+    
  
-    // cout << "Listo, tu registro de animales esta terminado.\nHasta la proxima!\n"; 
+    cout << "Listo, tu registro de animales esta terminado.\nHasta la proxima!\n"; 
  
-    // for( int numero_animal = 0; numero_animal < mi_guarderia -> cantidad_de_animales; numero_animal++){ 
+    //for( int numero_animal = 0; numero_animal < mi_guarderia->obtener_cantidad(); numero_animal++){ 
     //     delete mi_guarderia -> lista_de_animales[ numero_animal ]; 
     //     mi_guarderia -> lista_de_animales[ numero_animal ] = nullptr; 
-    // } 
+    //} 
  
-    // delete [] (mi_guarderia -> lista_de_animales); 
-    // mi_guarderia -> lista_de_animales = nullptr; 
+    //delete [] (mi_guarderia -> lista_de_animales); 
+    //mi_guarderia -> lista_de_animales = nullptr; 
 } 

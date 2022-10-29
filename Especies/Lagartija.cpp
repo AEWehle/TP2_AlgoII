@@ -14,8 +14,16 @@ Lagartija::Lagartija( string nombre, int edad, int tamano, string personalidad )
     es_domestico = false;
 }
 
+Lagartija::~Lagartija(){
+    
+}
+
 void Lagartija::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________LAGARTIJA____________________________" << endl;
     Animal::mostrar();
+}
+
+Especie Lagartija::resolver_especie(){
+    return L;
 }

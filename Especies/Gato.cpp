@@ -14,8 +14,16 @@ Gato::Gato( string nombre, int edad, int tamano, string personalidad ) : Animal(
     es_domestico = true;
 }
 
+Gato::~Gato(){
+    
+}
+
 void Gato::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________GATO_________________________________" << endl;
     Animal::mostrar();
     }
+
+Especie Gato::resolver_especie(){
+    return G;
+}
