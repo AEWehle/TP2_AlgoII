@@ -22,7 +22,8 @@ const string COMA_ESPACIO = ", ";
 const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir. 
 const char DELIMITADOR_ARCHIVO_CSV = '\n'; 
 const int CANTIDAD_OPCIONES = 6; 
- 
+const int ESTADO_ABIERTA = 1;
+const int ESTADO_CERRADA = 0;
  
  
 /*________leer_archivo()_______________________________________________________ 
@@ -88,7 +89,7 @@ bool verificar_eleccion( int eleccion );
        Recibe la eleccion del usuario verificada (int) entre 1 y CANTIDAD_OPCIONES 
  POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
 _______________________________________________________________________________*/ 
-void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion ); 
+void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion, int* estado_guarderia ); 
  
  
 /*________buscar_nombre()______________________________________________________ 

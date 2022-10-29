@@ -2,130 +2,122 @@
 #include <iostream> 
 #include "Animal.h"
 #include "Guarderia.h"
+#include "funciones_main.h"
 using namespace std; 
 
 
+//Constructor sin parámetros
 Guarderia::Guarderia(){
-    lista_de_animales = new Animal*;
-    cantidad_de_animales = 0;
+    //se crea una lista vacía
 }
 
+Guarderia::Guarderia(const string archivo){
+    
+}
 
 Guarderia::~Guarderia(){
-    if(cantidad_de_animales > 0){
-        delete[] lista_de_animales;
-    }
+    // if(cantidad_de_animales > 0){
+    //     delete[] lista_de_animales;
+    // }
 }
 
 
 //Constructor de copia
-Guarderia::Guarderia(const Guarderia& guarderia_aux){
-    cantidad_de_animales = guarderia_aux.cantidad_de_animales;
+// Guarderia::Guarderia(const Guarderia& guarderia_aux){
+//     cantidad_de_animales = guarderia_aux.cantidad_de_animales;
 
-    if (cantidad_de_animales > 0) {
-        lista_de_animales = new Animal*;
-        for (int i = 0; i < cantidad_de_animales; i++)
-            lista_de_animales[i] = guarderia_aux.lista_de_animales[i];
-    }
+//     if (cantidad_de_animales > 0) {
+//         lista_de_animales = new Animal*;
+//         for (int i = 0; i < cantidad_de_animales; i++)
+//             lista_de_animales[i] = guarderia_aux.lista_de_animales[i];
+//     }
 
-}
+// }
 
 
 //Copiar
-    void Guarderia::copiar(Animal** &lista_animales_aux){
-        for( int i = 0; i < cantidad_de_animales ; i++){ 
-            lista_animales_aux[i] = lista_de_animales[i]; 
-        } 
-    }
+// void Guarderia::copiar(Animal** &lista_animales_aux){
+//     for( int i = 0; i < cantidad_de_animales ; i++){ 
+//         lista_animales_aux[i] = lista_de_animales[i]; 
+//     } 
+// }
 
 //Cargar
-    void Guarderia::agregar(Animal* nuevo_animal){
-        lista_de_animales[ (cantidad_de_animales)++] = nuevo_animal; 
+void Guarderia::agregar_animal(Animal* nuevo_animal){
+    if(lista_de_animales.hay_siguiente() == false){
+        lista_de_animales.alta(nuevo_animal,lista_de_animales.obtener_cantidad()+1);
+    }else{
+        cout << "Error al intentar agregar un animal" << endl;
     }
+}
 
 
 //Obtener Posicion
-    int Guarderia::obtener_posicion(string nombre){
-        int posicion = cantidad_de_animales; 
-        int i = 0;
+int Guarderia::obtener_posicion(string nombre){
+    int cantidad_de_animales = lista_de_animales.obtener_cantidad();
+    int posicion = 1;
+    int i = 0;
 
-        while(i < cantidad_de_animales &&  lista_de_animales[i]->obtener_nombre() != nombre){
-            posicion = ++i;
-        }
-        
-        if (posicion == cantidad_de_animales) {
-            cout << "El animal " << nombre << " no se encuentra en la lista" << endl ;
-            posicion = -1;
-        }
-        return posicion;
+    while(i < cantidad_de_animales &&  lista_de_animales.consulta(posicion)->obtener_nombre() != nombre){
+        posicion = ++i;
     }
+    
+    if (posicion == cantidad_de_animales) {
+        cout << "El animal " << nombre << " no se encuentra en la lista" << endl ;
+        posicion = NO_SE_ENCUENTRA;
+    }
+    return posicion;
+}
 
 
 //Cantidad de Animales
-    int Guarderia::obtener_cantidad(){
-        return Guarderia::cantidad_de_animales;
-    }
+int Guarderia::obtener_cantidad(){
+    return lista_de_animales.obtener_cantidad();
+}
 
 
 //Eliminar Elemento
-    void Guarderia::eliminar_elemento(int posicion){
-        if(Guarderia::cantidad_de_animales > 1){
-            swap(Guarderia::cantidad_de_animales - 1, posicion);
-
-            Animal** nueva_lista_animales = new Animal*[Guarderia::cantidad_de_animales];
-
-            for(int i = 0; i < Guarderia::cantidad_de_animales - 1; i++){
-                nueva_lista_animales[i] = Guarderia::lista_de_animales[i];
-            }
-
-            delete Guarderia::lista_de_animales[Guarderia::cantidad_de_animales - 1];
-            delete[] Guarderia::lista_de_animales;
-
-            Guarderia::lista_de_animales = nueva_lista_animales;
-        }else{
-            delete Guarderia::lista_de_animales[Guarderia::cantidad_de_animales - 1];
-            delete[] Guarderia::lista_de_animales;
-        }
-
-        Guarderia::cantidad_de_animales--;
-    }
-
-
-
-void Guarderia::swap(int posicion_1, int posicion_2){
-    Animal* aux = Guarderia::lista_de_animales[posicion_1];
-    Guarderia::lista_de_animales[posicion_1] = Guarderia::lista_de_animales[posicion_2];
-    Guarderia::lista_de_animales[posicion_2] = aux;
+void Guarderia::eliminar_elemento(int posicion){
+    lista_de_animales.baja(posicion);
 }
+
+
+
+// void Guarderia::swap(int posicion_1, int posicion_2){
+//     Animal* aux = Guarderia::lista_de_animales[posicion_1];
+//     Guarderia::lista_de_animales[posicion_1] = Guarderia::lista_de_animales[posicion_2];
+//     Guarderia::lista_de_animales[posicion_2] = aux;
+// }
 
 
 
 //Mostrar Elemento
-    void Guarderia::mostrar(int posicion){
-        if(posicion > cantidad_de_animales){
-            cout << "La guardería tiene solo "<< cantidad_de_animales <<" animales. No existe nungun animal en la posicion "<< posicion << "." << endl ;
-        }else{
-            Guarderia::lista_de_animales[posicion]->mostrar();
-        }
-    }
+void Guarderia::mostrar(int posicion){
+    lista_de_animales.consulta(posicion);
+}
 
 
 //Mostrar
     void Guarderia::mostrar(){
-        if (Guarderia::cantidad_de_animales == 0) {
-            cout << "La guardería está vacia. No hay animales para mostrar." << endl ;
-        }
-        else{
-            cout << "Salvaste los siguientes animales:\n";
-            for(int i=0; i<Guarderia::cantidad_de_animales; i++){
-            Guarderia::lista_de_animales[i]->mostrar();
-        }
-        }
+        // if (Guarderia::cantidad_de_animales == 0) {
+        //     cout << "La guardería está vacia. No hay animales para mostrar." << endl ;
+        // }
+        // else{
+        //     cout << "Salvaste los siguientes animales:\n";
+        //     for(int i=0; i<Guarderia::cantidad_de_animales; i++){
+        //     Guarderia::lista_de_animales[i]->mostrar();
+        // }
+        // }
     }
 
 //Ver lista
-    Animal** Guarderia::ver_lista(){
-        return lista_de_animales;
+void Guarderia::ver_lista_de_animales(){
+    if(lista_de_animales.obtener_cantidad()){
+        for(int i=1; i<lista_de_animales.obtener_cantidad()+1; i++){
+            lista_de_animales.consulta(i)->mostrar();
+        }
+    }else{
+        cout << "No hay animales en la lista" << endl;
     }
-
+}
 

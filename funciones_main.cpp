@@ -150,9 +150,13 @@ bool es_lista_vacia( Guarderia* mi_guarderia ){
  
  
  
-void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion ){ 
+void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion, int* estado_guarderia ){ 
     if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
     else{  funcion_elegida[ eleccion - 1 ]( mi_guarderia ); } 
+
+    if(eleccion = OPCION_GUARDAR_Y_SALIR){
+        &estado_guarderia = ESTADO_CERRADA;
+    }
 } 
  
  
@@ -205,7 +209,7 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
  
     Animal* animal_dela_linea = crear_nuevo_animal( especie_char, nombre, edad, tamano, personalidad ); 
  
-    mi_guarderia->agregar(animal_dela_linea); 
+    mi_guarderia->agregar_animal(animal_dela_linea); 
     
     verificar_almacenamiento( mi_guarderia ); 
 } 
@@ -271,6 +275,6 @@ void escribir_archivo( Guarderia* mi_guarderia ){
     archivo_animales.close(); 
 } 
  
- int buscar_nombre (Guarderia* mi_Guarderia, string titulo_buscado){
-    return mi_Guarderia->obtener_posicion(titulo_buscado);
- }
+int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
+    return mi_guarderia->obtener_posicion(animal_buscado);
+}

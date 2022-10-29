@@ -1,25 +1,50 @@
-#ifndef NODO_H
-#define NODO_H
+#ifndef NODO_TEMPLATE
+#define NODO_TEMPLATE
 
-//Cambiar a Template, todo en .h
-typedef char Dato; //Cambiar por el tipo de dato que vayamos a usar
+//Dato será el ANIMAL que se introduzca en la lista
+template <typename Dato>
+class Nodo{
+        // Atributos
+    private:
+        Dato* dato;
+        Nodo* siguiente;
 
-class Nodo {
-    // Atributos
-private:
-    Dato dato;
-    Nodo* siguiente;
+    public:
+        // Constructor
+        // crea un nodo con dato = d y siguiente = 0
+        Nodo(Dato* dato);
 
-public:
-    // Constructor
-    // crea un nodo con dato = d y siguiente = 0
-    Nodo(Dato dato);
+        void cambiar_siguiente(Nodo* nuevo_siguiente);
 
-    void cambiar_siguiente(Nodo* nuevo_siguiente);
+        Dato* obtener_dato();
 
-    Dato obtener_dato();
-
-    Nodo* obtener_siguiente();
+        Nodo* obtener_siguiente();
 };
 
-#endif // NODO_H
+
+// Constructor
+template <typename Dato>
+Nodo<Dato>::Nodo(Dato* dato){
+    this->dato = dato;
+    siguiente = nullptr;
+}
+
+// cambiar siguiente
+template <typename Dato>
+void Nodo<Dato>::cambiar_siguiente(Nodo<Dato>* nuevo_siguiente){
+    siguiente = nuevo_siguiente;
+}
+
+// obtener siguiente
+template <typename Dato>
+Nodo<Dato>* Nodo<Dato>::obtener_siguiente(){
+    return siguiente;
+}
+
+// obtener dato
+template <typename Dato>
+Dato* Nodo<Dato>::obtener_dato() {
+    return dato;
+}
+
+#endif // NODO_TEMPLATE

@@ -9,22 +9,17 @@
 #include "Especies/Conejo.h"
 #include "Especies/Erizo.h"
 #include "Especies/Lagartija.h"
-#include "nodo.h"
+#include "lista.h"
 using namespace std; 
 
+const int NO_SE_ENCUENTRA = -1;
 
 //typedef Animal Dato; //-> Iba a ser para reutilizar la lista pero por ahora queda asi
 
 class Guarderia{
     //Atributos
     private:
-        
-        //
-        Animal** lista_de_animales;
-        
-        //
-        int cantidad_de_animales;
-
+        Lista<Animal> lista_de_animales;
 
     //Metodos
     public:
@@ -37,7 +32,7 @@ class Guarderia{
             //Con Parametros
             //PRE: Cantidad de animales > 0, el archivo esta en formato correcto
             //POS: Crea guarderia con los elementos
-            Guarderia(int cantidad, const string archivo);
+            Guarderia(const string archivo);
 
         //Destructor
             ~Guarderia();
@@ -48,11 +43,11 @@ class Guarderia{
         //Copiar
             void copiar(Animal** &lista_animales_aux);
 
-        //Ver puntero
-            Animal** ver_lista();
+        //Ver lista de animales en la guarderia
+            void ver_lista_de_animales();
 
         //Agregar
-            void agregar(Animal* nuevo_animal);
+            void agregar_animal(Animal* nuevo_animal);
 
         //Obtener Posicion
             int obtener_posicion(string nombre);
