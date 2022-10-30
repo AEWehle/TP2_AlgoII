@@ -45,7 +45,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 6 * Dejamos el constructor de copia? En caso de que sí, hay que adaptarlo a listas
 
-7 * Falta la función cuidar_animales() (dentro de opciones.cpp)
+7 * LA HACE MELI - Falta la función cuidar_animales() (dentro de opciones.cpp)
 
 8 * Falta la función adoptar_animal() (dentro de opciones.cpp)
 
@@ -57,8 +57,6 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 12 * La función rescatar_animal no hace exactamente lo que dice el TP, si el nombre ya está en la lista hay que preguntar si se quiere ingresar otro nombre o volver al menú
 
-13 * Las funciones internas de un .cpp (que no van en el .h) tienen que ir si o si antes de ser usadas? si es así va a haber que reordenar algunas funciones (al menos en funciones_main.cpp). Si lo saben digan, y sino lo veremos cuando podamos compilar y salte el error.
-
 
 ## COSAS HECHAS:
 
@@ -69,3 +67,4 @@ A.V. - En algunos archivos puse una división con ///// para separar funciones q
 A.V. - Fui dejando algunos comentarios en algunas líneas que no entiendo o no se si son necesarias
 A.V. - Fui sacando todos los \n que encontré y cambiandolos por endl, me parece que al usar C++ es lo más correcto. Habría que revisar todo el final.
 A.V. - Hice la función de guardar y salir, que escribe el archivo. Hice las funciones de mostrar edad, tamaño y personalidad para hacer la de guardar.
+A.V. - Arreglé errores para que compile.
