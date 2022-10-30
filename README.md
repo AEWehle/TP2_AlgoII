@@ -68,9 +68,3 @@ A.V. - Acomodé un poco la funciones de pedir eleccion
 A.V. - En algunos archivos puse una división con ///// para separar funciones que o bien no se usan o bien van en otra parte (creo). Así queda más ordenada la modularización
 A.V. - Fui dejando algunos comentarios en algunas líneas que no entiendo o no se si son necesarias
 A.V. - Fui sacando todos los \n que encontré y cambiandolos por endl, me parece que al usar C++ es lo más correcto. Habría que revisar todo el final.
-A.V. - 
-A.V. - 
-A.V. - 
-A.V. - 
-A.V. - 
-A.V. - 

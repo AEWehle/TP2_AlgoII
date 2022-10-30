@@ -1,15 +1,15 @@
 #ifndef FUNCIONES_MAIN_H_ 
 #define FUNCIONES_MAIN_H_ 
 #include <string> 
+#include "Archivos_auxiliares/nodo.h" 
 #include "Guarderia.h"
-#include "Especies/Perro.h"
-#include "Especies/Gato.h"
-#include "Especies/Caballo.h"
-#include "Especies/Roedor.h"
-#include "Especies/Conejo.h"
-#include "Especies/Erizo.h"
-#include "Especies/Lagartija.h"
-#include "nodo.h" 
+// #include "Especies/Perro.h" // estos ya se incluyen a traves de guarderia
+// #include "Especies/Gato.h"
+// #include "Especies/Caballo.h"
+// #include "Especies/Roedor.h"
+// #include "Especies/Conejo.h"
+// #include "Especies/Erizo.h"
+// #include "Especies/Lagartija.h"
 using namespace std;  
  
 /* ________________________funciones_main.h_____________________________________ 
@@ -21,6 +21,7 @@ const string RUTA_ARCHIVO = "animales.csv";
 const string COMA_ESPACIO = ", "; 
 const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir. 
 const char DELIMITADOR_ARCHIVO_CSV = '\n'; 
+
 enum OpcionMenu {
     LISTAR_ANIMALES = 1,
     RESCATAR_ANIMAL,
@@ -89,17 +90,8 @@ sus datos (titulo, genero, puntaje y posicion), y la cantidad de Animales actual
 _______________________________________________________________________________*/ 
 void guardar_un_animal( Guarderia* mi_Guarderia,  string animal_csv); 
 
-
  
-/*________buscar_nombre()______________________________________________________ 
 
-PRE:  Recibe la base de datos (puntero a clase Guarderia) y el nombre
-    del animal buscado (string) 
-POST: Devuelve el numero de animal correspondiente en la lista de Animales de la  
- Base de Datos, si no lo encuentra devuelve -1. 
-_______________________________________________________________________________*/ 
-int buscar_nombre (Guarderia* mi_Guarderia, string animal_buscado); 
- 
  
 /*________mostrar_un_animal()___________________________________________________ 
 PRE:  Recibe la base de datos (puntero a Guarderia) y el nume- 

@@ -1,17 +1,18 @@
 #include <iostream>  
 #include <string> 
 #include <fstream> 
-#include "Animal.h"
-#include "Especies/Perro.h"
-#include "Especies/Gato.h"
-#include "Especies/Caballo.h"
-#include "Especies/Roedor.h"
-#include "Especies/Conejo.h"
-#include "Especies/Erizo.h"
-#include "Especies/Lagartija.h"
-#include "nodo.h"
+#include "Archivos_auxiliares/funciones_auxiliares.h" 
+#include "Archivos_auxiliares/nodo.h"
 #include "funciones_main.h" 
-#include "funciones_auxiliares.h" 
+#include "guarderia.h"
+// #include "Animal.h"  // Se incluyen a traves de guarderia
+// #include "Especies/Perro.h"
+// #include "Especies/Gato.h"
+// #include "Especies/Caballo.h"
+// #include "Especies/Roedor.h"
+// #include "Especies/Conejo.h"
+// #include "Especies/Erizo.h"
+// #include "Especies/Lagartija.h"
 using namespace std;  
  
  
@@ -61,7 +62,6 @@ string pedir_nombre(){
     nombre = string_a_mayuscula(nombre);    //es necesario?
     return nombre; 
 } 
-
 
 int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
     return mi_guarderia->obtener_posicion(animal_buscado);

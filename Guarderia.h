@@ -9,7 +9,7 @@
 #include "Especies/Conejo.h"
 #include "Especies/Erizo.h"
 #include "Especies/Lagartija.h"
-#include "lista.h"
+#include "Archivos_auxiliares/lista.h"
 using namespace std; 
 
 const int NO_SE_ENCUENTRA = -1;

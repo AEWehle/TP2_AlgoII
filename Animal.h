@@ -13,7 +13,7 @@ const int CANTIDAD_TAMANOS = 5;
 const char ESPECIE_CHAR [ CANTIDAD_ESPECIES ] = { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
 const string ESPECIE_STRING[ CANTIDAD_ESPECIES ]= { "PERRO", "GATO", "CABALLO", "ROEDOR", "CONEJO", "ERIZO", "LAGARTIJA" }; 
 const string PERSONALIDADES[ CANTIDAD_PERSONALIDADES ] = { "Dormilón", "Juguetón", "Sociable", "Travieso" };
-//const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "diminuto", "pequeño", "mediano", "grande", "gigante" };
+const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "diminuto", "pequeño", "mediano", "grande", "gigante" };
 
 enum Especie { ESPECIE_INVALIDA = 0, P, G, C, R, O, E, L }; 
 
@@ -21,9 +21,7 @@ class Animal{
 protected:
     string nombre;
     int    edad;	        //  [0-100]
-    string tamano;	            //	[ D<2, P<10, M>=10, Gr>=20, Gi>=50 ]
-                            // el atributo es 0 -> D, 1 -> P , 2 -> M , 3 -> Gr , 4 -> Gi
-    
+    string tamano;	            //	[ D<2, P<10, M>=10, Gr>=20, Gi>=50 ]    
     string personalidad;	// 	[D J S T]
     bool   es_domestico;	//  [lo define la especie, indica si es adoptable]
     int    hambre; 	        //	[0-100]

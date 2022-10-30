@@ -2,8 +2,8 @@
 #include <string>
 #include <fstream> 
 #include "funciones_main.h"
-#include "Animal.h"
 #include "Guarderia.h"
+// #include "Animal.h" // se inluye a traves de guarderia
 using namespace std; 
 
 /*_____________________________TP2: LA RESERVA SOÑADA____________________*/
@@ -18,6 +18,7 @@ int main(){
     do{
         eleccion = pedir_eleccion();
         ejecutar_eleccion(mi_guarderia, eleccion);
+
     }
     while ( eleccion != GUARDAR_Y_SALIR );
     

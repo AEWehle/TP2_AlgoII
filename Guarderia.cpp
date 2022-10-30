@@ -1,8 +1,8 @@
 #include <string>
 #include <iostream> 
-#include "Animal.h"
 #include "Guarderia.h"
-#include "funciones_main.h"
+// #include "Animal.h" // se inluye a traves de guarderia
+// #include "funciones_main.h" // esto no deberia tener relacion con la clase
 using namespace std; 
 
 
@@ -116,3 +116,5 @@ void Guarderia::ver_lista_de_animales(){
     }
 }
 
+
+void Guarderia::copiar(Animal** &lista_animales_aux){}
