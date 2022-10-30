@@ -49,7 +49,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 8 * Falta la función adoptar_animal() (dentro de opciones.cpp)
 
-9 * Definir cómo quedará guardar_salir
+9 * LISTO - Definir cómo quedará guardar_salir
 
 10 * Revisar pos y pre condiciones de todo
 
@@ -68,3 +68,4 @@ A.V. - Acomodé un poco la funciones de pedir eleccion
 A.V. - En algunos archivos puse una división con ///// para separar funciones que o bien no se usan o bien van en otra parte (creo). Así queda más ordenada la modularización
 A.V. - Fui dejando algunos comentarios en algunas líneas que no entiendo o no se si son necesarias
 A.V. - Fui sacando todos los \n que encontré y cambiandolos por endl, me parece que al usar C++ es lo más correcto. Habría que revisar todo el final.
+A.V. - Hice la función de guardar y salir, que escribe el archivo. Hice las funciones de mostrar edad, tamaño y personalidad para hacer la de guardar.
