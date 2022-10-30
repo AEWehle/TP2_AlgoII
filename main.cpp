@@ -9,7 +9,7 @@ using namespace std;
 /*_____________________________TP2: LA RESERVA SOÑADA____________________*/
 int main(){
 
-    cout << "Hola," << endl << "En este programa te aseguramos una Reserva Soñada." << endl << "     DISFRUTALO!" << endl;
+    cout << "Hola," << endl << "En este programa te aseguramos una Reserva Soñada." << endl << "     DISFRUTALO!" << endl << endl;
 
     Guarderia* mi_guarderia  =  new Guarderia;
     cargar_guarderia(mi_guarderia); //Cargo la guardería con la información del archivo
