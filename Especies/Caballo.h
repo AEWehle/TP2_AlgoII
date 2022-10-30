@@ -13,7 +13,6 @@ public:
     void mostrar() override ;
     Especie resolver_especie() override;
     ~Caballo();
-
 };
 
 

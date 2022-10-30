@@ -4,7 +4,7 @@
 #include "Archivos_auxiliares/funciones_auxiliares.h" 
 #include "Archivos_auxiliares/nodo.h"
 #include "funciones_main.h" 
-#include "guarderia.h"
+#include "Guarderia.h"
 // #include "Animal.h"  // Se incluyen a traves de guarderia
 // #include "Especies/Perro.h"
 // #include "Especies/Gato.h"
@@ -254,21 +254,33 @@ void adoptar_animal( Guarderia* mi_guarderia ){}
 
  
 /*************************************** FUNCIONES DE LA OPCION 6 ***************************************/ 
- 
+
+
+void guardar_un_animal(Animal* animal, fstream archivo){
+
+    string nombre = animal -> obtener_nombre();
+    int edad = animal -> obtener_edad();
+    string tamano = animal -> obtener_tamano();
+    string especie = ESPECIE_STRING[animal -> resolver_especie()];
+    string personalidad = animal -> obtener_personalidad();
+
+    archivo << nombre << "," << edad << "," << tamano << "," << especie << "," << personalidad << endl;
+
+}
+
  
 void guardar_salir( Guarderia* mi_guarderia ){ 
-    cout << "Guardando...\n"; 
 
-    escribir_archivo( mi_guarderia );
-    
+    cout << "Guardando..." << endl; 
+
+    fstream archivo_guarderia(RUTA_ARCHIVO, ios::out);
  
-    cout << "Listo, tu registro de animales esta terminado.\nHasta la proxima!\n"; 
+    for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia->obtener_cantidad()) ; numero_de_animal++ ){ 
+        guardar_un_animal(mi_guarderia->mostrar(numero_de_animal), archivo_guarderia);
+    } 
  
-    //for( int numero_animal = 0; numero_animal < mi_guarderia->obtener_cantidad(); numero_animal++){ 
-    //     delete mi_guarderia -> lista_de_animales[ numero_animal ]; 
-    //     mi_guarderia -> lista_de_animales[ numero_animal ] = nullptr; 
-    //} 
- 
-    //delete [] (mi_guarderia -> lista_de_animales); 
-    //mi_guarderia -> lista_de_animales = nullptr; 
+    archivo_guarderia.close(); 
+
+    cout << "Listo, tu registro de animales esta terminado." << endl << "Hasta la proxima!" << endl; 
+
 } 

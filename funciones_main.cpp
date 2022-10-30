@@ -202,34 +202,3 @@ string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool e
     string linea_animal = "nada"; 
     return linea_animal; 
 } 
-
-
-/*________crear_archivo_lectura()______________________________________________
- PRE: No existe un archivo con esa ruta
- POST: Lo crea y lo pasa como lectura
-_______________________________________________________________________________*/
-void crear_archivo( ifstream &archivo_animales ){
-    cout << "\n     Hubo un problema, no hay un archivo con tus animales que se llame " << RUTA_ARCHIVO << endl;
-    cout << "       Creo un archivo nuevo.";
-    archivo_animales.open( RUTA_ARCHIVO, ios::out );
-    archivo_animales.close();
-}
-
-
-void escribir_archivo( Guarderia* mi_guarderia ){ 
-    ifstream is_archivo_animales(RUTA_ARCHIVO); 
- 
-    if ( !is_archivo_animales.is_open() ) { 
-        crear_archivo( is_archivo_animales ); 
-    } 
- 
-    ofstream archivo_animales( RUTA_ARCHIVO ); 
- 
-    for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia->obtener_cantidad()) ; numero_de_animal++ ){ 
-        archivo_animales << armar_linea_animal( mi_guarderia, numero_de_animal, false ) << endl;  
-        // Va a quedar con una linea vacia al final del archivo, el programa enteinde que es el final
-    } 
- 
-    archivo_animales.close(); 
-} 
-

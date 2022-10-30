@@ -16,9 +16,7 @@ Caballo::Caballo( string nombre, int edad, string tamano, string personalidad ) 
 }
 
 Caballo::~Caballo(){
-    
 }
-
 
 void Caballo::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
