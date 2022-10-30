@@ -18,50 +18,50 @@ using namespace std;
  
  
 /*************************************** FUNCIONES DE LA OPCION 1 ***************************************/ 
- 
-/*void listar_animales( Guarderia* mi_guarderia ){ 
-    Animal** lista_animales = mi_guarderia -> lista_de_animales; 
-    int cantidad = mi_guarderia -> cantidad_de_animales; 
-     
-    if (cantidad > 0){ 
-        cout << "Salvaste los siguientes animales:\n"; 
-         
-        for( int i = 0; i < cantidad ; i++){ 
-            lista_animales[i] -> mostrar();  
-        } 
-    } 
-    else{ 
-        cout << "No tienes animales guardados, podés empezar a agregar ya mismo." << endl; 
-        preguntar_agregar_animal( mi_guarderia ); 
-    } 
-    cout << "\nQué te gustaria hacer?\n"; 
-} */
+// Listar animales
 
 void listar_animales( Guarderia* mi_guarderia ){ 
     mi_guarderia->mostrar();
 
     if (mi_guarderia->obtener_cantidad()==0) {
-        preguntar_agregar_animal( mi_guarderia ); 
+        preguntar_agregar_animal( mi_guarderia );   //es necesario esto?
     }
 }
  
  
+void preguntar_agregar_animal( Guarderia* mi_guarderia ){ 
+    cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> "; 
+    string linea_aux; 
+    while ( linea_aux.length() == 0 ){ 
+        cout << " >> "; 
+        getline( cin, linea_aux, '\n' ); 
+    } 
+ 
+    if (string_a_mayuscula(linea_aux) == "SI"){ 
+        rescatar_animal( mi_guarderia ); 
+    } 
+    else { 
+        cout << "Ok, no agregamos nada." << endl;  
+        cout << endl << "Qué mas te gustaría hacer?\n"; 
+    } 
+} 
+
  
 /*************************************** FUNCIONES DE LA OPCION 2 ***************************************/ 
- 
+//Rescatar animal
+
 //  nombre, edad, tamano, especie, personalidad, hambre e higiene.
  
 string pedir_nombre(){ 
-    cout << "Cómo se llama?\n"; 
+    cout << "Cómo se va a llamar?" << endl; 
     string nombre; 
     while ( nombre.length() == 0 ){ 
         cout << " >> "; 
         getline( cin, nombre, '\n' ); 
     } 
-    nombre = string_a_mayuscula(nombre); 
+    nombre = string_a_mayuscula(nombre);    //es necesario?
     return nombre; 
 } 
- 
 
 int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
     return mi_guarderia->obtener_posicion(animal_buscado);
@@ -73,7 +73,7 @@ PRE:  Le pide al usuario la edad hasta que cumpla que va de 0 a EDAD_MAX
 POST: Devuelve int con el valor. 
 _______________________________________________________________________________*/ 
 int pedir_edad(){ 
-    cout << "Cuántos años tiene?\n >> ";
+    cout << "Cuántos años tiene?" << endl << " >> ";
     string edad_string;  
     getline( cin, edad_string, '\n'); 
     int edad = string_a_entero( edad_string ); 
@@ -201,13 +201,14 @@ string pedir_personalidad(){
  
  
 void rescatar_animal( Guarderia* mi_guarderia ){ 
-    cout << "Rescataron un animal!\n"; 
+    cout << "Rescataste un animal!" << endl; 
  
     string nombre = pedir_nombre(); 
  
-    int numero_de_animal = buscar_nombre( mi_guarderia, nombre ); 
+    int numero_de_animal = buscar_nombre( mi_guarderia, nombre );
+    
     if (numero_de_animal != mi_guarderia->obtener_cantidad()){  
-        cout << "Este nombre ya lo tiene otro animal:\n"; 
+        cout << "Este nombre ya lo tiene otro animal:" << endl; 
         mi_guarderia->mostrar(numero_de_animal); 
     } 
     else{ // No esta en mi_guarderia 

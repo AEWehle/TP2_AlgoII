@@ -5,7 +5,6 @@
 using namespace std; 
 
 
-
 /* ________________________opciones.h_____________________________________
   En este .h se encuentran declaradas las funciones que se ejecutan según la 
 elección del usuario.
@@ -57,6 +56,7 @@ void guardar_salir( Guarderia* mi_guarderia );
 
 
 typedef void (*Manejo_Guarderia) (Guarderia* mi_guarderia );
+
 const Manejo_Guarderia funcion_elegida[ CANTIDAD_OPCIONES ] = {
     listar_animales, 
     rescatar_animal,

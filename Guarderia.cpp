@@ -59,7 +59,7 @@ int Guarderia::obtener_posicion(string nombre){
     
     if (posicion == cantidad_de_animales) {
         cout << "El animal " << nombre << " no se encuentra en la lista" << endl ;
-        posicion = NO_SE_ENCUENTRA;
+        //posicion = NO_SE_ENCUENTRA;
     }
     return posicion;
 }

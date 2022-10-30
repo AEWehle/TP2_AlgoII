@@ -68,6 +68,30 @@ void cargar_guarderia(Guarderia* mi_guarderia){
     archivo_guarderia.close();
 }
  
+int pedir_eleccion(){ 
+
+    string eleccion;
+    imprimir_menu();
+    cout << "Ingrese el numero de la opcion elegida: ";
+    cin >> eleccion;
+
+    int eleccion_int = stoi(eleccion);
+
+    while(!eleccion_valida(eleccion_int)){
+
+        //cin.clear();
+        //cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
+        cout << "La opcion ingresada es invalida, por favor ingrese una opcion valida: ";
+        cin >> eleccion;
+        eleccion_int = stoi(eleccion);
+
+    }
+
+    return eleccion_int;
+
+} 
+
+
 /*________imprimir_menu()______________________________________________________ 
  PRE: 
  POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
@@ -80,50 +104,25 @@ void imprimir_menu(){
     cout << "   5. Adoptar un animal.\n"; 
     cout << "   6. Guardar y salir.\n"; 
 } 
- 
- 
-int pedir_eleccion(){ 
-    string entrada; 
-    bool todo_bien = false; 
-    int eleccion = 0; 
-    while ( !todo_bien ){ 
-        cout << "Elegí un numero de la lista:" << endl; 
-        imprimir_menu(); 
-        cout << " >> "; 
-        //cin.ignore(); 
-        cin >> entrada; 
- 
-        eleccion = string_a_entero(entrada); 
-        todo_bien = verificar_eleccion( eleccion ); 
-        if( !todo_bien ){ 
-            cout << "Debe ser una opcion de la lista, podes elegir del 1 al " << CANTIDAD_OPCIONES << endl; 
-        } 
-    } 
-    return eleccion; 
-} 
- 
- 
-bool verificar_eleccion( int eleccion ){ 
+
+
+bool verificar_eleccion(int eleccion){ 
     return ( (1 <= eleccion) && (eleccion <= CANTIDAD_OPCIONES) ); 
-} 
+}
+
+
+void ejecutar_eleccion(Guarderia* mi_guarderia, int eleccion){ 
+
+    //if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
+    funcion_elegida[ eleccion - 1 ]( mi_guarderia );
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
  
 
-void preguntar_agregar_animal( Guarderia* mi_guarderia ){ 
-    cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> "; 
-    string linea_aux; 
-    while ( linea_aux.length() == 0 ){ 
-        cout << " >> "; 
-        getline( cin, linea_aux, '\n' ); 
-    } 
- 
-    if (string_a_mayuscula(linea_aux) == "SI"){ 
-        rescatar_animal( mi_guarderia ); 
-    } 
-    else { 
-        cout << "Ok, no agregamos nada." << endl;  
-        cout << endl << "Qué mas te gustaría hacer?\n"; 
-    } 
-} 
+
 
  
 /*________es_lista_vacia()_____________________________________________________ 
@@ -140,12 +139,6 @@ bool es_lista_vacia( Guarderia* mi_guarderia ){
     } 
     return ( cantidad_animales == 0 ); 
 }
-
-
-void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion){ 
-    if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
-    else{  funcion_elegida[ eleccion - 1 ]( mi_guarderia ); } 
-} 
 
 
 void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable 
@@ -239,5 +232,4 @@ void escribir_archivo( Guarderia* mi_guarderia ){
  
     archivo_animales.close(); 
 } 
-
 

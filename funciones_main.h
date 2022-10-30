@@ -21,18 +21,17 @@ const string RUTA_ARCHIVO = "animales.csv";
 const string COMA_ESPACIO = ", "; 
 const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir. 
 const char DELIMITADOR_ARCHIVO_CSV = '\n'; 
-const int CANTIDAD_OPCIONES = 6; 
-const int ESTADO_ABIERTA = 1;
-const int ESTADO_CERRADA = 0;
-const int OPCION_GUARDAR_Y_SALIR = 6;
- 
-/*________leer_archivo()_______________________________________________________ 
- PRE:  Necesita el archivo llamado RUTA_ARCHIVO con la informacion de los anim- 
- ales en formato csv:  
-             
- POST: Devuelve .... 
-_______________________________________________________________________________*/ 
-Guarderia* leer_archivo(); 
+
+enum OpcionMenu {
+    LISTAR_ANIMALES = 1,
+    RESCATAR_ANIMAL,
+    BUSCAR_ANIMAL,
+    CUIDAR_ANIMALES,
+    ADOPTAR_ANIMAL,
+    GUARDAR_Y_SALIR,
+    CANTIDAD_OPCIONES = 6
+};
+
 
 /*________cargar_guarderia()_______________________________________________________ 
  PRE:  
@@ -41,6 +40,25 @@ Guarderia* leer_archivo();
 _______________________________________________________________________________*/ 
 void cargar_guarderia(Guarderia* mi_guarderia); 
 
+
+/*________pedir_eleccion()_____________________________________________________ 
+ PRE: 
+ POST: Le pide al usuario que ingrese una opcion de la lista hasta que sea una  
+ opcion valida, y la devuelve. 
+_______________________________________________________________________________*/ 
+int  pedir_eleccion(); 
+
+
+/*________ejecutar_eleccion()__________________________________________________ 
+ PRE:  Recibe un puntero mi_Guarderia (Una Guarderia con la 
+  lista de Animales y la cantidad). 
+       Recibe la eleccion del usuario verificada (int) entre 1 y CANTIDAD_OPCIONES 
+ POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
+_______________________________________________________________________________*/ 
+void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion, int* estado_guarderia ); 
+
+
+////////////////////////////////////////////////////////////////////////////////////
  
  
 /*________verificar_almacenamiento()___________________________________________ 
@@ -71,22 +89,7 @@ void escribir_archivo( Guarderia* mi_Guarderia );
 sus datos (titulo, genero, puntaje y posicion), y la cantidad de Animales actual. 
 _______________________________________________________________________________*/ 
 void guardar_un_animal( Guarderia* mi_Guarderia,  string animal_csv); 
- 
- 
-/*________verificar_eleccion()_________________________________________________ 
- PRE:  Recibe la eleccion del ususario recibida como int 
- POST: Devuelve true si es valida y false si no. 
-_______________________________________________________________________________*/ 
-bool verificar_eleccion( int eleccion ); 
- 
- 
-/*________ejecutar_eleccion()__________________________________________________ 
- PRE:  Recibe un puntero mi_Guarderia (Una Guarderia con la 
-  lista de Animales y la cantidad). 
-       Recibe la eleccion del usuario verificada (int) entre 1 y CANTIDAD_OPCIONES 
- POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
-_______________________________________________________________________________*/ 
-void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion); 
+
  
 
  
@@ -96,23 +99,6 @@ ro_de_animal en la lista (int)
 POST: Imprime en terminal una linea con los datos de animal de forma completa 
 _______________________________________________________________________________*/ 
 void mostrar_un_animal( Guarderia* mi_Guarderia, int numero_de_animal ); 
- 
- 
-/*________pedir_eleccion()_____________________________________________________ 
- PRE: 
- POST: Le pide al usuario que ingrese una opcion de la lista hasta que sea una  
- opcion valida, y la devuelve. 
-_______________________________________________________________________________*/ 
-int  pedir_eleccion(); 
- 
- 
- 
-/*________preguntar_agregar_animal()____________________________________________ 
-PRE:  Le pregunta al usuario si desea agregar un animal tras haber ingresado un  
-titulo no existente para editarlle el puntaje 
-POST: Si repsonde Si llama a agregar_animal 
-      Si responde cualuqier otra cosa no agrega nada y termina 
-_______________________________________________________________________________*/ 
-void preguntar_agregar_animal( Guarderia* mi_Guarderia ); 
+
 
 #endif
