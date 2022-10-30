@@ -20,7 +20,7 @@ char char_a_mayuscula(char letra){
 
 string string_a_mayuscula(string texto){
     //for_each( texto.begin() ,texto.end() , char_a_mayuscula);
-    long unsigned int largo = texto.length();
+    long unsigned int largo = (long unsigned int)texto.length();
     for( long unsigned int i =0;  i<largo  ; i++){
         texto[i] = char_a_mayuscula( texto[i] );
     }
@@ -36,7 +36,7 @@ string elimina_espacios(string texto){
 
 
 int string_a_entero( string texto ){
-    long unsigned int largo= texto.length();
+    long unsigned int largo= (long unsigned int)texto.length();
     int entero = 0;
 
     if (largo == 0) entero = 0;
@@ -80,8 +80,8 @@ string menor_alfabetico( string texto1, string texto2){
     
     bool lo_encontre = false;
 
-    long unsigned int largo_1 = texto1_aux.length();
-    long unsigned int largo_2 = texto2_aux.length();
+    long unsigned int largo_1 = (long unsigned int)texto1_aux.length();
+    long unsigned int largo_2 = (long unsigned int)texto2_aux.length();
     long unsigned int largo_min = min( largo_1, largo_2);
     
     long unsigned int i = 0;

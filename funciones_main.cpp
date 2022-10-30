@@ -67,7 +67,27 @@ void cargar_guarderia(Guarderia* mi_guarderia){
 
     archivo_guarderia.close();
 }
- 
+
+
+/*________imprimir_menu()______________________________________________________ 
+ PRE: 
+ POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
+_______________________________________________________________________________*/ 
+void imprimir_menu(){ 
+    cout << "   1. Listar animales.\n"; 
+    cout << "   2. Rescatar un animal\n"; 
+    cout << "   3. Buscar un animal.\n"; 
+    cout << "   4. Cuidar animales.\n"; 
+    cout << "   5. Adoptar un animal.\n"; 
+    cout << "   6. Guardar y salir.\n"; 
+}
+
+
+bool eleccion_valida(int eleccion){ 
+    return ( (1 <= eleccion) && (eleccion <= CANTIDAD_OPCIONES) ); 
+}
+
+
 int pedir_eleccion(){ 
 
     string eleccion;
@@ -89,25 +109,6 @@ int pedir_eleccion(){
 
     return eleccion_int;
 
-} 
-
-
-/*________imprimir_menu()______________________________________________________ 
- PRE: 
- POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
-_______________________________________________________________________________*/ 
-void imprimir_menu(){ 
-    cout << "   1. Listar animales.\n"; 
-    cout << "   2. Rescatar un animal\n"; 
-    cout << "   3. Buscar un animal.\n"; 
-    cout << "   4. Cuidar animales.\n"; 
-    cout << "   5. Adoptar un animal.\n"; 
-    cout << "   6. Guardar y salir.\n"; 
-} 
-
-
-bool verificar_eleccion(int eleccion){ 
-    return ( (1 <= eleccion) && (eleccion <= CANTIDAD_OPCIONES) ); 
 }
 
 
@@ -131,14 +132,14 @@ POST: Si la cantidad de animales guardados es 0 devuelve false y pregunta al usu
     ario si quiere agregar un animal. 
     De lo contrario devuelve true 
 _______________________________________________________________________________*/ 
-bool es_lista_vacia( Guarderia* mi_guarderia ){ 
+/*bool es_lista_vacia( Guarderia* mi_guarderia ){ 
     int cantidad_animales = mi_guarderia->obtener_cantidad();
     if ( cantidad_animales == 0 ){ 
         cout << "Por ahora no tenes animales en la reserva, podés agregar ya mismo.\n" << endl; 
         preguntar_agregar_animal( mi_guarderia ); 
     } 
     return ( cantidad_animales == 0 ); 
-}
+}*/
 
 
 void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable 

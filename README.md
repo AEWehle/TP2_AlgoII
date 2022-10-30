@@ -1,6 +1,6 @@
 # TP2_AlgoII
 
-COMANDO: g++ *.cpp Especies/*.cpp -o TP2 -Wall -Werror -Wconversion
+COMANDO: g++ *.cpp Especies/*.cpp Archivos_auxiliares/*.cpp -o TP2 -Wall -Werror -Wconversion
 
 Para ejecutar ./TP2
 

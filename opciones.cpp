@@ -21,14 +21,14 @@ using namespace std;
 // Listar animales
 
 void listar_animales( Guarderia* mi_guarderia ){ 
-    mi_guarderia->mostrar();
-
+    mi_guarderia->ver_lista_de_animales();
+/*
     if (mi_guarderia->obtener_cantidad()==0) {
         preguntar_agregar_animal( mi_guarderia );   //es necesario esto?
-    }
+    }*/
 }
  
- 
+/*
 void preguntar_agregar_animal( Guarderia* mi_guarderia ){ 
     cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> "; 
     string linea_aux; 
@@ -45,7 +45,7 @@ void preguntar_agregar_animal( Guarderia* mi_guarderia ){
         cout << endl << "Qué mas te gustaría hacer?\n"; 
     } 
 } 
-
+*/
  
 /*************************************** FUNCIONES DE LA OPCION 2 ***************************************/ 
 //Rescatar animal
@@ -255,7 +255,7 @@ void adoptar_animal( Guarderia* mi_guarderia ){}
  
 /*************************************** FUNCIONES DE LA OPCION 6 ***************************************/ 
 
-
+/*
 void guardar_un_animal(Animal* animal, fstream archivo){
 
     string nombre = animal -> obtener_nombre();
@@ -266,7 +266,7 @@ void guardar_un_animal(Animal* animal, fstream archivo){
 
     archivo << nombre << "," << edad << "," << tamano << "," << especie << "," << personalidad << endl;
 
-}
+}*/
 
  
 void guardar_salir( Guarderia* mi_guarderia ){ 
@@ -276,7 +276,15 @@ void guardar_salir( Guarderia* mi_guarderia ){
     fstream archivo_guarderia(RUTA_ARCHIVO, ios::out);
  
     for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia->obtener_cantidad()) ; numero_de_animal++ ){ 
-        guardar_un_animal(mi_guarderia->mostrar(numero_de_animal), archivo_guarderia);
+        
+        string nombre = mi_guarderia->mostrar(numero_de_animal) -> obtener_nombre();
+        int edad = mi_guarderia->mostrar(numero_de_animal) -> obtener_edad();
+        string tamano = mi_guarderia->mostrar(numero_de_animal) -> obtener_tamano();
+        string especie = ESPECIE_STRING[mi_guarderia->mostrar(numero_de_animal) -> resolver_especie()];
+        string personalidad = mi_guarderia->mostrar(numero_de_animal) -> obtener_personalidad();
+
+        archivo_guarderia << nombre << "," << edad << "," << tamano << "," << especie << "," << personalidad << endl;
+
     } 
  
     archivo_guarderia.close(); 

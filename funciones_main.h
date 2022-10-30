@@ -55,7 +55,7 @@ int  pedir_eleccion();
        Recibe la eleccion del usuario verificada (int) entre 1 y CANTIDAD_OPCIONES 
  POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
 _______________________________________________________________________________*/ 
-void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion, int* estado_guarderia ); 
+void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion); 
 
 
 ////////////////////////////////////////////////////////////////////////////////////

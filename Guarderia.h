@@ -54,12 +54,7 @@ class Guarderia{
             void eliminar_elemento(int posicion);
 
         //Mostrar Elemento
-            void mostrar(int posicion);
-        
-        //Mostrar
-        //PRE: Guardería cargada con animales
-            void mostrar();
-        
+            Animal* mostrar(int posicion);
     
     private:
         //SWAP
