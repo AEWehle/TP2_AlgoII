@@ -34,8 +34,8 @@ string elimina_espacios(string texto){
 }
 
 
-
-int string_a_entero( string texto ){
+// PARA ESTO ESTÁ LA FUNCIÓN stoi()
+/*int string_a_entero( string texto ){
     long unsigned int largo= (long unsigned int)texto.length();
     int entero = 0;
 
@@ -48,7 +48,7 @@ int string_a_entero( string texto ){
         }
     }
     return entero;
-}
+}*/
 
 
 
