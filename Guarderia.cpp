@@ -87,8 +87,8 @@ void Guarderia::eliminar_elemento(int posicion){
 
 
 //Mostrar Elemento
-void Guarderia::mostrar(int posicion){
-    lista_de_animales.consulta(posicion);
+Animal* Guarderia::mostrar(int posicion){
+    return lista_de_animales.consulta(posicion);
 }
 
 

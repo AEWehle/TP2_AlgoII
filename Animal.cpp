@@ -31,7 +31,7 @@ void Animal::alimentar(){
 
 void Animal::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
-    // cout << "____________________"<< nombre << "______________________________" << endl;
+    // cout << "____________________"<< especie << "______________________________" << endl;
     cout << "       - " << "Nombre: " << nombre << "." << endl;
     cout << "       - " << edad << " años." << endl;
     cout << "       - " << "Es " << tamano << " m2." << endl;
@@ -42,5 +42,17 @@ void Animal::mostrar(){
 
 string Animal::obtener_nombre(){
     return nombre;
+}
+
+int Animal::obtener_edad(){
+    return edad;
+}
+
+string Animal::obtener_tamano(){
+    return tamano;
+}
+
+string Animal::obtener_personalidad(){
+    return personalidad;
 }
 
