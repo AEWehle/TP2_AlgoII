@@ -50,15 +50,14 @@ void Guarderia::agregar_animal(Animal* nuevo_animal){
 int Guarderia::obtener_posicion(string nombre){
     int cantidad_de_animales = lista_de_animales.obtener_cantidad();
     int posicion = 1;
-    int i = 0;
 
-    while(i < cantidad_de_animales &&  lista_de_animales.consulta(posicion)->obtener_nombre() != nombre){
-        posicion = ++i;
+    while(posicion <= cantidad_de_animales && lista_de_animales.consulta(posicion)->obtener_nombre() != nombre){
+        posicion++;
     }
     
-    if (posicion == cantidad_de_animales) {
-        cout << "El animal " << nombre << " no se encuentra en la lista" << endl ;
-        //posicion = NO_SE_ENCUENTRA;
+    if (posicion > cantidad_de_animales) {
+        //cout << "El animal " << nombre << " no se encuentra en la lista" << endl ;
+        posicion = NO_SE_ENCUENTRA;
     }
     return posicion;
 }
