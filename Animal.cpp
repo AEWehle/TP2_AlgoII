@@ -9,7 +9,7 @@ Animal::Animal(){
     hambre = 0;
 }
 
-Animal::Animal( string nombre, int edad, int tamano, string personalidad ){
+Animal::Animal( string nombre, int edad, string tamano, string personalidad ){
     this -> nombre = nombre;
     this -> edad =  edad;
     this -> tamano = tamano;
@@ -34,7 +34,7 @@ void Animal::mostrar(){
     // cout << "____________________"<< nombre << "______________________________" << endl;
     cout << "       - " << "Nombre: " << nombre << "." << endl;
     cout << "       - " << edad << " años." << endl;
-    cout << "       - " << "Es " << TAMANOS_STRING[ tamano ] << " m2." << endl;
+    cout << "       - " << "Es " << tamano << " m2." << endl;
     cout << "       - " << "Es " << personalidad << "." << endl;
     cout << "       - " << "Tiene " << hambre << "\% de hambre y está " << higiene << "\% limpio." << endl << endl;
 }

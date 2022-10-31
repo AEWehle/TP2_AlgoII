@@ -11,9 +11,6 @@ Guarderia::Guarderia(){
     //se crea una lista vacía
 }
 
-Guarderia::Guarderia(const string archivo){
-    
-}
 
 Guarderia::~Guarderia(){
     // if(cantidad_de_animales > 0){
@@ -42,13 +39,11 @@ Guarderia::~Guarderia(){
 //     } 
 // }
 
-//Cargar
+//Agrega un animal al final de la lista
 void Guarderia::agregar_animal(Animal* nuevo_animal){
-    if(lista_de_animales.hay_siguiente() == false){
-        lista_de_animales.alta(nuevo_animal,lista_de_animales.obtener_cantidad()+1);
-    }else{
-        cout << "Error al intentar agregar un animal" << endl;
-    }
+    
+    lista_de_animales.alta(nuevo_animal,lista_de_animales.obtener_cantidad()+1);
+
 }
 
 

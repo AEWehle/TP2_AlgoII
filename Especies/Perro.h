@@ -9,7 +9,7 @@ using namespace std;
 class Perro: public Animal{
 public:
     Perro();
-    Perro( string nombre, int edad, int tamano, string personalidad );
+    Perro( string nombre, int edad, string tamano, string personalidad );
     void mostrar() override;
     Especie resolver_especie() override;
     ~Perro();

@@ -9,7 +9,7 @@ using namespace std;
 class Gato: public Animal{
 public:
     Gato();
-    Gato( string nombre, int edad, int tamano, string personalidad );
+    Gato( string nombre, int edad, string tamano, string personalidad );
     void mostrar() override;
     Especie resolver_especie() override;
     ~Gato();
