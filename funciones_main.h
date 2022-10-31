@@ -58,6 +58,8 @@ int  pedir_eleccion();
 _______________________________________________________________________________*/ 
 void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion); 
 
+Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano, string personalidad );
+
 
 ////////////////////////////////////////////////////////////////////////////////////
  

@@ -142,7 +142,7 @@ _______________________________________________________________________________*
     return ( cantidad_animales == 0 ); 
 }*/
 
-
+/*
 void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable 
     unsigned long primer_coma     = (unsigned long)  animales_csv.find(','); 
     unsigned long segunda_coma    = (unsigned long)  animales_csv.find(',', (primer_coma + 1)); 
@@ -166,8 +166,8 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
  
     mi_guarderia->agregar_animal(animal_dela_linea); 
     
+
     // verificar_almacenamiento( mi_guarderia ); // ya no es necesario 
-} 
 
 
 /*  Devuelve un string formato csv del animal correspondiente al numero_de_animal 

@@ -10,10 +10,10 @@ const int CANTIDAD_ESPECIES = 7;
 const int CANTIDAD_PERSONALIDADES = 4;
 const int CANTIDAD_TAMANOS = 5;
 
-const char ESPECIE_CHAR [ CANTIDAD_ESPECIES ] = { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
-const string ESPECIE_STRING[ CANTIDAD_ESPECIES ]= { "PERRO", "GATO", "CABALLO", "ROEDOR", "CONEJO", "ERIZO", "LAGARTIJA" }; 
+const char ESPECIE_CHAR[ CANTIDAD_ESPECIES ] = { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
+const string ESPECIE_STRING[ CANTIDAD_ESPECIES ]= { "Perro", "Gato", "Caballo", "Roedor", "Conejo", "Erizo", "Lagartija" }; 
 const string PERSONALIDADES[ CANTIDAD_PERSONALIDADES ] = { "Dormilón", "Juguetón", "Sociable", "Travieso" };
-const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "diminuto", "pequeño", "mediano", "grande", "gigante" };
+const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "Diminuto", "Pequeño", "Mediano", "Grande", "Gigante" };
 
 enum Especie { ESPECIE_INVALIDA = 0, P, G, C, R, O, E, L }; 
 
