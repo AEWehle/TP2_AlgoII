@@ -1,15 +1,15 @@
 #ifndef FUNCIONES_MAIN_H_ 
 #define FUNCIONES_MAIN_H_ 
 #include <string> 
+#include "Archivos_auxiliares/nodo.h" 
 #include "Guarderia.h"
-#include "Especies/Perro.h"
-#include "Especies/Gato.h"
-#include "Especies/Caballo.h"
-#include "Especies/Roedor.h"
-#include "Especies/Conejo.h"
-#include "Especies/Erizo.h"
-#include "Especies/Lagartija.h"
-#include "nodo.h" 
+// #include "Especies/Perro.h" // estos ya se incluyen a traves de guarderia
+// #include "Especies/Gato.h"
+// #include "Especies/Caballo.h"
+// #include "Especies/Roedor.h"
+// #include "Especies/Conejo.h"
+// #include "Especies/Erizo.h"
+// #include "Especies/Lagartija.h"
 using namespace std;  
  
 /* ________________________funciones_main.h_____________________________________ 

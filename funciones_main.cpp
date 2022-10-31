@@ -1,19 +1,19 @@
 #include <iostream>  
 #include <string> 
 #include <fstream> 
-#include "Animal.h"
 #include "funciones_main.h" 
-#include "funciones_auxiliares.h" 
+#include "Archivos_auxiliares/funciones_auxiliares.h" 
+#include "Archivos_auxiliares/nodo.h" 
 #include "opciones.h" 
 #include "Guarderia.h"
-#include "Especies/Perro.h"
-#include "Especies/Gato.h"
-#include "Especies/Caballo.h"
-#include "Especies/Roedor.h"
-#include "Especies/Conejo.h"
-#include "Especies/Erizo.h"
-#include "Especies/Lagartija.h"
-#include "nodo.h" 
+// #include "Animal.h"
+// #include "Especies/Perro.h" // estos ya se incluyen a traves de guarderia
+// #include "Especies/Gato.h"
+// #include "Especies/Caballo.h"
+// #include "Especies/Roedor.h"
+// #include "Especies/Conejo.h"
+// #include "Especies/Erizo.h"
+// #include "Especies/Lagartija.h"
 using namespace std;  
  
  

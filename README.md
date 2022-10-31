@@ -1,6 +1,6 @@
 # TP2_AlgoII
 
-COMANDO: g++ *.cpp Especies/*.cpp -o TP2 -Wall -Werror -Wconversion
+COMANDO: g++ *.cpp Especies/*.cpp Archivos_auxiliares/*.cpp -o TP2 -Wall -Werror -Wconversion -fsanitize=address
 
 Para ejecutar ./TP2
 
@@ -23,7 +23,7 @@ ponen su nombre de usuario
 ponen la siguiente clave --->  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
 
 git pull                                     Ponerlo para verificar si alguine del grupo pusheó algún cambio
-                                                te asegurás tenes la úlrima versión
+                                                te asegurás tener la última versión
 
 git checkout nombre_branch                   Primero hacerlo con la main y despues con la brunch en la que estás trabajando
 

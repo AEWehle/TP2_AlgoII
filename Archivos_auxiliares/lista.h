@@ -5,16 +5,16 @@
 
 template <typename Dato>
 class Lista {
-        //atributos
+//atributos
     private:
-        // Puntero al primer Nodo
+        
         Nodo<Dato>* primero;
-        // Cantidad de Nodos
+        
         int cantidad;
-        // Puntero al Nodo actual
+        
         Nodo<Dato>* actual;
 
-        //metodos
+//metodos
     public:
         // Constructor
         // pre: -
@@ -50,7 +50,7 @@ class Lista {
 
         // pre: hay_siguiente() es True
         // pos: devuelve el dato y mueve el cursor al siguiente
-        Dato siguiente();
+        Dato* siguiente();
 
         // pos: pone el cursor al principio
         void iniciar();
@@ -70,7 +70,7 @@ Lista<Dato>::Lista() {
 
 template <typename Dato>
 void Lista<Dato>::alta(Dato* dato, int pos) {
-    Nodo<Dato>* nuevo = new Nodo(dato);
+    Nodo<Dato>* nuevo = new Nodo<Dato>(dato);
     Nodo<Dato>* siguiente = primero;
     if (pos == 1) {
         this -> primero = nuevo;
@@ -136,8 +136,8 @@ bool Lista<Dato>::hay_siguiente() {
 }
 
 template <typename Dato>
-Dato Lista<Dato>::siguiente() {
-    Dato dato = this -> actual->obtener_dato();
+Dato* Lista<Dato>::siguiente() {
+    Dato* dato = this -> actual->obtener_dato();
     this -> actual = this -> actual->obtener_siguiente();
     return dato;
 }
