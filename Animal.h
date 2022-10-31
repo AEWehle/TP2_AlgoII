@@ -21,7 +21,7 @@ class Animal{
 protected:
     string nombre;
     int    edad;	        //  [0-100]
-    string tamano;	            //	[ D<2, P<10, M>=10, Gr>=20, Gi>=50 ]    
+    string tamano;	        //	[ D<2, P<10, M>=10, Gr>=20, Gi>=50 ]    
     string personalidad;	// 	[D J S T]
     bool   es_domestico;	//  [lo define la especie, indica si es adoptable]
     int    hambre; 	        //	[0-100]
@@ -77,6 +77,12 @@ _______________________________________________________________________________*
  POST:  Devuelve el nombre del animal
 _______________________________________________________________________________*/
     string obtener_nombre();
+
+    int obtener_edad();
+
+    string obtener_tamano();
+
+    string obtener_personalidad();
 
     virtual Especie resolver_especie() = 0;
 

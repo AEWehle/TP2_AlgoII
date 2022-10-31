@@ -2,7 +2,6 @@
 #include <iostream> 
 #include "Guarderia.h"
 // #include "Animal.h" // se inluye a traves de guarderia
-// #include "funciones_main.h" // esto no deberia tener relacion con la clase
 using namespace std; 
 
 
@@ -59,7 +58,7 @@ int Guarderia::obtener_posicion(string nombre){
     
     if (posicion == cantidad_de_animales) {
         cout << "El animal " << nombre << " no se encuentra en la lista" << endl ;
-        posicion = NO_SE_ENCUENTRA;
+        //posicion = NO_SE_ENCUENTRA;
     }
     return posicion;
 }
@@ -87,23 +86,10 @@ void Guarderia::eliminar_elemento(int posicion){
 
 
 //Mostrar Elemento
-void Guarderia::mostrar(int posicion){
-    lista_de_animales.consulta(posicion);
+Animal* Guarderia::mostrar(int posicion){
+    return lista_de_animales.consulta(posicion);
 }
 
-
-//Mostrar
-    void Guarderia::mostrar(){
-        // if (Guarderia::cantidad_de_animales == 0) {
-        //     cout << "La guardería está vacia. No hay animales para mostrar." << endl ;
-        // }
-        // else{
-        //     cout << "Salvaste los siguientes animales:\n";
-        //     for(int i=0; i<Guarderia::cantidad_de_animales; i++){
-        //     Guarderia::lista_de_animales[i]->mostrar();
-        // }
-        // }
-    }
 
 //Ver lista
 void Guarderia::ver_lista_de_animales(){

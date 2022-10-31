@@ -67,7 +67,8 @@ void cargar_guarderia(Guarderia* mi_guarderia){
 
     archivo_guarderia.close();
 }
- 
+
+
 /*________imprimir_menu()______________________________________________________ 
  PRE: 
  POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
@@ -79,51 +80,50 @@ void imprimir_menu(){
     cout << "   4. Cuidar animales.\n"; 
     cout << "   5. Adoptar un animal.\n"; 
     cout << "   6. Guardar y salir.\n"; 
-} 
- 
- 
-int pedir_eleccion(){ 
-    string entrada; 
-    bool todo_bien = false; 
-    int eleccion = 0; 
-    while ( !todo_bien ){ 
-        cout << "Elegí un numero de la lista:" << endl; 
-        imprimir_menu(); 
-        cout << " >> "; 
-        //cin.ignore(); 
-        cin >> entrada; 
- 
-        eleccion = string_a_entero(entrada); 
-        todo_bien = verificar_eleccion( eleccion ); 
-        if( !todo_bien ){ 
-            cout << "Debe ser una opcion de la lista, podes elegir del 1 al " << CANTIDAD_OPCIONES << endl; 
-        } 
-    } 
-    return eleccion; 
-} 
- 
- 
-bool verificar_eleccion( int eleccion ){ 
+}
+
+
+bool eleccion_valida(int eleccion){ 
     return ( (1 <= eleccion) && (eleccion <= CANTIDAD_OPCIONES) ); 
-} 
+}
+
+
+int pedir_eleccion(){ 
+
+    string eleccion;
+    imprimir_menu();
+    cout << "Ingrese el numero de la opcion elegida: ";
+    cin >> eleccion;
+
+    int eleccion_int = stoi(eleccion);
+
+    while(!eleccion_valida(eleccion_int)){
+
+        //cin.clear();
+        //cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
+        cout << "La opcion ingresada es invalida, por favor ingrese una opcion valida: ";
+        cin >> eleccion;
+        eleccion_int = stoi(eleccion);
+
+    }
+
+    return eleccion_int;
+
+}
+
+
+void ejecutar_eleccion(Guarderia* mi_guarderia, int eleccion){ 
+
+    //if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
+    funcion_elegida[ eleccion - 1 ]( mi_guarderia );
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
  
 
-void preguntar_agregar_animal( Guarderia* mi_guarderia ){ 
-    cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> "; 
-    string linea_aux; 
-    while ( linea_aux.length() == 0 ){ 
-        cout << " >> "; 
-        getline( cin, linea_aux, '\n' ); 
-    } 
- 
-    if (string_a_mayuscula(linea_aux) == "SI"){ 
-        rescatar_animal( mi_guarderia ); 
-    } 
-    else { 
-        cout << "Ok, no agregamos nada." << endl;  
-        cout << endl << "Qué mas te gustaría hacer?\n"; 
-    } 
-} 
+
 
  
 /*________es_lista_vacia()_____________________________________________________ 
@@ -132,20 +132,14 @@ POST: Si la cantidad de animales guardados es 0 devuelve false y pregunta al usu
     ario si quiere agregar un animal. 
     De lo contrario devuelve true 
 _______________________________________________________________________________*/ 
-bool es_lista_vacia( Guarderia* mi_guarderia ){ 
+/*bool es_lista_vacia( Guarderia* mi_guarderia ){ 
     int cantidad_animales = mi_guarderia->obtener_cantidad();
     if ( cantidad_animales == 0 ){ 
         cout << "Por ahora no tenes animales en la reserva, podés agregar ya mismo.\n" << endl; 
         preguntar_agregar_animal( mi_guarderia ); 
     } 
     return ( cantidad_animales == 0 ); 
-}
-
-
-void ejecutar_eleccion( Guarderia* mi_guarderia, int eleccion){ 
-    if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
-    else{  funcion_elegida[ eleccion - 1 ]( mi_guarderia ); } 
-} 
+}*/
 
 
 void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre,edad,tamano,especie,personalidad ---> Loni,2,mediano,P,sociable 
@@ -209,35 +203,3 @@ string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool e
     string linea_animal = "nada"; 
     return linea_animal; 
 } 
-
-
-/*________crear_archivo_lectura()______________________________________________
- PRE: No existe un archivo con esa ruta
- POST: Lo crea y lo pasa como lectura
-_______________________________________________________________________________*/
-void crear_archivo( ifstream &archivo_animales ){
-    cout << "\n     Hubo un problema, no hay un archivo con tus animales que se llame " << RUTA_ARCHIVO << endl;
-    cout << "       Creo un archivo nuevo.";
-    archivo_animales.open( RUTA_ARCHIVO, ios::out );
-    archivo_animales.close();
-}
-
-
-void escribir_archivo( Guarderia* mi_guarderia ){ 
-    ifstream is_archivo_animales(RUTA_ARCHIVO); 
- 
-    if ( !is_archivo_animales.is_open() ) { 
-        crear_archivo( is_archivo_animales ); 
-    } 
- 
-    ofstream archivo_animales( RUTA_ARCHIVO ); 
- 
-    for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia->obtener_cantidad()) ; numero_de_animal++ ){ 
-        archivo_animales << armar_linea_animal( mi_guarderia, numero_de_animal, false ) << endl;  
-        // Va a quedar con una linea vacia al final del archivo, el programa enteinde que es el final
-    } 
- 
-    archivo_animales.close(); 
-} 
-
-
