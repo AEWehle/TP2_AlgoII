@@ -23,7 +23,10 @@ int main(){
     while ( estado_guarderia == ESTADO_ABIERTA ){
         eleccion = pedir_eleccion();
         cout << "Elegiste la opcion "<< eleccion << endl << endl;
-        // ejecutar_eleccion( mi_guarderia, eleccion );
+        ejecutar_eleccion( mi_guarderia, eleccion );
+        if(eleccion == OPCION_GUARDAR_Y_SALIR){
+        estado_guarderia = ESTADO_CERRADA;
+    }
     }
     
     // delete mi_guarderia;

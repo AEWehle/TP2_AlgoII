@@ -4,7 +4,6 @@
 #include "funciones_main.h"
 using namespace std; 
 
-const int OPCION_GUARDAR_Y_SALIR = 7;
 
 
 /* ________________________opciones.h_____________________________________

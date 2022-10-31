@@ -24,7 +24,7 @@ const char DELIMITADOR_ARCHIVO_CSV = '\n';
 const int CANTIDAD_OPCIONES = 6; 
 const int ESTADO_ABIERTA = 1;
 const int ESTADO_CERRADA = 0;
- 
+const int OPCION_GUARDAR_Y_SALIR = 6;
  
 /*________leer_archivo()_______________________________________________________ 
  PRE:  Necesita el archivo llamado RUTA_ARCHIVO con la informacion de los anim- 
@@ -86,18 +86,9 @@ bool verificar_eleccion( int eleccion );
        Recibe la eleccion del usuario verificada (int) entre 1 y CANTIDAD_OPCIONES 
  POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
 _______________________________________________________________________________*/ 
-void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion, int* estado_guarderia ); 
+void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion); 
  
- 
-/*________buscar_nombre()______________________________________________________ 
 
-PRE:  Recibe la base de datos (puntero a clase Guarderia) y el nombre
-    del animal buscado (string) 
-POST: Devuelve el numero de animal correspondiente en la lista de Animales de la  
- Base de Datos, si no lo encuentra devuelve -1. 
-_______________________________________________________________________________*/ 
-int buscar_nombre (Guarderia* mi_Guarderia, string animal_buscado); 
- 
  
 /*________mostrar_un_animal()___________________________________________________ 
 PRE:  Recibe la base de datos (puntero a Guarderia) y el nume- 

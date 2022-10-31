@@ -62,6 +62,11 @@ string pedir_nombre(){
     return nombre; 
 } 
  
+
+int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
+    return mi_guarderia->obtener_posicion(animal_buscado);
+}
+
  
 /*________pedir_edad()______________________________________________________ 
 PRE:  Le pide al usuario la edad hasta que cumpla que va de 0 a EDAD_MAX 
