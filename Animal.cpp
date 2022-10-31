@@ -56,3 +56,6 @@ string Animal::obtener_personalidad(){
     return personalidad;
 }
 
+bool Animal::es_adoptable(){
+    return es_domestico;
+}

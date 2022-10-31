@@ -86,5 +86,7 @@ _______________________________________________________________________________*
 
     virtual Especie resolver_especie() = 0;
 
+    bool es_adoptable();
+
 };
 #endif

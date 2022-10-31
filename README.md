@@ -62,6 +62,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 14 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
 
 
+
 ## COSAS HECHAS:
 
 A.V. - Acomodé el main, creería que ya no va a haber que cambiarlo
@@ -73,3 +74,11 @@ A.V. - Fui sacando todos los \n que encontré y cambiandolos por endl, me parece
 A.V. - Hice la función de guardar y salir, que escribe el archivo. Hice las funciones de mostrar edad, tamaño y personalidad para hacer la de guardar.
 A.V. - Arreglé errores para que compile.
 A.V. - Arreglé la función de rescatar. Cuando se ingresa en la edad una letra lo toma como edad 0, habría que arreglarlo, lo dejé comentado.
+
+
+AEW. - Cambié el nombre de un metodo de guarderia que devuelve un puntero al animal en la posicion de la lista
+            Guarderia -> mostrar()  =====>  Guarderia -> obtener_animal()
+AEW. - Eliminé la funcion verificar_almacenamiento ya que como usamos listas ese manejo se hace implicitamente
+AEW. - La funcion obtener pocion por nombre de animal estaba mal, iteraba dos veses en cada posicion
+AEW. - Puse algunos comentarios de pre y post, hay que seguir
+

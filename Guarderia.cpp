@@ -10,7 +10,7 @@ Guarderia::Guarderia(){
     //se crea una lista vacía
 }
 
-
+// Destrutor
 Guarderia::~Guarderia(){
     // if(cantidad_de_animales > 0){
     //     delete[] lista_de_animales;
@@ -39,25 +39,25 @@ Guarderia::~Guarderia(){
 // }
 
 //Agrega un animal al final de la lista
-void Guarderia::agregar_animal(Animal* nuevo_animal){
+void Guarderia::agregar_animal( Animal* nuevo_animal ){
     
-    lista_de_animales.alta(nuevo_animal,lista_de_animales.obtener_cantidad()+1);
+    lista_de_animales.alta( nuevo_animal, lista_de_animales.obtener_cantidad() + 1 );
 
 }
 
 
 //Obtener Posicion
-int Guarderia::obtener_posicion(string nombre){
+int Guarderia::obtener_posicion( string nombre ){
     int cantidad_de_animales = lista_de_animales.obtener_cantidad();
     int posicion = 1;
+    // int i = 0;
 
-    while(posicion <= cantidad_de_animales && lista_de_animales.consulta(posicion)->obtener_nombre() != nombre){
+    while( (posicion <= cantidad_de_animales) &&  (lista_de_animales.consulta( posicion  )->obtener_nombre() != nombre)){
         posicion++;
     }
     
-    if (posicion > cantidad_de_animales) {
-        //cout << "El animal " << nombre << " no se encuentra en la lista" << endl ;
-        posicion = NO_SE_ENCUENTRA;
+    if (posicion == cantidad_de_animales +1 ) {
+        cout << "El animal llamado " << nombre << " no se encuentra en la lista" << endl ;
     }
     return posicion;
 }
@@ -70,7 +70,7 @@ int Guarderia::obtener_cantidad(){
 
 
 //Eliminar Elemento
-void Guarderia::eliminar_elemento(int posicion){
+void Guarderia::eliminar_animal(int posicion){
     lista_de_animales.baja(posicion);
 }
 
@@ -84,8 +84,8 @@ void Guarderia::eliminar_elemento(int posicion){
 
 
 
-//Mostrar Elemento
-Animal* Guarderia::mostrar(int posicion){
+//Obtener animal
+Animal* Guarderia::obtener_animal(int posicion){
     return lista_de_animales.consulta(posicion);
 }
 
@@ -102,4 +102,6 @@ void Guarderia::ver_lista_de_animales(){
 }
 
 
-void Guarderia::copiar(Animal** &lista_animales_aux){}
+// void Guarderia::copiar(Animal** &lista_animales_aux){
+//     this -> lista_de_animales = lista_animales_aux;
+// }
