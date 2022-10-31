@@ -45,7 +45,7 @@ void cargar_guarderia(Guarderia* mi_guarderia){
     fstream archivo_guarderia(RUTA_ARCHIVO, ios::in);
 
     if(!archivo_guarderia.is_open()){
-        cout << "No se encontro un archivo con nombre \"" << RUTA_ARCHIVO << "\", se va a crear el archivo" << endl;
+        cout << "No se encontro un archivo con nombre \"" << RUTA_ARCHIVO << "\", se va a crear el archivo" << endl << endl;
         archivo_guarderia.open(RUTA_ARCHIVO, ios::out);     //Si no existe el archivo lo creo
         archivo_guarderia.close();
         archivo_guarderia.open(RUTA_ARCHIVO, ios::in);
@@ -74,12 +74,13 @@ void cargar_guarderia(Guarderia* mi_guarderia){
  POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
 _______________________________________________________________________________*/ 
 void imprimir_menu(){ 
-    cout << "   1. Listar animales.\n"; 
-    cout << "   2. Rescatar un animal\n"; 
-    cout << "   3. Buscar un animal.\n"; 
-    cout << "   4. Cuidar animales.\n"; 
-    cout << "   5. Adoptar un animal.\n"; 
-    cout << "   6. Guardar y salir.\n"; 
+    cout << "*****   MENU   *****" << endl << endl;
+    cout << "   1. Listar animales." << endl; 
+    cout << "   2. Rescatar un animal." << endl; 
+    cout << "   3. Buscar un animal." << endl;
+    cout << "   4. Cuidar animales." << endl;
+    cout << "   5. Adoptar un animal." << endl;
+    cout << "   6. Guardar y salir." << endl << endl;
 }
 
 

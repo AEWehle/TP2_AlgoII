@@ -56,10 +56,10 @@ string pedir_nombre(){
     cout << "Cómo se llama?" << endl; 
     string nombre; 
     while ( nombre.length() == 0 ){ 
-        cout << " >> "; 
+        //cout << " >> "; 
         getline( cin, nombre, '\n' ); 
     } 
-    nombre = string_a_mayuscula(nombre);    //es necesario?
+    //nombre = string_a_mayuscula(nombre);    //es necesario?
     return nombre; 
 } 
 
@@ -76,11 +76,11 @@ int pedir_edad(){
     cout << "Cuántos años tiene?" << endl << " >> ";
     string edad_string;  
     getline( cin, edad_string, '\n'); 
-    int edad = string_a_entero( edad_string ); 
+    int edad = stoi(edad_string); 
     while( ( edad > EDAD_MAX) || ( edad < 0) || ( edad_string == "" ) ){ 
-        cout << "Tiene que ser entre 0 y "<< EDAD_MAX << ", volvé a ingresar la edad:\n >> "; 
+        cout << "Tiene que ser entre 0 y "<< EDAD_MAX << ", volvé a ingresar la edad:" << endl << " >> "; 
         getline( cin, edad_string, '\n'); 
-        edad = string_a_entero( edad_string ); 
+        edad = stoi(edad_string); 
     } 
     return edad; 
 } 
@@ -201,15 +201,14 @@ string pedir_personalidad(){
  
  
 void rescatar_animal( Guarderia* mi_guarderia ){ 
-    cout << "Rescataste un animal!" << endl; 
+    cout << endl << "Rescataste un animal!" << endl; 
  
     string nombre = pedir_nombre(); 
  
     int numero_de_animal = buscar_nombre( mi_guarderia, nombre );
-    
-    if (numero_de_animal != mi_guarderia->obtener_cantidad()){  
-        cout << "Este nombre ya lo tiene otro animal:" << endl; 
-        mi_guarderia -> obtener_animal(numero_de_animal); 
+    if (numero_de_animal != ( mi_guarderia->obtener_cantidad()+1 ) ){  
+        cout << "Este nombre ya lo tiene otro animal! Podés elegir otro nombre o volver al menú." << endl; 
+        mi_guarderia -> obtener_animal(numero_de_animal)-> mostrar(); 
     } 
     else{ // No esta en mi_guarderia 
         int edad = pedir_edad();
@@ -236,7 +235,7 @@ void buscar_animal( Guarderia* mi_guarderia ){
     cout << "Ingrese el nombre del animal que busca:";
     getline(cin,nombre,'\n');
 
-    if(buscar_nombre(mi_guarderia,nombre) == NO_SE_ENCUENTRA){
+    if(buscar_nombre(mi_guarderia,nombre) == mi_guarderia->obtener_cantidad()){
         cout << nombre << "no se encuentra en la guardería." << endl;
     }else{
         mi_guarderia -> obtener_animal(buscar_nombre(mi_guarderia,nombre));

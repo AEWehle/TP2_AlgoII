@@ -52,7 +52,7 @@ int Guarderia::obtener_posicion( string nombre ){
     int posicion = 1;
     // int i = 0;
 
-    while( posicion < cantidad_de_animales &&  lista_de_animales.consulta( posicion  )->obtener_nombre() != nombre){
+    while( (posicion <= cantidad_de_animales) &&  (lista_de_animales.consulta( posicion  )->obtener_nombre() != nombre)){
         posicion++;
     }
     
