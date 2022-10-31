@@ -21,6 +21,7 @@ const string RUTA_ARCHIVO = "animales.csv";
 const string COMA_ESPACIO = ", "; 
 const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir. 
 const char DELIMITADOR_ARCHIVO_CSV = '\n'; 
+const string CANCELAR = "CANCELAR";
 
 enum OpcionMenu {
     LISTAR_ANIMALES = 1,

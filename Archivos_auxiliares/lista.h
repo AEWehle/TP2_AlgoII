@@ -3,6 +3,9 @@
 
 #include "nodo.h"
 
+//  EL ORDEN DE LOS ELEMENTOS SE EMPIEZA A CONTAR DESDE 1, NO DESDE 0
+
+
 template <typename Dato>
 class Lista {
 //atributos
@@ -23,7 +26,7 @@ class Lista {
 
         // pre: 0 < pos <= cantidad + 1
         // pos: Agrega d en la posicion pos (la primera es la 1)
-        void alta(Dato* d, int pos);
+        void alta(Dato* dato, int pos);
 
         // pre: 0 < pos <= cantidad
         // pos: devuelve el dato que esta en la posicion pos (empieza en 1)
@@ -77,7 +80,7 @@ void Lista<Dato>::alta(Dato* dato, int pos) {
     }
     else {
         Nodo<Dato>* anterior = obtener_nodo(pos - 1);
-        siguiente = anterior->obtener_siguiente();
+        siguiente = anterior -> obtener_siguiente();
         anterior->cambiar_siguiente(nuevo);
     }
     nuevo->cambiar_siguiente(siguiente);

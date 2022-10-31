@@ -14,6 +14,9 @@ using namespace std;
 
 const int NO_SE_ENCUENTRA = -1;
 
+
+//  EL ORDEN DE LOS ELEMENTOS SE EMPIEZA A CONTAR DESDE 1, NO DESDE 0
+
 //typedef Animal Dato; //-> Iba a ser para reutilizar la lista pero por ahora queda asi
 
 class Guarderia{
@@ -35,26 +38,35 @@ class Guarderia{
         //Constructor de copia
             Guarderia(const Guarderia &guarderia_aux);
 
-        //Copiar
-            void copiar(Animal** &lista_animales_aux);
-
-        //Ver lista de animales en la guarderia
+        /*Ver lista de animales en la guarderia
+            PRE:
+            POST: Imprime en terminal todos los animales*/
             void ver_lista_de_animales();
 
-        //Agregar
+        /*Agregar
+            PRE: El putero a Animal debe estar cargardo con los datos correctos
+            Post: Agrega un animal a la lista de animales */
             void agregar_animal(Animal* nuevo_animal);
 
-        //Obtener Posicion
+        /*Obtener Posicion
+            PRE:
+            POST: Devuelve la posicion en la lista del Animal con el nombre dado
+            Si no lo encuentra devuelve la cantidad de animales + 1  */
             int obtener_posicion(string nombre);
 
         //Obtener cantidad
             int obtener_cantidad();
 
-        //Eliminar Elemento
-            void eliminar_elemento(int posicion);
+        /*Eliminar animal
+            PRE:
+            POST: Elimina del la lista de animales al animal en la posicion dada*/
+            void eliminar_animal(int posicion);
 
-        //Mostrar Elemento
-            Animal* mostrar(int posicion);
+        /* Obtener animal
+        PRE:
+        POST: Devuleve un puntero al Animal en la posicion dada
+        */
+            Animal* obtener_animal(int posicion);
     
     private:
         //SWAP

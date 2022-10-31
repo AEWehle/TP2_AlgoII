@@ -165,22 +165,7 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
  
     mi_guarderia->agregar_animal(animal_dela_linea); 
     
-    verificar_almacenamiento( mi_guarderia ); 
-} 
-
-
-void verificar_almacenamiento( Guarderia* mi_guarderia ){ 
-    int cant_animales = mi_guarderia->obtener_cantidad();
-    if ( (cant_animales  % (BLOQUE_ANIMALES)) == 0 ){  
-          
-        int cantidad_bloques = cant_animales / (BLOQUE_ANIMALES) + 1; 
-        Animal** ptr_ptr_aux = new Animal*[ cantidad_bloques* BLOQUE_ANIMALES ]; 
- 
-        mi_guarderia->copiar(ptr_ptr_aux); 
- 
-        delete [] mi_guarderia; 
-        ptr_ptr_aux = nullptr;  
-    } 
+    // verificar_almacenamiento( mi_guarderia ); // ya no es necesario 
 } 
 
 

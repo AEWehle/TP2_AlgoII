@@ -68,3 +68,10 @@ A.V. - Fui dejando algunos comentarios en algunas líneas que no entiendo o no s
 A.V. - Fui sacando todos los \n que encontré y cambiandolos por endl, me parece que al usar C++ es lo más correcto. Habría que revisar todo el final.
 A.V. - Hice la función de guardar y salir, que escribe el archivo. Hice las funciones de mostrar edad, tamaño y personalidad para hacer la de guardar.
 A.V. - Arreglé errores para que compile.
+
+
+AEW. - Cambié el nombre de un metodo de guarderia que devuelve un puntero al animal en la posicion de la lista
+            Guarderia -> mostrar()  =====>  Guarderia -> obtener_animal()
+AEW. - Eliminé la funcion verificar_almacenamiento ya que como usamos listas ese manejo se hace implicitamente
+AEW. - La funcion obtener pocion por nombre de animal estaba mal, iteraba dos veses en cada posicion
+AEW. - Puse algunos comentarios de pre y post, hay que seguir
