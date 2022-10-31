@@ -99,12 +99,12 @@ int numero_a_tamano( int numero ){
 
 
 /*________pedir_tamano()______________________________________________________ 
-PRE:  Le pide al usuario el yamano hasta que sea un numero.
+PRE:  Le pide al usuario el tamano hasta que sea un numero.
     Si ingresa un número negativo ignora el signo.
 POST: Devuelve la calsificación correspondiente con el valor. 
 _______________________________________________________________________________*/ 
 int pedir_tamano(){ 
-    cout << "Cuánto espacio en m2 necesita para vivir cómodo?\n >> ";
+    cout << "Cuánto espacio en m2 poseerá como para vivir cómodo?\n >> ";
     string tamano_string;  
     getline( cin, tamano_string, '\n'); 
     int tamano = string_a_entero( tamano_string ); 
@@ -250,7 +250,20 @@ void cuidar_animales( Guarderia* mi_guarderia ){}
  
 /*************************************** FUNCIONES DE LA OPCION 5 ***************************************/ 
  
-void adoptar_animal( Guarderia* mi_guarderia ){}
+
+/*Adoptar animal 
+ Se deberá preguntar el espacio disponible para el animal (en metros cuadrados)
+  y mostrar todos los animales de la lista que podrían ser adoptados, es decir,
+  si tengo 5 metros cuadrados disponibles debo mostrar todos los animales dimi-
+  nutos y pequeños con su nombre, edad, especie y personalidad. 
+ Se le deberá pedir al usuario que elija entre alguno de los animales o si des-
+  ea cancelar la adopción. Si un animal es adoptado deberá ser removido de la 
+  lista. */
+void adoptar_animal( Guarderia* mi_guarderia ){
+    cout << "Para adoptar un animal es necesario saber qué tamaño disponen, según eso se le mostrará una lista de los disponibles" << endl;
+    int tamano_disponible =pedir_tamano
+
+}
 
  
 /*************************************** FUNCIONES DE LA OPCION 6 ***************************************/ 
