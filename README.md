@@ -55,7 +55,11 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 11 * PROBAR Y VER QUE TODO FUNCIONE Y QUE SE CUMPLA LO QUE PIDE EL ENUNCIADO DEL TP
 
-12 * La función rescatar_animal no hace exactamente lo que dice el TP, si el nombre ya está en la lista hay que preguntar si se quiere ingresar otro nombre o volver al menú
+12 * LISTO - La función rescatar_animal no hace exactamente lo que dice el TP, si el nombre ya está en la lista hay que preguntar si se quiere ingresar otro nombre o volver al menú
+
+13 * La función de mostrar la lista de animales no anda muy bien.
+
+14 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
 
 
 ## COSAS HECHAS:
@@ -68,3 +72,4 @@ A.V. - Fui dejando algunos comentarios en algunas líneas que no entiendo o no s
 A.V. - Fui sacando todos los \n que encontré y cambiandolos por endl, me parece que al usar C++ es lo más correcto. Habría que revisar todo el final.
 A.V. - Hice la función de guardar y salir, que escribe el archivo. Hice las funciones de mostrar edad, tamaño y personalidad para hacer la de guardar.
 A.V. - Arreglé errores para que compile.
+A.V. - Arreglé la función de rescatar. Cuando se ingresa en la edad una letra lo toma como edad 0, habría que arreglarlo, lo dejé comentado.

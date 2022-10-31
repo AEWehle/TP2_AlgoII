@@ -36,7 +36,7 @@ string elimina_espacios(string texto);
  PRE: Recive un texto (string)
  POST: Devuelve un entero con los numeros que fueron apareciendo.
 _______________________________________________________________________________*/
-int string_a_entero(string texto);
+//int string_a_entero(string texto);
 
 
 /*________buscar_en_array_de_string()__________________________________________
