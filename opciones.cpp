@@ -7,13 +7,23 @@
 #include "funciones_main.h" 
 #include "Guarderia.h"
 #include "opciones.h"
-using namespace std;  
+using namespace std;
+
+void afectar_animales(Guarderia* mi_guarderia){
+    int cantidad_animales = mi_guarderia->obtener_cantidad();
+    for(int i = 1; i <= cantidad_animales; i++) {
+       mi_guarderia->obtener_animal(i)->ensuciar();
+       mi_guarderia->obtener_animal(i)->dar_hambre(); 
+    }
+
+}
 
 
 /*************************************** FUNCIONES DE LA OPCION 1 ***************************************/ 
 // Listar animales
 
-void listar_animales( Guarderia* mi_guarderia ){ 
+void listar_animales( Guarderia* mi_guarderia ){
+    afectar_animales(mi_guarderia); 
     mi_guarderia->ver_lista_de_animales();
 /*
     if (mi_guarderia->obtener_cantidad()==0) {
@@ -206,6 +216,7 @@ int pedir_personalidad(){
  
  
 void rescatar_animal( Guarderia* mi_guarderia ){ 
+    afectar_animales(mi_guarderia); 
     cout << endl << "Rescataste un animal?" << endl; 
     
     cout << endl << "Cómo se llama?" << endl << " >> "; //Imprime desde afuera p/reutilizar func
@@ -251,6 +262,7 @@ void rescatar_animal( Guarderia* mi_guarderia ){
 /*************************************** FUNCIONES DE LA OPCION 3 ***************************************/ 
 
 void buscar_animal( Guarderia* mi_guarderia ){
+    afectar_animales(mi_guarderia); 
     string nombre;
 
 
@@ -429,6 +441,7 @@ int pedir_el_adoptado( Guarderia* mi_guarderia , Guarderia& lista_adoptables ){
 }
 
 void adoptar_animal( Guarderia* mi_guarderia ){
+    afectar_animales(mi_guarderia); 
     cout << endl << "Para adoptar un animal es necesario saber cuanto espacio disponen, según eso se le mostrará una lista de los disponibles" << endl;
     int tamano_maximo =  buscar_en_array_de_string( TAMANOS_STRING, pedir_tamano(), CANTIDAD_TAMANOS );
     
