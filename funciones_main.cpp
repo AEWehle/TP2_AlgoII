@@ -99,8 +99,10 @@ bool eleccion_valida(int eleccion, int cantidad_opciones){
 int pedir_eleccion(int cantidad_opciones){ 
 
     string eleccion;
+
     //imprimir_menu(cantidad_opciones); -> Comentada, se imprime menu desde afuera para poder reutilizar verificación
     cout << "Ingrese el numero de la opcion elegida: ";
+
     cin >> eleccion;
 
     int eleccion_int = stoi(eleccion);
@@ -126,6 +128,7 @@ void ejecutar_eleccion(Guarderia* mi_guarderia, int eleccion){
     funcion_elegida[ eleccion - 1 ]( mi_guarderia );
 
 }
+
 
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -196,3 +199,4 @@ string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool e
     string linea_animal = "nada"; 
     return linea_animal; 
 } 
+

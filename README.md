@@ -45,9 +45,9 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 6 * Dejamos el constructor de copia? En caso de que sí, hay que adaptarlo a listas
 
-7 * LA HACE MELI - Falta la función cuidar_animales() (dentro de opciones.cpp)
+7 * EN REVISION - Falta la función cuidar_animales() (dentro de opciones.cpp): Le quedan unos detalles al volver al menu anterior (manejo de memoria), y revisar una doble impresión que pasa en el archivo, 
 
-8 * Falta la función adoptar_animal() (dentro de opciones.cpp)
+8 * LISTO - Falta la función adoptar_animal() (dentro de opciones.cpp)
 
 9 * LISTO - Definir cómo quedará guardar_salir
 
@@ -57,11 +57,11 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 12 * LISTO - La función rescatar_animal no hace exactamente lo que dice el TP, si el nombre ya está en la lista hay que preguntar si se quiere ingresar otro nombre o volver al menú
 
-13 * La función de mostrar la lista de animales no anda muy bien.
+13 * lISTO - La función de mostrar la lista de animales no anda muy bien.
 
 14 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
 
-
+15 * UML -- (Lo hace LN)
 
 ## COSAS HECHAS:
 
@@ -81,4 +81,7 @@ AEW. - Cambié el nombre de un metodo de guarderia que devuelve un puntero al an
 AEW. - Eliminé la funcion verificar_almacenamiento ya que como usamos listas ese manejo se hace implicitamente
 AEW. - La funcion obtener pocion por nombre de animal estaba mal, iteraba dos veses en cada posicion
 AEW. - Puse algunos comentarios de pre y post, hay que seguir
+AEW. - EL PROGRAMA CORREEEE
+AEW. - HYA LEAK DE MEMORIAAAA, no sé de donde será pero hay que revisar la destruccion de la guarderia.
 
+MGC. - Me queda revisar leaks de memoria que no pude encontrar por qué pasan. Modificaciones de varias funciones (principalmente mostrar_menu y pedir_opcion) para reciclarlas cuando se quiere funcionalidad parecida. Vi un tema que en una de las opciones al crear el animal se le puede ingresar una letra cuando deberia ser número y esto no es correcto, lo reviso mañana y lo subo a mi branch, pero salvo revisiones creo que podríamos hacer el merge

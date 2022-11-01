@@ -34,8 +34,8 @@ void Animal::mostrar(){
     // cout << "____________________"<< especie << "______________________________" << endl;
     cout << "       - " << "Nombre: " << nombre << "." << endl;
     cout << "       - " << edad << " años." << endl;
-    cout << "       - " << "Es " << tamano << " m2." << endl;
-    cout << "       - " << "Es " << personalidad << "." << endl;
+    cout << "       - " << "Es " << tamano << endl;
+    cout << "       - " << "Es muy " << personalidad << "." << endl;
     cout << "       - " << "Tiene " << hambre << "\% de hambre y está " << higiene << "\% limpio." << endl << endl;
 }
 

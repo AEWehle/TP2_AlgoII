@@ -55,10 +55,10 @@ int Guarderia::obtener_posicion( string nombre ){
     while( (posicion <= cantidad_de_animales) &&  (lista_de_animales.consulta( posicion  )->obtener_nombre() != nombre)){
         posicion++;
     }
-    
+    /*  lo saco ya que se usa para cosas que no necesitan avisar al usuario que se buscó el nombre
     if (posicion == cantidad_de_animales +1 ) {
         cout << "El animal llamado " << nombre << " no se encuentra en la lista" << endl ;
-    }
+    }*/
     return posicion;
 }
 
@@ -92,8 +92,9 @@ Animal* Guarderia::obtener_animal(int posicion){
 
 //Ver lista
 void Guarderia::ver_lista_de_animales(){
+    cout << "Hay " << lista_de_animales.obtener_cantidad() << " animales en la reserva." << endl;
     if(lista_de_animales.obtener_cantidad()){
-        for(int i=1; i<lista_de_animales.obtener_cantidad()+1; i++){
+        for( int i = 1 ; i < (lista_de_animales.obtener_cantidad()+1) ; i++){
             lista_de_animales.consulta(i)->mostrar();
         }
     }else{

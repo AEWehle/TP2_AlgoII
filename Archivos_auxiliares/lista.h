@@ -37,7 +37,7 @@ class Lista {
         void baja(int pos);
 
         // pre: -
-        // pos: verdadero si la Lista esta vacia, F si no
+        // pos: True si la Lista esta vacia, False si no
         bool vacia();
 
         // Devuelve la cantidad elementos
@@ -47,8 +47,8 @@ class Lista {
         ~Lista();
 
         // Agregado Lista con cursores
-        // pos: True si hay alg�n dato m�s en la lista, False si
-        //      la lista es vac�a o si llegu� al final de la lista
+        // pos: True si hay algún dato más en la lista, False si
+        //      la lista es vacía o si llegué al final de la lista
         bool hay_siguiente();
 
         // pre: hay_siguiente() es True

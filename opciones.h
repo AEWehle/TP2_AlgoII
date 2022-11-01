@@ -27,8 +27,9 @@ void rescatar_animal      ( Guarderia* mi_guarderia );
 
 
 /*________buscar_animal()______________________________________________________
- PRE:  
- POST: 
+ PRE:  Recibe la base de datos actual.
+ POST: Le pregunta al usuario el nombre del animal, si lo encunetra lo muestra,
+  sino se lo notifica.
 _______________________________________________________________________________*/
 void buscar_animal        ( Guarderia* mi_guarderia );
  
@@ -41,8 +42,9 @@ void cuidar_animales      ( Guarderia* mi_guarderia );
  
 
  /*________adoptar_animal()______________________________________________________
- PRE:  
- POST: 
+ PRE:  Recibe la base de datos actual.
+ POST: Le pregunta al usuario qué tamaño dispone y le muetra un lista con los 
+ animales disponibles. Puede cancelar o adoptar ingresando el nombre.
 _______________________________________________________________________________*/
 void adoptar_animal       ( Guarderia* mi_guarderia );
 

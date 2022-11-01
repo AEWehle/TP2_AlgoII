@@ -68,9 +68,9 @@ class Guarderia{
         */
             Animal* obtener_animal(int posicion);
     
-    private:
+    // private:
         //SWAP
-            void swap(int posicion_1, int posicion_2);
+            // void swap(int posicion_1, int posicion_2);
 
 
 };
