@@ -34,23 +34,6 @@ string elimina_espacios(string texto){
 }
 
 
-// PARA ESTO ESTÁ LA FUNCIÓN stoi()
-int string_a_entero( string texto ){
-    long unsigned int largo= (long unsigned int)texto.length();
-    int entero = 0;
-
-    if (largo == 0) entero = 0;
-    else{
-        for(long unsigned int i = 0; i < largo; i++){
-            if (texto[i] >= '0' && texto[i] <= '9') { 
-                entero =  10 * entero + ((int) texto[i] - 48);
-            }
-        }
-    }
-    return entero;
-}
-
-
 
 int buscar_en_array_de_string( const string* array, string buscado, int largo ){
     int posicion;

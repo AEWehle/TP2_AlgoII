@@ -143,40 +143,6 @@ string pedir_tamano(){
     return TAMANOS_STRING[ tamano-1]; 
 } 
 
-
-/*
-void imprimir_tabla_especies(){
-    for (int i = 0 ; i < CANTIDAD_ESPECIES ; i++ ){
-        cout << "  " << ESPECIE_CHAR[i] << " - " << ESPECIE_STRING[i] << endl;
-    }
-}
-*/
-
-/*________es_espeice_posible()__________________________________________________ 
-    PRE: Recibe la especie ingresada todo en mayusculas, lo busca entre los pos- 
-    ibles. 
-    POST: Devuelve true o false si está o no respectivamente 
-_______________________________________________________________________________*/ 
-/*
-bool es_especie_posible ( string especie ) { 
-    bool todo_bien = false; 
-    int posicion = buscar_en_array_de_string( ESPECIE_STRING, especie, CANTIDAD_ESPECIES ); 
-        if (posicion != CANTIDAD_ESPECIES){ 
-            todo_bien = true; 
-        } 
-        else if ( especie.length() == 1 ){ 
-            //posicion = ESPECIE_CHAR.find( especie[0] ); 
-            if (posicion < CANTIDAD_ESPECIES && posicion >= 0){ 
-                todo_bien = true; 
-            } 
-        } 
-        else{ 
-            cout << "No se recastan animales de esa especie, puede ser:\n"; 
-            imprimir_tabla_especies(); 
-        } 
-    return todo_bien; 
-} */
-
  
 /*________pedir_especie()______________________________________________________ 
 PRE:  Le pide al usuario el especie hasta que cumpla las condiciones 
@@ -406,21 +372,35 @@ void cuidar_animales( Guarderia* mi_guarderia ){
  
 /*************************************** FUNCIONES DE LA OPCION 5 ***************************************/ 
  
-/* Muestra en terminal los animales que cuplen que son menores al tamaño
-             TAMANOS_STRING[ tamano_maximo (int) ] 
+/* Crea una lista con los animales que cuplen que son menores al tamaño
+             TAMANOS_STRING[ tamano_maximo (int) ] (inclusive)
 y que ademas son adoptables, es decir saltea a los erizos y lagartijas
 Guarda en la Lista lista_adoptables los mostrados*/
-void mostrar_animales_adoptables_segun_tamano( Guarderia* mi_guarderia, int tamano_maximo, Guarderia& lista_adoptables ){
-    cout << "Los animales que son aptos para ese espacio son:" << endl;
+
+void crear_lista_adoptables(Guarderia* mi_guarderia, int tamano_maximo, Guarderia& lista_adoptables){
     Animal* animal_actual;
     for( int numero_de_animal = 1;  numero_de_animal<= mi_guarderia->obtener_cantidad() ;  numero_de_animal++){
 
         animal_actual =  mi_guarderia -> obtener_animal( numero_de_animal );
         if ( (animal_actual -> es_adoptable()) && (buscar_en_array_de_string( TAMANOS_STRING, animal_actual -> obtener_tamano(), CANTIDAD_TAMANOS) <= tamano_maximo )){
-            animal_actual -> mostrar();
+            //animal_actual -> mostrar();
             lista_adoptables.agregar_animal( animal_actual );
         }
     }
+}
+
+/* Si hay animales posibles para adoptar, los muestra (imprime en pantalla) */
+
+bool adoptables_para_espacio(Guarderia& lista_adoptables){
+    if (lista_adoptables.obtener_cantidad()==0) {
+        return false;
+    }else{
+        cout << endl << "Se muestran los animales que podés adoptar según tu espacio disponible:" << endl;
+        for( int numero_de_animal = 1;  numero_de_animal<= lista_adoptables.obtener_cantidad() ;  numero_de_animal++){
+            lista_adoptables.obtener_animal(numero_de_animal)->mostrar();    
+        }
+    }
+    return true;
 }
 
 /*  PEDIR EL ADOPTADO:
@@ -449,40 +429,31 @@ int pedir_el_adoptado( Guarderia* mi_guarderia , Guarderia& lista_adoptables ){
 }
 
 void adoptar_animal( Guarderia* mi_guarderia ){
-    cout << endl << "Para adoptar un animal es necesario saber qué tamaño disponen, según eso se le mostrará una lista de los disponibles" << endl;
+    cout << endl << "Para adoptar un animal es necesario saber cuanto espacio disponen, según eso se le mostrará una lista de los disponibles" << endl;
     int tamano_maximo =  buscar_en_array_de_string( TAMANOS_STRING, pedir_tamano(), CANTIDAD_TAMANOS );
     
     Guarderia lista_adoptables;
-    cout << endl << "Si desea adoptar alguno de estos animales ingrese el nombre como se muestra." << endl;
-    mostrar_animales_adoptables_segun_tamano( mi_guarderia, tamano_maximo, lista_adoptables );
+    //cout << endl << "Si desea adoptar alguno de estos animales ingrese el nombre como se muestra." << endl;
+    //mostrar_animales_adoptables_segun_tamano( mi_guarderia, tamano_maximo, lista_adoptables );
+    crear_lista_adoptables( mi_guarderia, tamano_maximo, lista_adoptables );
 
-    cout << endl << "Si desea adoptar alguno, ingrese el nombre." << endl;
+    if(adoptables_para_espacio(lista_adoptables)){
+        cout << endl << "Si desea adoptar alguno, ingrese el nombre como se muestra." << endl;
 
-    int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
-    if ( elegido != -1 ){
-        cout << "Adoptaste a " << endl;
-        mi_guarderia -> obtener_animal( elegido + 1 ) -> mostrar();
-        mi_guarderia -> eliminar_animal( elegido + 1 );
+        int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
+        if ( elegido != -1 ){
+            cout << "Adoptaste a " << endl;
+            mi_guarderia -> obtener_animal( elegido + 1 ) -> mostrar();
+            mi_guarderia -> eliminar_animal( elegido + 1 );
+        }
+    }else{
+        cout << endl << "No hay animales para adoptar para el espacio ingresado. Volviendo a menú principal..." << endl;
     }
     cout << endl << "Qué más te gustaría hacer?" << endl;
 }
 
 
 /*************************************** FUNCIONES DE LA OPCION 6 ***************************************/ 
-
-/*
-void guardar_un_animal(Animal* animal, fstream archivo){
-
-    string nombre = animal -> obtener_nombre();
-    int edad = animal -> obtener_edad();
-    string tamano = animal -> obtener_tamano();
-    string especie = ESPECIE_STRING[animal -> resolver_especie()];
-    string personalidad = animal -> obtener_personalidad();
-
-    archivo << nombre << "," << edad << "," << tamano << "," << especie << "," << personalidad << endl;
-
-}*/
-
  
 void guardar_salir( Guarderia* mi_guarderia ){ 
 

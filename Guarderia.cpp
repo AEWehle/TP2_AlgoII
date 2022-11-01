@@ -18,25 +18,6 @@ Guarderia::~Guarderia(){
 }
 
 
-//Constructor de copia
-// Guarderia::Guarderia(const Guarderia& guarderia_aux){
-//     cantidad_de_animales = guarderia_aux.cantidad_de_animales;
-
-//     if (cantidad_de_animales > 0) {
-//         lista_de_animales = new Animal*;
-//         for (int i = 0; i < cantidad_de_animales; i++)
-//             lista_de_animales[i] = guarderia_aux.lista_de_animales[i];
-//     }
-
-// }
-
-
-//Copiar
-// void Guarderia::copiar(Animal** &lista_animales_aux){
-//     for( int i = 0; i < cantidad_de_animales ; i++){ 
-//         lista_animales_aux[i] = lista_de_animales[i]; 
-//     } 
-// }
 
 //Agrega un animal al final de la lista
 void Guarderia::agregar_animal( Animal* nuevo_animal ){
@@ -50,15 +31,11 @@ void Guarderia::agregar_animal( Animal* nuevo_animal ){
 int Guarderia::obtener_posicion( string nombre ){
     int cantidad_de_animales = lista_de_animales.obtener_cantidad();
     int posicion = 1;
-    // int i = 0;
 
     while( (posicion <= cantidad_de_animales) &&  (lista_de_animales.consulta( posicion  )->obtener_nombre() != nombre)){
         posicion++;
     }
-    /*  lo saco ya que se usa para cosas que no necesitan avisar al usuario que se buscó el nombre
-    if (posicion == cantidad_de_animales +1 ) {
-        cout << "El animal llamado " << nombre << " no se encuentra en la lista" << endl ;
-    }*/
+   
     return posicion;
 }
 
@@ -73,14 +50,6 @@ int Guarderia::obtener_cantidad(){
 void Guarderia::eliminar_animal(int posicion){
     lista_de_animales.baja(posicion);
 }
-
-
-
-// void Guarderia::swap(int posicion_1, int posicion_2){
-//     Animal* aux = Guarderia::lista_de_animales[posicion_1];
-//     Guarderia::lista_de_animales[posicion_1] = Guarderia::lista_de_animales[posicion_2];
-//     Guarderia::lista_de_animales[posicion_2] = aux;
-// }
 
 
 
@@ -102,7 +71,3 @@ void Guarderia::ver_lista_de_animales(){
     }
 }
 
-
-// void Guarderia::copiar(Animal** &lista_animales_aux){
-//     this -> lista_de_animales = lista_animales_aux;
-// }
