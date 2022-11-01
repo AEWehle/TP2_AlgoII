@@ -9,6 +9,8 @@ const int HIGIENE_MAX = 100;
 const int CANTIDAD_ESPECIES = 7; 
 const int CANTIDAD_PERSONALIDADES = 4;
 const int CANTIDAD_TAMANOS = 5;
+const int PUNTOS_HAMBRE = 10;
+const int PUNTOS_HIGIENTE = 10;
 
 const char ESPECIE_CHAR[ CANTIDAD_ESPECIES ] = { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
 const string ESPECIE_STRING[ CANTIDAD_ESPECIES ]= { "Perro", "Gato", "Caballo", "Roedor", "Conejo", "Erizo", "Lagartija" }; 
@@ -54,14 +56,31 @@ _______________________________________________________________________________*
  PRE: -
  POST: Establece hambre = 0 y muestra al usuario su nombre y comida
 _______________________________________________________________________________*/
-    void alimentar();
+    virtual void alimentar();
+
 
 
 /*________duchar()_____________________________________________________________
  PRE: -
  POST: Establece higiene = 100
 _______________________________________________________________________________*/
-    void duchar();
+    virtual void duchar();
+
+
+/*________dar_hambre()_____________________________________________________________
+ PRE: -
+ POST: Aumenta el hambre de acuerdo a PERSONALIDAD. Si hambre es 100,
+ deja en 100 e informa que se llegó al límite
+_______________________________________________________________________________*/
+    void dar_hambre();
+
+
+/*________ensuciar()_____________________________________________________________
+ PRE: -
+ POST: Baja la higiene de acuerdo a ESPECIE y PERSONALIDAD. Si higiene es 0,
+ deja en 0 e informa que se llegó al límite
+_______________________________________________________________________________*/
+    virtual void ensuciar();
 
 
 /*________mostrar()_____________________________________________________

@@ -24,6 +24,14 @@ void Roedor::mostrar(){
     Animal::mostrar();
     }
 
+void Roedor::ensuciar(){
+    higiene = 100;
+    }
+
+void Roedor::duchar(){
+    cout << nombre << ": - Soy un roedor, no necesito ducharme." << endl;
+}
+
 Especie Roedor::resolver_especie(){
     return R;
 }

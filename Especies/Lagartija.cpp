@@ -24,6 +24,14 @@ void Lagartija::mostrar(){
     Animal::mostrar();
 }
 
+void Lagartija::ensuciar(){
+    higiene = 100;
+}
+
+void Lagartija::duchar(){
+    cout << nombre << ": - Soy una lagartija, no necesito ducharme." << endl;
+}
+
 Especie Lagartija::resolver_especie(){
     return L;
 }

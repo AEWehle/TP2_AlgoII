@@ -3,6 +3,7 @@
 #include <fstream> 
 #include "funciones_main.h"
 #include "Guarderia.h"
+#include "opciones.h"
 // #include "Animal.h" // se inluye a traves de guarderia
 using namespace std; 
 
@@ -16,7 +17,8 @@ int main(){
     
     int eleccion;
     do{
-        eleccion = pedir_eleccion();
+        imprimir_menu(CANTIDAD_OPCIONES);
+        eleccion = pedir_eleccion(CANTIDAD_OPCIONES);
         ejecutar_eleccion(mi_guarderia, eleccion);
 
     }
