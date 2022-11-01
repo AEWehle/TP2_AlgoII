@@ -47,7 +47,7 @@ void preguntar_agregar_animal( Guarderia* mi_guarderia ){
  
 string pedir_nombre(){ 
 
-    cout << endl << "Cómo se llama?" << endl << " >> "; 
+    //cout << endl << "Cómo se llama?" << endl << " >> "; -> Imprimo desde afuera por reutilizacion
 
     string nombre; 
     while ( nombre.length() == 0 ){ 
@@ -220,7 +220,7 @@ int pedir_personalidad(){
 void rescatar_animal( Guarderia* mi_guarderia ){ 
     cout << endl << "Rescataste un animal?" << endl; 
     
-    cout << "Cómo se llama?" << endl; 
+    cout << endl << "Cómo se llama?" << endl << " >> "; //Imprime desde afuera p/reutilizar func
     string nombre = pedir_nombre();
     int opcion;
     
@@ -468,12 +468,12 @@ void guardar_salir( Guarderia* mi_guarderia ){
 
     fstream archivo_guarderia(RUTA_ARCHIVO, ios::out);
  
-    for ( int numero_de_animal = 0; numero_de_animal < (mi_guarderia->obtener_cantidad()) ; numero_de_animal++ ){ 
+    for ( int numero_de_animal = 1; numero_de_animal < (mi_guarderia->obtener_cantidad()+1) ; numero_de_animal++ ){ 
         
         string nombre       = mi_guarderia -> obtener_animal(numero_de_animal) -> obtener_nombre();
         int edad            = mi_guarderia -> obtener_animal(numero_de_animal) -> obtener_edad();
         string tamano       = mi_guarderia -> obtener_animal(numero_de_animal) -> obtener_tamano();
-        string especie      = ESPECIE_STRING[mi_guarderia -> obtener_animal(numero_de_animal) -> resolver_especie()];
+        char especie      = ESPECIE_CHAR[mi_guarderia -> obtener_animal(numero_de_animal) -> resolver_especie()-1];
         string personalidad = mi_guarderia -> obtener_animal(numero_de_animal) -> obtener_personalidad();
 
         archivo_guarderia << nombre << "," << edad << "," << tamano << "," << especie << "," << personalidad << endl;
