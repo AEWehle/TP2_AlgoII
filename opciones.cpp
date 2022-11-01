@@ -62,6 +62,20 @@ int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
     return mi_guarderia->obtener_posicion(animal_buscado);
 }
 
+
+bool validar_edad(string edad_st, int &edad){
+    bool edad_valida = true;
+
+    if(!isdigit(edad_st[0])){
+        edad_valida = false;
+    }else{
+        edad = stoi(edad_st);
+        edad_valida = (edad >= 0 && edad <= EDAD_MAX);
+    }
+
+    return edad_valida;
+
+}
  
 /*________pedir_edad()______________________________________________________ 
 PRE:  Le pide al usuario la edad hasta que cumpla que va de 0 a EDAD_MAX 
@@ -70,12 +84,19 @@ _______________________________________________________________________________*
 int pedir_edad(){ 
     cout << endl << "Cuántos años tiene?" << endl << " >> ";
     int edad;  
-    cin >> edad; //Si ingresan una letra lo toma como edad 0. Habría que arreglarlo
-    while( !(edad >= 0 && edad <= EDAD_MAX) ){ 
+    string edad_st;
+    bool edad_valida = true;
+
+    cin >> edad_st; //Si ingresan una letra lo toma como edad 0. Habría que arreglarlo
+    edad_valida = validar_edad(edad_st, edad);
+    
+
+    while( !edad_valida ){ 
         cout << "Tiene que ser entre 0 y "<< EDAD_MAX << ", volvé a ingresar la edad:" << endl << " >> "; 
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin >> edad;
+        cin >> edad_st;
+        edad_valida = validar_edad(edad_st, edad);
     } 
     return edad; 
 } 
@@ -201,6 +222,7 @@ int pedir_personalidad(){
     << "2 - Juguetón" << endl
     << "3 - Sociable" << endl
     << "4 - Travieso" << endl << endl << " >> ";
+    
     
     int personalidad;  
     cin >> personalidad;
