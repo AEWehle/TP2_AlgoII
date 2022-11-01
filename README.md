@@ -45,7 +45,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 6 * Dejamos el constructor de copia? En caso de que sí, hay que adaptarlo a listas
 
-7 * LA HACE MELI - Falta la función cuidar_animales() (dentro de opciones.cpp)
+7 * EN REVISION - Falta la función cuidar_animales() (dentro de opciones.cpp): Le quedan unos detalles al volver al menu anterior (manejo de memoria), y revisar una doble impresión que pasa en el archivo, 
 
 8 * LISTO - Falta la función adoptar_animal() (dentro de opciones.cpp)
 
@@ -83,3 +83,5 @@ AEW. - La funcion obtener pocion por nombre de animal estaba mal, iteraba dos ve
 AEW. - Puse algunos comentarios de pre y post, hay que seguir
 AEW. - EL PROGRAMA CORREEEE
 AEW. - HYA LEAK DE MEMORIAAAA, no sé de donde será pero hay que revisar la destruccion de la guarderia.
+
+MGC. - Me queda revisar leaks de memoria que no pude encontrar por qué pasan. Modificaciones de varias funciones (principalmente mostrar_menu y pedir_opcion) para reciclarlas cuando se quiere funcionalidad parecida. Vi un tema que en una de las opciones al crear el animal se le puede ingresar una letra cuando deberia ser número y esto no es correcto, lo reviso mañana y lo subo a mi branch, pero salvo revisiones creo que podríamos hacer el merge
