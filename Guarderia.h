@@ -67,10 +67,6 @@ class Guarderia{
         POST: Devuleve un puntero al Animal en la posicion dada
         */
             Animal* obtener_animal(int posicion);
-    
-    // private:
-        //SWAP
-            // void swap(int posicion_1, int posicion_2);
 
 
 };

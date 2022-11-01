@@ -32,13 +32,6 @@ _______________________________________________________________________________*
 string elimina_espacios(string texto);
 
 
-/*________string_a_entero()____________________________________________________
- PRE: Recive un texto (string)
- POST: Devuelve un entero con los numeros que fueron apareciendo.
-_______________________________________________________________________________*/
-//int string_a_entero(string texto);
-
-
 /*________buscar_en_array_de_string()__________________________________________
 PRE:  Recibe el array de strings, el string buscado y el largo del array
 POST: Devuelve la posicion correspondiente en el array.
