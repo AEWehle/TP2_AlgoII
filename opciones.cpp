@@ -290,20 +290,16 @@ void menu_elegir_individualmente(){
 
 
 
-void volver_menu_anterior(){
-
-}
-
 
 void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
     cout << "Elegiste la opción: Elegir Individualmente." << endl;
     cout << "Vamos a pasar por todos los animales en la Guardería." << endl;
     cout << "Ingresá la opción correspondiente según lo que quieras hacer con cada uno." << endl;
 
-    int i = 0;
+    int i = 1;
     int eleccion;
     
-    while ( ( i < (mi_guarderia->obtener_cantidad()) ) && (eleccion != VOLVER_MENU_OP4) ){
+    while ( ( i <= (mi_guarderia->obtener_cantidad()) ) && (eleccion != VOLVER_MENU_OP4) ){
     mi_guarderia->obtener_animal(i)->mostrar();
     menu_elegir_individualmente();
     eleccion = pedir_eleccion(CANTIDAD_OPCIONES_EA);
@@ -327,7 +323,7 @@ void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
 
     }
 
-    if(i == mi_guarderia->obtener_cantidad()){
+    if(i == (mi_guarderia->obtener_cantidad()+1)){
         cout << "No hay más animales en la lista, volviendo a menú principal..." << endl;
         }
     
@@ -336,7 +332,7 @@ void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
 
 void alimentar_a_todos(Guarderia* mi_guarderia){
     cout << "Vamos a alimentar a todos los animales" << endl;
-    for(int i = 0; i < mi_guarderia->obtener_cantidad()+1;i++){
+    for(int i = 1; i < (mi_guarderia->obtener_cantidad()+1);i++){
         mi_guarderia->obtener_animal(i)->alimentar();
     }
     cout << "Alimentaste a todos los animales! Ellos te lo agradecen!!" << endl;
@@ -344,17 +340,23 @@ void alimentar_a_todos(Guarderia* mi_guarderia){
 
 void duchar_a_todos(Guarderia* mi_guarderia){
     cout << "Vamos a duchar a todos los animales" << endl;
-    for(int i = 0; i < mi_guarderia->obtener_cantidad()+1; i++){
+    for(int i = 1; i < (mi_guarderia->obtener_cantidad()+1); i++){
         mi_guarderia->obtener_animal(i)->duchar();
     }
     cout << "Duchaste a todos los animales! Ellos te lo agradecen!!" << endl;
 }
 
 
-const Manejo_Guarderia opcion_4[ CANTIDAD_OPCIONES_OP4-1] = {
+void volver_menu_ppal(Guarderia* mi_guarderia){
+    return;
+}
+
+
+const Manejo_Guarderia opcion_4[ CANTIDAD_OPCIONES_OP4] = {
     elegir_animal_a_cuidar,
     alimentar_a_todos,
     duchar_a_todos,
+    volver_menu_ppal,
 }; 
 
  
