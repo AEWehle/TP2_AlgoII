@@ -67,4 +67,7 @@ POST: Llena el array ngresado con el enterod eseado
 _______________________________________________________________________________*/
 void llenar_con_int ( int* array_int, int entero, int largo );
 
+
+void validar_opcion(string &st_opcion, int &opcion, int cant_opciones);
+
 #endif
