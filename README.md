@@ -61,7 +61,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 14 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
 
-
+15 * UML -- (Lo hace LN)
 
 ## COSAS HECHAS:
 
