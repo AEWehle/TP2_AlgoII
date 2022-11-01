@@ -45,7 +45,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 6 * PROBAR Y VER QUE TODO FUNCIONE Y QUE SE CUMPLA LO QUE PIDE EL ENUNCIADO DEL TP
 
-7 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
+7 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas. -> Minusculas en tamaño y personalidad?? Acentos en las palabras??
 
 8 * UML -- (LN puse un .txt con el link, despu)
 
