@@ -14,10 +14,14 @@ class Nodo{
         // crea un nodo con dato = d y siguiente = 0
         Nodo(Dato* dato);
 
+        /* Recibe el nodo que se quiere aputar con Siguiente, 
+        hace que el atrivuto Siguinete apunte a este */
         void cambiar_siguiente(Nodo* nuevo_siguiente);
 
+        /* Devuelve un puntero que apunta a lo mismo que el atributo Dato*/
         Dato* obtener_dato();
 
+        /* Devuelve un puntero que apunta a lo mismo que el atributo Siguiente*/
         Nodo* obtener_siguiente();
 };
 

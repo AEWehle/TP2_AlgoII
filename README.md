@@ -47,7 +47,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 7 * LA HACE MELI - Falta la función cuidar_animales() (dentro de opciones.cpp)
 
-8 * Falta la función adoptar_animal() (dentro de opciones.cpp)
+8 * LISTO - Falta la función adoptar_animal() (dentro de opciones.cpp)
 
 9 * LISTO - Definir cómo quedará guardar_salir
 
@@ -57,7 +57,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 12 * LISTO - La función rescatar_animal no hace exactamente lo que dice el TP, si el nombre ya está en la lista hay que preguntar si se quiere ingresar otro nombre o volver al menú
 
-13 * La función de mostrar la lista de animales no anda muy bien.
+13 * lISTO - La función de mostrar la lista de animales no anda muy bien.
 
 14 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
 
