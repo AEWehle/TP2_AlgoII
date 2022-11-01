@@ -71,4 +71,4 @@ AEW. - EL PROGRAMA CORREEEE
 AEW. - HYA LEAK DE MEMORIAAAA, no sé de donde será pero hay que revisar la destruccion de la guarderia.
 
 MGC. - Me queda revisar leaks de memoria que no pude encontrar por qué pasan. Modificaciones de varias funciones (principalmente mostrar_menu y pedir_opcion) para reciclarlas cuando se quiere funcionalidad parecida. Vi un tema que en una de las opciones al crear el animal se le puede ingresar una letra cuando deberia ser número y esto no es correcto, lo reviso mañana y lo subo a mi branch, pero salvo revisiones creo que podríamos hacer el merge\\
-- Funciona bien cuidar_animales! Revisar el ingreso correcto de los datos al rescatar un animal y manejo de memoria. Con fsanitize no hubo problemas en las corridas que hice, pero seguir verificando.
+- Funciona bien cuidar_animales! Verificado correcto de los datos al rescatar un animal y manejo de memoria.
