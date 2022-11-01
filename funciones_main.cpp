@@ -93,7 +93,7 @@ int pedir_eleccion(){
 
     string eleccion;
     imprimir_menu();
-    cout << "Ingrese el numero de la opcion elegida: ";
+    cout << "Ingrese el número de la opción elegida: " << endl << " >> ";
     cin >> eleccion;
 
     int eleccion_int = stoi(eleccion);
@@ -123,8 +123,6 @@ void ejecutar_eleccion(Guarderia* mi_guarderia, int eleccion){
 
 //////////////////////////////////////////////////////////////////////////////////
  
-
-
 
  
 /*________es_lista_vacia()_____________________________________________________ 
@@ -168,13 +166,15 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
     
 
     // verificar_almacenamiento( mi_guarderia ); // ya no es necesario 
+*/
 
-
-/*  Devuelve un string formato csv del animal correspondiente al numero_de_animal 
+/*  armal_linea_animal() 
+Devuelve un string formato csv del animal correspondiente al numero_de_animal 
     (int), lo devuelve listo parasubirlo al archivo o para imprimirlo (bool) 
     si se desea con la palabra de la especie de forma completa se indica con 
-    true en genero_completo (bool) */ 
-string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool especie_completo ){ 
+    true en genero_completo (bool) 
+*/
+/*string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool especie_completo ){ 
     string separador = COMA_ESPACIO; 
     if ( especie_completo ){ 
         // string especie_string = ESPECIE_STRING [ mi_guarderia -> lista_de_animales.consulta( numero_de_animal ) -> resolver_especie ]; 
@@ -188,4 +188,5 @@ string armar_linea_animal( Guarderia* mi_guarderia, int numero_de_animal, bool e
     // linea_animal = (linea_animal + separador) + to_string( mi_guarderia -> lista_de_animales[numero_de_animal] -> puntaje ); 
     string linea_animal = "nada"; 
     return linea_animal; 
-} 
+}
+*/

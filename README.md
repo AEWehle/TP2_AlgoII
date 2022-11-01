@@ -81,4 +81,5 @@ AEW. - Cambié el nombre de un metodo de guarderia que devuelve un puntero al an
 AEW. - Eliminé la funcion verificar_almacenamiento ya que como usamos listas ese manejo se hace implicitamente
 AEW. - La funcion obtener pocion por nombre de animal estaba mal, iteraba dos veses en cada posicion
 AEW. - Puse algunos comentarios de pre y post, hay que seguir
-
+AEW. - EL PROGRAMA CORREEEE
+AEW. - HYA LEAK DE MEMORIAAAA, no sé de donde será pero hay que revisar la destruccion de la guarderia.
