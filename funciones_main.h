@@ -23,6 +23,7 @@ const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir.
 const char DELIMITADOR_ARCHIVO_CSV = '\n'; 
 const string CANCELAR = "CANCELAR";
 
+
 enum OpcionMenu {
     LISTAR_ANIMALES = 1,
     RESCATAR_ANIMAL,
@@ -33,6 +34,21 @@ enum OpcionMenu {
     CANTIDAD_OPCIONES = 6
 };
 
+enum OpcionMenuOpcion4 {
+    ELEGIR_ANIMAL = 1,
+    ALIMENTAR_TODOS,
+    DUCHAR_TODOS,
+    VOLVER_MENU_PPAL,
+    CANTIDAD_OPCIONES_OP4 = 4
+};
+
+enum OpcionElegirAnimal {
+    ALIMENTAR = 1,
+    DUCHAR,
+    SIGUIENTE,
+    VOLVER_MENU_OP4,
+    CANTIDAD_OPCIONES_EA = 4
+};
 
 /*________cargar_guarderia()_______________________________________________________ 
  PRE:  
@@ -41,13 +57,15 @@ enum OpcionMenu {
 _______________________________________________________________________________*/ 
 void cargar_guarderia(Guarderia* mi_guarderia); 
 
+void imprimir_menu(int cantidad_elecciones);
+
 
 /*________pedir_eleccion()_____________________________________________________ 
  PRE: 
  POST: Le pide al usuario que ingrese una opcion de la lista hasta que sea una  
  opcion valida, y la devuelve. 
 _______________________________________________________________________________*/ 
-int  pedir_eleccion(); 
+int  pedir_eleccion(int cantidad_opciones); 
 
 
 /*________ejecutar_eleccion()__________________________________________________ 

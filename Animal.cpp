@@ -59,3 +59,39 @@ string Animal::obtener_personalidad(){
 bool Animal::es_adoptable(){
     return es_domestico;
 }
+
+void Animal::dar_hambre(){
+    if(hambre!=100){
+        if (personalidad == PERSONALIDADES[0]) {
+            //Caso mitad del hambre
+            hambre = hambre + PUNTOS_HAMBRE/2;
+        } else if (personalidad == PERSONALIDADES[1]) {
+            //Caso doble del hambre
+            hambre = hambre + 2*PUNTOS_HAMBRE;
+        }else {
+            hambre = hambre + PUNTOS_HAMBRE;
+        }
+    }else{
+        cout << "Parece que " << nombre << " tiene mucha hambre. Quizás es hora de alimentarl@." << endl;
+    }    
+}
+
+void Animal::ensuciar(){
+    if(higiene!=0){
+        if (personalidad == PERSONALIDADES[2]) {
+            //Caso se ensucia la mitad
+            higiene = higiene - PUNTOS_HIGIENTE/2;
+        } else if (personalidad == PERSONALIDADES[3]) {
+            //Caso se ensucia el doble
+            higiene = higiene - 2*PUNTOS_HIGIENTE;
+        }else {
+            higiene = higiene - PUNTOS_HIGIENTE;
+        }
+    }else{
+        cout << "Parece que " << nombre << " está muy sucio. Quizás es hora de ducharl@." << endl;
+    } 
+}
+
+void Animal::duchar(){
+    higiene = 100;
+}

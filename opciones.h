@@ -4,11 +4,11 @@
 #include "funciones_main.h"
 using namespace std; 
 
-
 /* ________________________opciones.h_____________________________________
   En este .h se encuentran declaradas las funciones que se ejecutan según la 
 elección del usuario.
 _______________________________________________________________________________*/
+
 
 /*________listar_animales()______________________________________________________
  PRE:  El usuario pidio listar los animales, recibe una structura tipo Guarderia
@@ -65,5 +65,8 @@ const Manejo_Guarderia funcion_elegida[ CANTIDAD_OPCIONES ] = {
     adoptar_animal,
     guardar_salir,
 };
+
+
+
 
 #endif

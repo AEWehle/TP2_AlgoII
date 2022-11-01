@@ -22,7 +22,15 @@ void Gato::mostrar(){
     // especie, nombre, edad, tamano, personalidad, hambre e higiene.
     cout << "____________________GATO_________________________________" << endl;
     Animal::mostrar();
-    }
+}
+
+void Gato::ensuciar(){
+    higiene = 100;
+}
+
+void Gato::duchar(){
+    cout << nombre << ": - Soy un gato, no necesito ducharme." << endl;
+}
 
 Especie Gato::resolver_especie(){
     return G;

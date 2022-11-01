@@ -15,7 +15,6 @@
 // #include "Especies/Erizo.h"
 // #include "Especies/Lagartija.h"
 using namespace std;  
- 
 
 
 
@@ -73,32 +72,40 @@ void cargar_guarderia(Guarderia* mi_guarderia){
  PRE: 
  POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
 _______________________________________________________________________________*/ 
-void imprimir_menu(){ 
-    cout << "*****   MENU   *****" << endl << endl;
-    cout << "   1. Listar animales." << endl; 
-    cout << "   2. Rescatar un animal." << endl; 
-    cout << "   3. Buscar un animal." << endl;
-    cout << "   4. Cuidar animales." << endl;
-    cout << "   5. Adoptar un animal." << endl;
-    cout << "   6. Guardar y salir." << endl << endl;
+void imprimir_menu(int cantidad_elecciones){ 
+    if(cantidad_elecciones == 6){
+        cout << "*****   MENU   *****" << endl << endl;
+        cout << "   1. Listar animales." << endl; 
+        cout << "   2. Rescatar un animal." << endl; 
+        cout << "   3. Buscar un animal." << endl;
+        cout << "   4. Cuidar animales." << endl;
+        cout << "   5. Adoptar un animal." << endl;
+        cout << "   6. Guardar y salir." << endl << endl;
+    }else if (cantidad_elecciones == 4) {
+        cout << "*****   CUIDAR ANIMALES: MENU   *****" << endl << endl;
+        cout << "   1. Elegir Individualmente." << endl; 
+        cout << "   2. Alimentar a todos." << endl; 
+        cout << "   3. Bañar a todos." << endl;
+        cout << "   4. Regresar al Menu Principal." << endl << endl;
+    }
 }
 
 
-bool eleccion_valida(int eleccion){ 
-    return ( (1 <= eleccion) && (eleccion <= CANTIDAD_OPCIONES) ); 
+bool eleccion_valida(int eleccion, int cantidad_opciones){ 
+    return ( (1 <= eleccion) && (eleccion <= cantidad_opciones) ); 
 }
 
 
-int pedir_eleccion(){ 
+int pedir_eleccion(int cantidad_opciones){ 
 
     string eleccion;
-    imprimir_menu();
+    //imprimir_menu(cantidad_opciones); -> Comentada, se imprime menu desde afuera para poder reutilizar verificación
     cout << "Ingrese el numero de la opcion elegida: ";
     cin >> eleccion;
 
     int eleccion_int = stoi(eleccion);
 
-    while(!eleccion_valida(eleccion_int)){
+    while(!eleccion_valida(eleccion_int, cantidad_opciones)){
 
         //cin.clear();
         //cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
@@ -168,7 +175,7 @@ void guardar_un_animal( Guarderia* mi_guarderia,  string animales_csv){ //nombre
     
 
     // verificar_almacenamiento( mi_guarderia ); // ya no es necesario 
-
+*/
 
 /*  Devuelve un string formato csv del animal correspondiente al numero_de_animal 
     (int), lo devuelve listo parasubirlo al archivo o para imprimirlo (bool) 

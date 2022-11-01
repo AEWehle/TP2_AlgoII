@@ -11,6 +11,8 @@ public:
     Roedor();
     Roedor( string nombre, int edad, string tamano, string personalidad );
     void mostrar() override;
+    void duchar() override;
+    void ensuciar() override;
     Especie resolver_especie() override;
     ~Roedor();
 };
