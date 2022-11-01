@@ -37,31 +37,17 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 2 * Revisar que todo esté con clases y no estructuras, incluso descripciones de pos y pre condiciones
 
-3 * LISTO - Definir como manejar el main. Incluí una variable "estado_guarderia" que empieza con una constante ESTADO_ABIERTA de forma tal que salga del while cuando esté en ESTADO_CERRADA (se pone estado_guarderia = ESTADO_CERRADA cuando se ejecuta la funcion guardar_salir)...se me ocurrió usar esto mientras tanto, pero se puede cambiar, fue lo que usé en mi TP1.
+3 * Revisar métodos de guarderia, si se necesitan todos o si algunos sobran ya que ahora se usan listas. Por ejemplo: el método privado "swap" lo vamos a usar?
 
-4 * LISTO - Definir cómo vamos a manejar la creación de la Guarderia a partir del archivo: llamamos a la función leer_archivo y que dentro se llame a la creación de la clase Guarderia? o que el constructor de Guarderia reciba como parametro el archivo y ella llame a leer_archivo? o qué otra forma sino?
+4 * Dejamos el constructor de copia? En caso de que sí, hay que adaptarlo a listas
 
-5 * Revisar métodos de guarderia, si se necesitan todos o si algunos sobran ya que ahora se usan listas. Por ejemplo: el método privado "swap" lo vamos a usar?
+5 * Revisar pos y pre condiciones de todo
 
-6 * Dejamos el constructor de copia? En caso de que sí, hay que adaptarlo a listas
+6 * PROBAR Y VER QUE TODO FUNCIONE Y QUE SE CUMPLA LO QUE PIDE EL ENUNCIADO DEL TP
 
-7 * LISTO - Falta la función cuidar_animales() (dentro de opciones.cpp): Le quedan unos detalles al volver al menu anterior (manejo de memoria), y revisar una doble impresión que pasa en el archivo, 
+7 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
 
-8 * LISTO - Falta la función adoptar_animal() (dentro de opciones.cpp)
-
-9 * LISTO - Definir cómo quedará guardar_salir
-
-10 * Revisar pos y pre condiciones de todo
-
-11 * PROBAR Y VER QUE TODO FUNCIONE Y QUE SE CUMPLA LO QUE PIDE EL ENUNCIADO DEL TP
-
-12 * LISTO - La función rescatar_animal no hace exactamente lo que dice el TP, si el nombre ya está en la lista hay que preguntar si se quiere ingresar otro nombre o volver al menú
-
-13 * LISTO - La función de mostrar la lista de animales no anda muy bien.
-
-14 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas.
-
-15 * UML -- (Lo hace LN)
+8 * UML -- (LN puse un .txt con el link, despu)
 
 ## COSAS HECHAS:
 
