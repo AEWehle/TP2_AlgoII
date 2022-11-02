@@ -17,8 +17,6 @@ const int NO_SE_ENCUENTRA = -1;
 
 //  EL ORDEN DE LOS ELEMENTOS SE EMPIEZA A CONTAR DESDE 1, NO DESDE 0
 
-//typedef Animal Dato; //-> Iba a ser para reutilizar la lista pero por ahora queda asi
-
 class Guarderia{
     //Atributos
     private:
@@ -39,33 +37,34 @@ class Guarderia{
             Guarderia(const Guarderia &guarderia_aux);
 
         /*Ver lista de animales en la guarderia
-            PRE:
-            POST: Imprime en terminal todos los animales*/
+            PRE:  -
+            POST: Imprime en terminal todos los animales de la lista*/
             void ver_lista_de_animales();
 
         /*Agregar
-            PRE: El putero a Animal debe estar cargardo con los datos correctos
-            Post: Agrega un animal a la lista de animales */
+            PRE: Recibe puntero a Animal, debe estar cargardo con los datos correctos
+            PPOST: Agrega un animal a la lista de animales */
             void agregar_animal(Animal* nuevo_animal);
 
         /*Obtener Posicion
-            PRE:
+            PRE:  -
             POST: Devuelve la posicion en la lista del Animal con el nombre dado
             Si no lo encuentra devuelve la cantidad de animales + 1  */
             int obtener_posicion(string nombre);
 
-        //Obtener cantidad
+        /*Obtener cantidad
+            PRE: -
+            POST: Devuelve la cantidad de animales en la Guarderia*/
             int obtener_cantidad();
 
         /*Eliminar animal
-            PRE:
-            POST: Elimina del la lista de animales al animal en la posicion dada*/
+            PRE:  La posición recibida del animal a borrar es válida.
+            POST: Elimina del la lista de animales al animal en la posicion dada.*/
             void eliminar_animal(int posicion);
 
         /* Obtener animal
-        PRE:
-        POST: Devuleve un puntero al Animal en la posicion dada
-        */
+        PRE:  La posición recibida del animal a obtener es válida.
+        POST: Develve un puntero al Animal en la posicion dada*/
             Animal* obtener_animal(int posicion);
 
 
