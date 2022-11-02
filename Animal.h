@@ -20,92 +20,110 @@ const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "Diminuto", "Pequeño", "Med
 enum Especie { ESPECIE_INVALIDA = 0, P, G, C, R, O, E, L }; 
 
 class Animal{
-protected:
-    string nombre;
-    int    edad;	        //  [0-100]
-    string tamano;	        //	[ D<2, P<10, M>=10, Gr>=20, Gi>=50 ]    
-    string personalidad;	// 	[D J S T]
-    bool   es_domestico;	//  [lo define la especie, indica si es adoptable]
-    int    hambre; 	        //	[0-100]
-    int    higiene;	        //	[0-100]
-    string comida;	        //	[lo define la especie, es lo que va a imprimir]
-public:
+    protected:
+        string nombre;
+        int    edad;	        //  [0-100]
+        string tamano;	        //	[ D<2, P<10, M>=10, Gr>=20, Gi>=50 ]    
+        string personalidad;	// 	[D J S T]
+        bool   es_domestico;	//  [lo define la especie, indica si es adoptable]
+        int    hambre; 	        //	[0-100]
+        int    higiene;	        //	[0-100]
+        string comida;	        //	[lo define la especie, es lo que va a imprimir]
+    public:
 
-/*________constructor Animal default___________________________________________
- PRE: - 
- POST: En el objeto Animal establece higiene = 100 y hambre = 0
-_______________________________________________________________________________*/
-    Animal();
-
-
-/*________constructor Animal con parametros____________________________________
- PRE: Los datos ingresados deben ser validados y correctos
- POST: En el objeto Animal carga los datos ingresados
-       Establece higiene = 100 y hambre = 0
-_______________________________________________________________________________*/
-    Animal( string nombre, int edad, string tamano, string personalidad );
-
-/*________destructor Animal con parametros____________________________________
- PRE: 
- POST: 
-_______________________________________________________________________________*/
-    virtual ~Animal() = 0;
+    /*________constructor Animal default___________________________________________
+     PRE: - 
+     POST: En el objeto Animal establece higiene = 100 y hambre = 0
+    _______________________________________________________________________________*/
+        Animal();
 
 
-/*________alimentar()_______________________________________________________
- PRE: -
- POST: Establece hambre = 0 y muestra al usuario su nombre y comida
-_______________________________________________________________________________*/
-    virtual void alimentar();
+    /*________constructor Animal con parametros____________________________________
+     PRE: Los datos recibidos son correctos (fueron validados previamente)
+     POST: Se crea un Animal con los datos ingresados.
+           Establece higiene = 100 y hambre = 0.
+    _______________________________________________________________________________*/
+        Animal( string nombre, int edad, string tamano, string personalidad );
+
+    /*________destructor Animal con parametros____________________________________
+     PRE: 
+     POST: 
+    _______________________________________________________________________________*/
+        virtual ~Animal() = 0;
+
+
+    /*________alimentar()_______________________________________________________
+     PRE: -
+     POST: Establece hambre = 0 y muestra al usuario su nombre y comida
+    _______________________________________________________________________________*/
+        virtual void alimentar();
 
 
 
-/*________duchar()_____________________________________________________________
- PRE: -
- POST: Establece higiene = 100
-_______________________________________________________________________________*/
-    virtual void duchar();
+    /*________duchar()_____________________________________________________________
+     PRE: -
+     POST: Establece higiene = 100
+    _______________________________________________________________________________*/
+        virtual void duchar();
 
 
-/*________dar_hambre()_____________________________________________________________
- PRE: -
- POST: Aumenta el hambre de acuerdo a PERSONALIDAD. Si hambre es 100,
- deja en 100 e informa que se llegó al límite
-_______________________________________________________________________________*/
-    void dar_hambre();
+    /*________dar_hambre()_____________________________________________________________
+     PRE: -
+     POST: Aumenta el hambre de acuerdo a PERSONALIDAD. Si hambre es 100,
+     deja en 100 e informa que se llegó al límite.
+    _______________________________________________________________________________*/
+        void dar_hambre();
 
 
-/*________ensuciar()_____________________________________________________________
- PRE: -
- POST: Baja la higiene de acuerdo a ESPECIE y PERSONALIDAD. Si higiene es 0,
- deja en 0 e informa que se llegó al límite
-_______________________________________________________________________________*/
-    virtual void ensuciar();
+    /*________ensuciar()_____________________________________________________________
+     PRE: -
+     POST: Baja la higiene de acuerdo a ESPECIE y PERSONALIDAD. Si higiene es 0,
+     deja en 0 e informa que se llegó al límite
+    _______________________________________________________________________________*/
+        virtual void ensuciar();
 
 
-/*________mostrar()_____________________________________________________
- PRE: -
- POST:  El Animal se muestra individualmente,
-        nombre, edad, tamano, especie, personalidad, hambre e higiene.
-_______________________________________________________________________________*/
-    virtual void mostrar();
+    /*________mostrar()_____________________________________________________
+     PRE: -
+     POST:  El Animal se muestra individualmente,
+            nombre, edad, tamano, especie, personalidad, hambre e higiene.
+    _______________________________________________________________________________*/
+        virtual void mostrar();
 
 
-/*________obtener_nombre()_____________________________________________________
- PRE: -
- POST:  Devuelve el nombre del animal
-_______________________________________________________________________________*/
-    string obtener_nombre();
+    /*________obtener_nombre()_____________________________________________________
+     PRE: -
+     POST:  Devuelve el nombre del animal
+    _______________________________________________________________________________*/
+        string obtener_nombre();
 
-    int obtener_edad();
+    /*________obtener_edad()_____________________________________________________
+     PRE: -
+     POST:  Devuelve la edad del animal
+    _______________________________________________________________________________*/
+        int obtener_edad();
 
-    string obtener_tamano();
+    
+    /*________obtener_tamano()_____________________________________________________
+     PRE: -
+     POST:  Devuelve el tamaño del animal
+    _______________________________________________________________________________*/
+        string obtener_tamano();
 
-    string obtener_personalidad();
+    
+    /*________obtener_personalidad()_____________________________________________________
+     PRE: -
+     POST:  Devuelve la personalidad del animal
+    _______________________________________________________________________________*/
+        string obtener_personalidad();
 
-    virtual Especie resolver_especie() = 0;
+        virtual Especie resolver_especie() = 0;
 
-    bool es_adoptable();
+    /*________obtener_nombre()_____________________________________________________
+     PRE: -
+     POST:  Devuelve un bool si es adoptable o no (definido por la especie).
+    _______________________________________________________________________________*/
+        bool es_adoptable();
 
 };
 #endif
