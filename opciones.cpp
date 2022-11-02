@@ -456,8 +456,8 @@ void adoptar_animal( Guarderia* mi_guarderia ){
         int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
         if ( elegido != -1 ){
             cout << "Adoptaste a " << endl;
-            mi_guarderia -> obtener_animal( elegido + 1 ) -> mostrar();
-            mi_guarderia -> eliminar_animal( elegido + 1 );
+            mi_guarderia -> obtener_animal( elegido ) -> mostrar();
+            mi_guarderia -> eliminar_animal( elegido);
         }
     }else{
         cout << endl << "No hay animales para adoptar para el espacio ingresado. Volviendo a menú principal..." << endl;

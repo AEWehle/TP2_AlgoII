@@ -11,7 +11,7 @@ Roedor::Roedor(){
 Roedor::Roedor( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
     // especie = 'R';
     comida = "queso";
-    es_domestico = false;
+    es_domestico = true;
 }
 
 Roedor::~Roedor(){
