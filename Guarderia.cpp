@@ -10,11 +10,9 @@ Guarderia::Guarderia(){
     //se crea una lista vacía
 }
 
-// Destrutor
+// Destrcutor
 Guarderia::~Guarderia(){
-    // if(cantidad_de_animales > 0){
-    //     delete[] lista_de_animales;
-    // }
+
 }
 
 
@@ -48,7 +46,6 @@ int Guarderia::obtener_cantidad(){
 
 //Eliminar Elemento
 void Guarderia::eliminar_animal(int posicion){
-    //delete lista_de_animales.consulta(posicion);
     lista_de_animales.baja(posicion);
 }
 
