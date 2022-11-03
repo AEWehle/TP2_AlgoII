@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream> 
 #include "Guarderia.h"
+#include "Archivos_auxiliares/funciones_auxiliares.h" 
 // #include "Animal.h" // se inluye a traves de guarderia
 using namespace std; 
 
@@ -31,7 +32,7 @@ int Guarderia::obtener_posicion( string nombre ){
     int cantidad_de_animales = lista_de_animales.obtener_cantidad();
     int posicion = 1;
 
-    while( (posicion <= cantidad_de_animales) &&  (lista_de_animales.consulta( posicion  )->obtener_nombre() != nombre)){
+    while( (posicion <= cantidad_de_animales) &&  ( string_a_mayuscula( lista_de_animales.consulta( posicion  )->obtener_nombre() ) != string_a_mayuscula( nombre ) )){
         posicion++;
     }
    
