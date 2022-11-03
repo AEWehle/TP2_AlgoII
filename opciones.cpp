@@ -270,7 +270,7 @@ void buscar_animal( Guarderia* mi_guarderia ){
     nombre = pedir_nombre();
 
     if(buscar_nombre(mi_guarderia,nombre) == mi_guarderia->obtener_cantidad()+1){
-        cout << nombre << "no se encuentra en la guardería." << endl;
+        cout << nombre << " no se encuentra en la guardería." << endl;
     }else{
         mi_guarderia -> obtener_animal(buscar_nombre(mi_guarderia,nombre))->mostrar();
 
@@ -297,7 +297,7 @@ void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
     cout << "Ingresá la opción correspondiente según lo que quieras hacer con cada uno." << endl;
 
     int i = 1;
-    int eleccion;
+    int eleccion = -1;
     
     while ( ( i <= (mi_guarderia->obtener_cantidad()) ) && (eleccion != VOLVER_MENU_OP4) ){
     mi_guarderia->obtener_animal(i)->mostrar();
