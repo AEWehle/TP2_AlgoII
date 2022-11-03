@@ -104,7 +104,9 @@ void Lista<Dato>::baja(int pos) {
         a_borrar = anterior->obtener_siguiente();
         anterior->cambiar_siguiente(a_borrar->obtener_siguiente());
     }
-    delete a_borrar; // Ojo si dentro de los nodos pedimos memoria
+    //delete[] a_borrar;
+    delete a_borrar->obtener_dato(); // Ojo si dentro de los nodos pedimos memoria
+    delete a_borrar;
     this -> cantidad--;
 }
 
@@ -115,9 +117,9 @@ bool Lista<Dato>::vacia() {
 
 template <typename Dato>
 Lista<Dato>::~Lista() {
-    while (! vacia()){
-        baja(1);
-    }
+    //while (! vacia()){
+   //     baja(1);
+    //}
 }
 
 template <typename Dato>

@@ -48,6 +48,7 @@ int Guarderia::obtener_cantidad(){
 
 //Eliminar Elemento
 void Guarderia::eliminar_animal(int posicion){
+    //delete lista_de_animales.consulta(posicion);
     lista_de_animales.baja(posicion);
 }
 
