@@ -10,9 +10,6 @@ _______________________________________________________________________________*
 
 
 const string RUTA_ARCHIVO = "animales.csv"; 
-const string COMA_ESPACIO = ", "; 
-const int BLOQUE_ANIMALES = 5; // Cantidad de memoria a pedir. 
-const char DELIMITADOR_ARCHIVO_CSV = '\n'; 
 const string CANCELAR = "CANCELAR";
 
 
@@ -26,6 +23,7 @@ enum OpcionMenu {
     CANTIDAD_OPCIONES = 6
 };
 
+
 enum OpcionMenuOpcion4 {
     ELEGIR_ANIMAL = 1,
     ALIMENTAR_TODOS,
@@ -34,6 +32,7 @@ enum OpcionMenuOpcion4 {
     CANTIDAD_OPCIONES_OP4 = 4
 };
 
+
 enum OpcionElegirAnimal {
     ALIMENTAR = 1,
     DUCHAR,
@@ -41,6 +40,15 @@ enum OpcionElegirAnimal {
     VOLVER_MENU_OP4,
     CANTIDAD_OPCIONES_EA = 4
 };
+
+
+/*________crear_nuevo_animal()__________________________________________________ 
+ PRE:  Recibe datos para crear un animal. En base a la especie recibida crea
+      un animal de la clase correspondiente (hija de Animal).
+ POST: Devuelve un puntero al animal creado. 
+_______________________________________________________________________________*/ 
+Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano, string personalidad );
+
 
 /*________cargar_guarderia()_______________________________________________________ 
  PRE:  Recibe puntero a mi_guarderia (Guarderia con lista de animales)
@@ -75,28 +83,6 @@ int  pedir_eleccion(int cantidad_opciones);
  POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
 _______________________________________________________________________________*/ 
 void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion); 
-
-
-/*________crear_nuevo_animal()__________________________________________________ 
- PRE:  Recibe datos para crear un animal. En base a la especie recibida crea
-      un animal de la clase correspondiente (hija de Animal).
- POST: Devuelve un puntero al animal creado. 
-_______________________________________________________________________________*/ 
-Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano, string personalidad );
-
-
-////////////////////////////////////////////////////////////////////////////////////
- 
- 
-/*________escribir_archivo()___________________________________________________ 
- PRE:   Necesita el archivo llamado RUTA_ARCHIVO para guaradr la información  
-    de los Animales en formato csv:  
-            titulo, genero, puntaje \n 
-        Recibe un puntero a la Guarderia con la informacion ac- 
-    tual de los Animales 
- POST:  
-_______________________________________________________________________________*/ 
-void escribir_archivo( Guarderia* mi_Guarderia ); 
 
 
 #endif

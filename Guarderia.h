@@ -19,10 +19,13 @@ const int NO_SE_ENCUENTRA = -1;
 
 class Guarderia{
     //Atributos
+
     private:
         Lista<Animal> lista_de_animales;
 
+
     //Metodos
+
     public:
         //Constructores
             //Sin Parametros

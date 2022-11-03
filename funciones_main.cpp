@@ -9,7 +9,6 @@
 using namespace std;  
 
 
-
 Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano, string personalidad ){ 
     Animal* nuevo_animal; 
     if(especie == 'P')
@@ -28,6 +27,7 @@ Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano
         nuevo_animal = new Lagartija( nombre, edad, tamano, personalidad );
 
     return nuevo_animal; 
+
 } 
  
 
@@ -57,6 +57,7 @@ void cargar_guarderia(Guarderia* mi_guarderia){
     }
 
     archivo_guarderia.close();
+
 }
 
 
@@ -65,6 +66,7 @@ void cargar_guarderia(Guarderia* mi_guarderia){
  POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
 _______________________________________________________________________________*/ 
 void imprimir_menu(int cantidad_elecciones){ 
+
     if(cantidad_elecciones == 6){ //Menú principal
         cout << endl << "*****   MENU   *****" << endl << endl;
         cout << "   1. Listar animales." << endl; 
@@ -73,6 +75,7 @@ void imprimir_menu(int cantidad_elecciones){
         cout << "   4. Cuidar animales." << endl;
         cout << "   5. Adoptar un animal." << endl;
         cout << "   6. Guardar y salir." << endl << endl;
+
     }else if (cantidad_elecciones == 4) { //Menú de cuidar animales
         cout << endl << "*****   CUIDAR ANIMALES: MENU   *****" << endl << endl;
         cout << "   1. Elegir Individualmente." << endl; 
@@ -80,20 +83,21 @@ void imprimir_menu(int cantidad_elecciones){
         cout << "   3. Bañar a todos." << endl;
         cout << "   4. Regresar al Menu Principal." << endl << endl;
     }
+
 }
 
 
-bool eleccion_valida(int eleccion, int cantidad_opciones){ 
+bool eleccion_valida(int eleccion, int cantidad_opciones){
+
     return ( (1 <= eleccion) && (eleccion <= cantidad_opciones)); 
+
 }
 
 
 int pedir_eleccion(int cantidad_opciones){ 
 
     string eleccion;
-
     cout << "Ingrese el numero de la opcion elegida: " << endl << " >> ";
-
     cin >> eleccion;
 
     int eleccion_int = string_a_entero(eleccion);
