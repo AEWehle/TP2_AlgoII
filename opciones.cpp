@@ -478,6 +478,7 @@ void adoptar_animal( Guarderia* mi_guarderia ){
 
     if(adoptables_para_espacio( lista_adoptables )){
         cout << endl << "Si desea adoptar alguno, ingrese el nombre como se muestra." << endl;
+        cout << "Nuestros Erizos y Lagartijas NO SON ADOPTABLES ya que son salvajes, por lo que no paarecerán en la lista" << endl;
 
         int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
         if ( elegido != ( lista_adoptables -> obtener_cantidad()+1)  ){
