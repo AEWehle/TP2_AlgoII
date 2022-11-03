@@ -38,3 +38,5 @@ TP2
 # VStudio
 *.json
 *.vscode
+
+*.dSYM
