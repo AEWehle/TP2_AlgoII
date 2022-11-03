@@ -60,6 +60,23 @@ bool Animal::es_adoptable(){
     return es_domestico;
 }
 
+int Animal::obtener_hambre(){
+    return hambre;
+}
+
+int Animal::obtener_higiene(){
+    return higiene;
+}
+
+void Animal::setear_hambre(int hambre_int){
+    hambre = hambre_int;
+}
+
+void Animal::setear_higiene(int higiene_int){
+    higiene = higiene_int;
+}
+
+
 void Animal::dar_hambre(){
     if(hambre!=100){
         if (personalidad == PERSONALIDADES[0]) {

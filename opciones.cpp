@@ -400,6 +400,8 @@ void crear_lista_adoptables(Guarderia* mi_guarderia, int tamano_maximo, Guarderi
         if ( (animal_actual -> es_adoptable()) && (buscar_en_array_de_string( TAMANOS_STRING, animal_actual -> obtener_tamano(), CANTIDAD_TAMANOS) <= tamano_maximo )){
             //animal_nuevo -> mostrar();
             lista_adoptables.agregar_animal( animal_nuevo );
+            lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_hambre(animal_actual->obtener_hambre());
+            lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_higiene(animal_actual->obtener_higiene());
         }
     }
 }

@@ -119,11 +119,35 @@ class Animal{
 
         virtual Especie resolver_especie() = 0;
 
-    /*________obtener_nombre()_____________________________________________________
+    /*________es_adoptable()_____________________________________________________
      PRE: -
      POST:  Devuelve un bool si es adoptable o no (definido por la especie).
     _______________________________________________________________________________*/
         bool es_adoptable();
+
+    
+    
+    /*________obtener_hambre()_____________________________________________________
+     PRE: -
+     POST:  Devuelve (int) de hambre.
+    _______________________________________________________________________________*/
+        int obtener_hambre();
+
+
+    /*________obtener_higiene()_____________________________________________________
+     PRE: -
+     POST:  Devuelve (int) de higiene.
+    _______________________________________________________________________________*/
+        int obtener_higiene();
+
+
+
+        void setear_hambre(int hambre_int);
+
+
+        void setear_higiene(int higiene_int);
+
+
 
 };
 #endif
