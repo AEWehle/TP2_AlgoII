@@ -40,3 +40,4 @@ TP2
 *.vscode
 
 *.dSYM
+*.DS_Store
