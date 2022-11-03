@@ -4,7 +4,6 @@
 #include "funciones_main.h"
 #include "Guarderia.h"
 #include "opciones.h"
-// #include "Animal.h" // se inluye a traves de guarderia
 using namespace std; 
 
 /*_____________________________TP2: LA RESERVA SOÑADA____________________*/

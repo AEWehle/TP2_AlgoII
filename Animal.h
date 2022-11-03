@@ -14,8 +14,8 @@ const int PUNTOS_HIGIENTE = 10;
 
 const char ESPECIE_CHAR[ CANTIDAD_ESPECIES ] = { 'P', 'G', 'C', 'R', 'O', 'E', 'L' }; 
 const string ESPECIE_STRING[ CANTIDAD_ESPECIES ]= { "Perro", "Gato", "Caballo", "Roedor", "Conejo", "Erizo", "Lagartija" }; 
-const string PERSONALIDADES[ CANTIDAD_PERSONALIDADES ] = { "Dormilón", "Juguetón", "Sociable", "Travieso" };
-const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "Diminuto", "Pequeño", "Mediano", "Grande", "Gigante" };
+const string PERSONALIDADES[ CANTIDAD_PERSONALIDADES ] = { "dormilon", "jugueton", "sociable", "travieso" };
+const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "diminuto", "pequeño", "mediano", "grande", "gigante" };
 
 enum Especie { ESPECIE_INVALIDA = 0, P, G, C, R, O, E, L }; 
 
