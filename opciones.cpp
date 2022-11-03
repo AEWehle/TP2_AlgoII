@@ -61,7 +61,7 @@ string pedir_nombre(){
 
     string nombre; 
     while ( nombre.length() == 0 ){ 
-        //cout << " >> "; 
+        cout << " >> "; 
         getline( cin, nombre, '\n' ); 
     } 
     //nombre = string_a_mayuscula(nombre);    //es necesario?
@@ -214,19 +214,15 @@ int pedir_personalidad(){
 
 }
  
- 
-void rescatar_animal( Guarderia* mi_guarderia ){ 
-    afectar_animales(mi_guarderia); 
-    cout << endl << "Rescataste un animal?" << endl; 
-    
-    cout << endl << "Cómo se llama?" << endl << " >> "; //Imprime desde afuera p/reutilizar func
-    string nombre = pedir_nombre();
-    int opcion;
-    
 
-    while (buscar_nombre( mi_guarderia, nombre ) == NO_SE_ENCUENTRA){  
+/* Le pregunta al usuario si desea reescrbir el nombre si este ya existe en la guarderia o volver.
+    En caso de reescibir se guarda cuando que sea un nombre nuevo y devuelve true
+    En caso de queres salir de devuelve false*/
+bool preguntar_nombre_o_volver( Guarderia* mi_guarderia, string & nombre ){
+    int opcion;
+    while (buscar_nombre( mi_guarderia, nombre ) != (mi_guarderia -> obtener_cantidad() + 1)){  
         cout << "Este nombre ya lo tiene otro animal! Podés elegir otro nombre o volver al menú." << endl
-        << "Para elegir otro nombre ingresá 1, para volver al menú ingresá 2:" << endl;
+        << "Para elegir otro nombre ingresá 1, para volver al menú ingresá 2:" << endl << " >> ";
 
  
         cin >> opcion;
@@ -238,10 +234,26 @@ void rescatar_animal( Guarderia* mi_guarderia ){
             cin >> opcion;
         }
 
-        if (opcion == 2) return;
+        if (opcion == 2) return false;
 
         nombre = pedir_nombre();
     } 
+    return true;
+}
+ 
+
+
+void rescatar_animal( Guarderia* mi_guarderia ){ 
+    afectar_animales(mi_guarderia); 
+    cout << endl << "Rescataste un animal?" << endl; 
+    
+    cout << endl << "Cómo se llama?" << endl ; //Imprime desde afuera p/reutilizar func
+    string nombre = pedir_nombre();
+
+    if ( !preguntar_nombre_o_volver( mi_guarderia, nombre )){
+        cout << "Rescate cancelado." << endl;
+        return;
+    }
 
     int edad = pedir_edad();
     string tamano = pedir_tamano(); 
@@ -266,33 +278,35 @@ void buscar_animal( Guarderia* mi_guarderia ){
     string nombre;
 
 
-    cout << "Ingrese el nombre del animal que busca:" << endl;
+    cout << "Ingrese el nombre del animal que busca:" << endl << " >> ";
     nombre = pedir_nombre();
 
     if(buscar_nombre(mi_guarderia,nombre) == mi_guarderia->obtener_cantidad()+1){
-        cout << nombre << " no se encuentra en la guardería." << endl;
+        cout << nombre << " no se encuentra en la guardería." << endl << endl;
     }else{
+        cout << "SI! " << nombre << " está: " << endl ;
         mi_guarderia -> obtener_animal(buscar_nombre(mi_guarderia,nombre))->mostrar();
 
     }
+    cout << "Qué más te gustaría hacer?" << endl << endl;
 }
  
 /*************************************** FUNCIONES DE LA OPCION 4 ***************************************/ 
 
 void menu_elegir_individualmente(){
-    cout << "¿Qué querés hacer con él?" << endl;
+    cout << endl << "¿Qué querés hacer con él?" << endl;
     cout << "Ingresá el número de la opción deseada." << endl;
-    cout << "1. Alimentar Animal" << endl;
-    cout << "2. Duchar Animal" << endl;
-    cout << "3. Pasar a Animal siguiente" << endl;
-    cout << "4. Volver a Menu Anterior" << endl;
+    cout << "   1. Alimentar Animal" << endl;
+    cout << "   2. Duchar Animal" << endl;
+    cout << "   3. Pasar a Animal siguiente" << endl;
+    cout << "   4. Volver a Menu Anterior" << endl;
 }
 
 
 
 
 void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
-    cout << "Elegiste la opción: Elegir Individualmente." << endl;
+    cout << endl << "Elegiste la opción: Elegir Individualmente." << endl;
     cout << "Vamos a pasar por todos los animales en la Guardería." << endl;
     cout << "Ingresá la opción correspondiente según lo que quieras hacer con cada uno." << endl;
 
@@ -300,26 +314,26 @@ void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
     int eleccion = -1;
     
     while ( ( i <= (mi_guarderia->obtener_cantidad()) ) && (eleccion != VOLVER_MENU_OP4) ){
-    mi_guarderia->obtener_animal(i)->mostrar();
-    menu_elegir_individualmente();
-    eleccion = pedir_eleccion(CANTIDAD_OPCIONES_EA);
-    cout << eleccion << endl;
+        mi_guarderia->obtener_animal(i)->mostrar();
+        menu_elegir_individualmente();
+        eleccion = pedir_eleccion(CANTIDAD_OPCIONES_EA);
+        cout << eleccion << endl;
 
-    switch (eleccion) {
-        case ALIMENTAR:
-            mi_guarderia->obtener_animal(i)->alimentar();
-            break;
-        case DUCHAR:
-            mi_guarderia->obtener_animal(i)->duchar();
-            break;
-        case SIGUIENTE:
-            ++i;
-            break;
-        case VOLVER_MENU_OP4:
-            break;
-        default:
-            cout << "Opción Inválida!!!" << endl;
-    }
+        switch (eleccion) {
+            case ALIMENTAR:
+                mi_guarderia->obtener_animal(i)->alimentar();
+                break;
+            case DUCHAR:
+                mi_guarderia->obtener_animal(i)->duchar();
+                break;
+            case SIGUIENTE:
+                ++i;
+                break;
+            case VOLVER_MENU_OP4:
+                break;
+            default:
+                cout << "Opción Inválida!!!" << endl;
+        }
 
     }
 
@@ -387,35 +401,43 @@ void cuidar_animales( Guarderia* mi_guarderia ){
 /* Crea una lista con los animales que cuplen que son menores al tamaño
              TAMANOS_STRING[ tamano_maximo (int) ] (inclusive)
 y que ademas son adoptables, es decir saltea a los erizos y lagartijas
-Guarda en la Lista lista_adoptables los mostrados*/
+Devuelve un puntero a la Guarderia lista_adoptables los mostrados*/
 
-void crear_lista_adoptables(Guarderia* mi_guarderia, int tamano_maximo, Guarderia& lista_adoptables){
+Guarderia* crear_lista_adoptables(Guarderia* mi_guarderia, int tamano_maximo){
     Animal* animal_actual;
     Animal* animal_nuevo;
+    Guarderia* lista_adoptables = new Guarderia;
+    
     for( int numero_de_animal = 1;  numero_de_animal<= mi_guarderia->obtener_cantidad() ;  numero_de_animal++){
 
         animal_actual =  mi_guarderia -> obtener_animal( numero_de_animal );
-        animal_nuevo = crear_nuevo_animal(ESPECIE_CHAR[animal_actual->resolver_especie() - 1],animal_actual->obtener_nombre(),animal_actual->obtener_edad(),animal_actual->obtener_tamano(),animal_actual->obtener_personalidad());
+        // cout << "tamaño del actual igual o menor a tamaño pedido?:" << (buscar_en_array_de_string( TAMANOS_STRING, animal_actual -> obtener_tamano(), CANTIDAD_TAMANOS) <= tamano_maximo );
         
         if ( (animal_actual -> es_adoptable()) && (buscar_en_array_de_string( TAMANOS_STRING, animal_actual -> obtener_tamano(), CANTIDAD_TAMANOS) <= tamano_maximo )){
-            //animal_nuevo -> mostrar();
-            lista_adoptables.agregar_animal( animal_nuevo );
-            lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_hambre(animal_actual->obtener_hambre());
-            lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_higiene(animal_actual->obtener_higiene());
+            animal_nuevo = crear_nuevo_animal(ESPECIE_CHAR[animal_actual->resolver_especie() - 1],
+                                            animal_actual->obtener_nombre(),
+                                            animal_actual->obtener_edad(),
+                                            animal_actual->obtener_tamano(),
+                                            animal_actual->obtener_personalidad() );
+            // animal_nuevo -> mostrar();
+            lista_adoptables -> agregar_animal( animal_nuevo );
+            // lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_hambre(animal_actual->obtener_hambre());
+            // lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_higiene(animal_actual->obtener_higiene());
         }
     }
+    return lista_adoptables;
 }
 
 /* Si hay animales posibles para adoptar, los muestra (imprime en pantalla) */
 
-bool adoptables_para_espacio(Guarderia& lista_adoptables){
-    if (lista_adoptables.obtener_cantidad()==0) {
+bool adoptables_para_espacio(Guarderia* lista_adoptables){
+    if (lista_adoptables -> obtener_cantidad() ==  0) {
         return false;
     }else{
         cout << endl << "Se muestran los animales que podés adoptar según tu espacio disponible:" << endl;
-        for( int numero_de_animal = 1;  numero_de_animal<= lista_adoptables.obtener_cantidad() ;  numero_de_animal++){
-            cout << numero_de_animal << " NUMERO DE ANIMAL" << endl;
-            lista_adoptables.obtener_animal(numero_de_animal)->mostrar();    
+        for( int numero_de_animal = 1;  numero_de_animal <= lista_adoptables -> obtener_cantidad() ;  numero_de_animal++){
+            cout << " Animal : " << numero_de_animal << endl;
+            lista_adoptables -> obtener_animal(numero_de_animal)->mostrar();    
         }
     }
     return true;
@@ -423,24 +445,22 @@ bool adoptables_para_espacio(Guarderia& lista_adoptables){
 
 /*  PEDIR EL ADOPTADO:
     Pide al usuario el nombre del animal que desea aoptar, o si desea cancelar.
-    Devuelve la posicion del animal que desea adoptar, o -1 si quiere cancelar*/
-int pedir_el_adoptado( Guarderia* mi_guarderia , Guarderia& lista_adoptables ){
+    Devuelve la posicion del animal que desea adoptar, o la cantidad+1 si quiere cancelar*/
+int pedir_el_adoptado( Guarderia* mi_guarderia , Guarderia* lista_adoptables ){
     string entrada = "";
-    int cant_adoptables = lista_adoptables.obtener_cantidad();
+    int cant_adoptables = lista_adoptables -> obtener_cantidad();
     int elegido = cant_adoptables+1;
 
-    while ( ( elegido == (cant_adoptables +1) ) && (entrada != CANCELAR)){ 
+    while ( ( elegido == (cant_adoptables +1) ) && ( string_a_mayuscula(entrada) != CANCELAR)){ 
         cout << "En caso de no querer adoptar ingrese CANCELAR, y volvera al menú inicial" << endl;
         entrada = pedir_nombre();
 
-        cout << endl << entrada << " EL QUE QUIERO ADOPTAR" << endl << endl;
-
         if( string_a_mayuscula( entrada ) == CANCELAR ){
             cout << "Se ha cancelado la adopción" << endl;
-            elegido = -1;
+            elegido = cant_adoptables+1;
         }
         else{
-            elegido = lista_adoptables.obtener_posicion( entrada );
+            elegido = lista_adoptables -> obtener_posicion( entrada );
             if ( elegido == (cant_adoptables +1) ){
                 cout << "El nombre ingresado no es de un animal disponble para adoptar." << endl;
             }
@@ -454,28 +474,25 @@ void adoptar_animal( Guarderia* mi_guarderia ){
     cout << endl << "Para adoptar un animal es necesario saber cuanto espacio disponen, según eso se le mostrará una lista de los disponibles" << endl;
     int tamano_maximo =  buscar_en_array_de_string( TAMANOS_STRING, pedir_tamano(), CANTIDAD_TAMANOS );
     
-    Guarderia lista_adoptables;
-    //cout << endl << "Si desea adoptar alguno de estos animales ingrese el nombre como se muestra." << endl;
-    //mostrar_animales_adoptables_segun_tamano( mi_guarderia, tamano_maximo, lista_adoptables );
-    crear_lista_adoptables( mi_guarderia, tamano_maximo, lista_adoptables );
+    Guarderia* lista_adoptables = crear_lista_adoptables( mi_guarderia, tamano_maximo);
 
-    if(adoptables_para_espacio(lista_adoptables)){
+    if(adoptables_para_espacio( lista_adoptables )){
         cout << endl << "Si desea adoptar alguno, ingrese el nombre como se muestra." << endl;
 
         int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
-        if ( elegido != -1 ){
-            cout << "Adoptaste a " << endl;
-            mi_guarderia -> obtener_animal( elegido ) -> mostrar();
-            mi_guarderia -> eliminar_animal( elegido);
+        if ( elegido != ( lista_adoptables -> obtener_cantidad()+1)  ){
+            string nombre = lista_adoptables -> obtener_animal( elegido ) -> obtener_nombre();
+            cout << endl << "Adoptaste a " << nombre << endl;
+            int posicion_en_guarderia = mi_guarderia -> obtener_posicion( nombre );
+            mi_guarderia -> obtener_animal( posicion_en_guarderia ) -> mostrar();
+            mi_guarderia -> eliminar_animal( posicion_en_guarderia );
         }
     }else{
         cout << endl << "No hay animales para adoptar para el espacio ingresado. Volviendo a menú principal..." << endl;
     }
-    cout << endl << "Qué más te gustaría hacer?" << endl;
+    delete lista_adoptables;
 
-    for(int i=1; i<=lista_adoptables.obtener_cantidad(); i++){
-        lista_adoptables.eliminar_animal(i);
-    }
+    cout << endl << "Qué más te gustaría hacer?" << endl;
 
 }
 

@@ -106,7 +106,7 @@ class Animal{
     
     /*________obtener_tamano()_____________________________________________________
      PRE: -
-     POST:  Devuelve el tamaño del animal
+     POST:  Devuelve el tamano del animal
     _______________________________________________________________________________*/
         string obtener_tamano();
 
