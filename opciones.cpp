@@ -25,30 +25,8 @@ void afectar_animales(Guarderia* mi_guarderia){
 void listar_animales( Guarderia* mi_guarderia ){
     afectar_animales(mi_guarderia); 
     mi_guarderia->ver_lista_de_animales();
-/*
-    if (mi_guarderia->obtener_cantidad()==0) {
-        preguntar_agregar_animal( mi_guarderia );   //es necesario esto?
-    }*/
 }
  
-/*
-void preguntar_agregar_animal( Guarderia* mi_guarderia ){ 
-    cout << "Querés agregar un animal nuevo?\n [SI, NO]\n >> "; 
-    string linea_aux; 
-    while ( linea_aux.length() == 0 ){ 
-        cout << " >> "; 
-        getline( cin, linea_aux, '\n' ); 
-    } 
- 
-    if (string_a_mayuscula(linea_aux) == "SI"){ 
-        rescatar_animal( mi_guarderia ); 
-    } 
-    else { 
-        cout << "Ok, no agregamos nada." << endl;  
-        cout << endl << "Qué mas te gustaría hacer?\n"; 
-    } 
-} 
-*/
  
 /*************************************** FUNCIONES DE LA OPCION 2 ***************************************/ 
 //Rescatar animal
@@ -57,14 +35,15 @@ void preguntar_agregar_animal( Guarderia* mi_guarderia ){
  
 string pedir_nombre(){ 
 
-    //cout << endl << "Cómo se llama?" << endl << " >> "; -> Imprimo desde afuera por reutilizacion
-
     string nombre; 
     while ( nombre.length() == 0 ){ 
         cout << " >> "; 
         getline( cin, nombre, '\n' ); 
+        if(string_a_mayuscula(nombre) == CANCELAR){
+            cout << "Este nombre no puede ser usado, deberías elegir otro:" << endl;
+            nombre = "";
+        }
     } 
-    //nombre = string_a_mayuscula(nombre);    //es necesario?
     return nombre; 
 } 
 
@@ -110,18 +89,6 @@ int pedir_edad(){
     } 
     return edad; 
 } 
- 
-
-string numero_a_tamano_string( int numero ){
-    //	[ D <2, P<10, M >= 10, Gr>= 20, Gi >= 50 ]
-    // es 0 -> D, 1 -> P , 2 -> M , 3 -> Gr , 4 -> Gi
-    int i = (int)( numero >= 50) + (int)( numero >= 20) + (int)( numero >= 10) + (int)( numero >= 2);
-    return TAMANOS_STRING[i];
-}
-
-int numero_a_tamano( int numero ){
-    return (int)( numero >= 50) + (int)( numero >= 20) + (int)( numero >= 10) + (int)( numero >= 2);
-}
 
 
 /*________pedir_tamano()______________________________________________________ 
@@ -217,7 +184,7 @@ int pedir_personalidad(){
 
 /* Le pregunta al usuario si desea reescrbir el nombre si este ya existe en la guarderia o volver.
     En caso de reescibir se guarda cuando que sea un nombre nuevo y devuelve true
-    En caso de queres salir de devuelve false*/
+    En caso de queres salir devuelve false*/
 bool preguntar_nombre_o_volver( Guarderia* mi_guarderia, string & nombre ){
     int opcion;
     while (buscar_nombre( mi_guarderia, nombre ) != (mi_guarderia -> obtener_cantidad() + 1)){  
@@ -397,13 +364,29 @@ void cuidar_animales( Guarderia* mi_guarderia ){
 }
  
 /*************************************** FUNCIONES DE LA OPCION 5 ***************************************/ 
- 
-/* Crea una lista con los animales que cuplen que son menores al tamaño
-             TAMANOS_STRING[ tamano_maximo (int) ] (inclusive)
-y que ademas son adoptables, es decir saltea a los erizos y lagartijas
-Devuelve un puntero a la Guarderia lista_adoptables los mostrados*/
 
-Guarderia* crear_lista_adoptables(Guarderia* mi_guarderia, int tamano_maximo){
+
+bool tamano_ok(Animal* animal, float espacio){ //espacio es mayor a 0
+
+    string tamano = animal->obtener_tamano();
+    bool ok = false;
+    if(espacio < 2)
+        ok = (tamano == TAMANOS_STRING[0]) || (tamano == TAMANOS_STRING[1]);
+    else if(espacio < 10)   // 2 <= espacio < 10
+        ok = (tamano == TAMANOS_STRING[1]);
+    else if(espacio >= 50)
+        ok = (tamano == TAMANOS_STRING[4]) || (tamano == TAMANOS_STRING[3]) || (tamano == TAMANOS_STRING[2]);
+    else if(espacio >= 20)   // 20 <= espacio < 50
+        ok = (tamano == TAMANOS_STRING[3]) || (tamano == TAMANOS_STRING[2]);
+    else                    // 10 <= espacio < 20
+        ok = (tamano == TAMANOS_STRING[2]);
+    
+    return ok;
+
+}
+
+
+Guarderia* crear_lista_adoptables(Guarderia* mi_guarderia, float espacio){
     Animal* animal_actual;
     Animal* animal_nuevo;
     Guarderia* lista_adoptables = new Guarderia;
@@ -411,37 +394,19 @@ Guarderia* crear_lista_adoptables(Guarderia* mi_guarderia, int tamano_maximo){
     for( int numero_de_animal = 1;  numero_de_animal<= mi_guarderia->obtener_cantidad() ;  numero_de_animal++){
 
         animal_actual =  mi_guarderia -> obtener_animal( numero_de_animal );
-        // cout << "tamaño del actual igual o menor a tamaño pedido?:" << (buscar_en_array_de_string( TAMANOS_STRING, animal_actual -> obtener_tamano(), CANTIDAD_TAMANOS) <= tamano_maximo );
         
-        if ( (animal_actual -> es_adoptable()) && (buscar_en_array_de_string( TAMANOS_STRING, animal_actual -> obtener_tamano(), CANTIDAD_TAMANOS) <= tamano_maximo )){
+        if ( (animal_actual -> es_adoptable()) && (tamano_ok(animal_actual, espacio))){
             animal_nuevo = crear_nuevo_animal(ESPECIE_CHAR[animal_actual->resolver_especie() - 1],
                                             animal_actual->obtener_nombre(),
                                             animal_actual->obtener_edad(),
                                             animal_actual->obtener_tamano(),
                                             animal_actual->obtener_personalidad() );
-            // animal_nuevo -> mostrar();
             lista_adoptables -> agregar_animal( animal_nuevo );
-            // lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_hambre(animal_actual->obtener_hambre());
-            // lista_adoptables.obtener_animal(lista_adoptables.obtener_posicion(animal_nuevo->obtener_nombre()))->setear_higiene(animal_actual->obtener_higiene());
         }
     }
     return lista_adoptables;
 }
 
-/* Si hay animales posibles para adoptar, los muestra (imprime en pantalla) */
-
-bool adoptables_para_espacio(Guarderia* lista_adoptables){
-    if (lista_adoptables -> obtener_cantidad() ==  0) {
-        return false;
-    }else{
-        cout << endl << "Se muestran los animales que podés adoptar según tu espacio disponible:" << endl;
-        for( int numero_de_animal = 1;  numero_de_animal <= lista_adoptables -> obtener_cantidad() ;  numero_de_animal++){
-            cout << " Animal : " << numero_de_animal << endl;
-            lista_adoptables -> obtener_animal(numero_de_animal)->mostrar();    
-        }
-    }
-    return true;
-}
 
 /*  PEDIR EL ADOPTADO:
     Pide al usuario el nombre del animal que desea aoptar, o si desea cancelar.
@@ -469,16 +434,39 @@ int pedir_el_adoptado( Guarderia* mi_guarderia , Guarderia* lista_adoptables ){
     return elegido;
 }
 
+
 void adoptar_animal( Guarderia* mi_guarderia ){
     afectar_animales(mi_guarderia); 
-    cout << endl << "Para adoptar un animal es necesario saber cuanto espacio disponen, según eso se le mostrará una lista de los disponibles" << endl;
-    int tamano_maximo =  buscar_en_array_de_string( TAMANOS_STRING, pedir_tamano(), CANTIDAD_TAMANOS );
+    cout << endl << "Para adoptar un animal es necesario saber de cuánto espacio dispondrán, según eso se le mostrará una lista de los disponibles" << endl;
     
-    Guarderia* lista_adoptables = crear_lista_adoptables( mi_guarderia, tamano_maximo);
+    cout << "Ingrese cuántos metros cuadrados tiene disponibles:" << endl;
 
-    if(adoptables_para_espacio( lista_adoptables )){
+    string espacio_string;
+    float espacio;
+
+    cin >> espacio_string;
+    espacio = stof(espacio_string);
+
+    while(espacio <= 0){
+
+        cout << "Ingrese un  espacio válido:" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
+        cin >> espacio_string;
+        espacio = stof(espacio_string);
+
+    }
+
+    Guarderia* lista_adoptables = crear_lista_adoptables( mi_guarderia, espacio);
+
+    if(lista_adoptables->obtener_cantidad() != 0){
+
+        cout << endl << "Estos son los animales que podés adoptar:" << endl;
+
+        lista_adoptables->ver_lista_de_animales();
+
         cout << endl << "Si desea adoptar alguno, ingrese el nombre como se muestra." << endl;
-        cout << "Nuestros Erizos y Lagartijas NO SON ADOPTABLES ya que son salvajes, por lo que no paarecerán en la lista" << endl;
+        cout << "Nuestros Erizos y Lagartijas NO SON ADOPTABLES ya que son salvajes, por lo que no aparecerán en la lista" << endl;
 
         int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
         if ( elegido != ( lista_adoptables -> obtener_cantidad()+1)  ){
@@ -492,8 +480,6 @@ void adoptar_animal( Guarderia* mi_guarderia ){
         cout << endl << "No hay animales para adoptar para el espacio ingresado. Volviendo a menú principal..." << endl;
     }
     delete lista_adoptables;
-
-    cout << endl << "Qué más te gustaría hacer?" << endl;
 
 }
 

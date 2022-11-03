@@ -45,7 +45,7 @@ git push origin nombrE_nueva_brunch          Luego de haber hecho add y commit
 
 6 * PROBAR Y VER QUE TODO FUNCIONE Y QUE SE CUMPLA LO QUE PIDE EL ENUNCIADO DEL TP
 
-7 * Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas. -> Minusculas en tamaño y personalidad?? Acentos en las palabras??
+7 * LISTO - Hay que ver que se guarden bien las cosas. Sin mayúsculas y esas cosas. -> Minusculas en tamaño y personalidad?? Acentos en las palabras??
 
 8 * UML -- (LN puse un .txt con el link, despu)
 
@@ -72,3 +72,6 @@ AEW. - HYA LEAK DE MEMORIAAAA, no sé de donde será pero hay que revisar la des
 
 MGC. - Me queda revisar leaks de memoria que no pude encontrar por qué pasan. Modificaciones de varias funciones (principalmente mostrar_menu y pedir_opcion) para reciclarlas cuando se quiere funcionalidad parecida. Vi un tema que en una de las opciones al crear el animal se le puede ingresar una letra cuando deberia ser número y esto no es correcto, lo reviso mañana y lo subo a mi branch, pero salvo revisiones creo que podríamos hacer el merge\\
 - Funciona bien cuidar_animales! Verificado correcto de los datos al rescatar un animal y manejo de memoria.
+
+A.V.H. - Arreglé la función de adoptar, ahora si hace lo qeu dice el enunciado.
+A.V.H. - Ahora "cancelar" no es un nombre válido.

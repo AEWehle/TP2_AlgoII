@@ -6,14 +6,6 @@
 #include "funciones_main.h" 
 #include "opciones.h" 
 #include "Guarderia.h"
-// #include "Animal.h"
-// #include "Especies/Perro.h" // estos ya se incluyen a traves de guarderia
-// #include "Especies/Gato.h"
-// #include "Especies/Caballo.h"
-// #include "Especies/Roedor.h"
-// #include "Especies/Conejo.h"
-// #include "Especies/Erizo.h"
-// #include "Especies/Lagartija.h"
 using namespace std;  
 
 
@@ -73,7 +65,7 @@ void cargar_guarderia(Guarderia* mi_guarderia){
  POST: Imprime en temrinal todas las opciones que pude elegir el usuario. 
 _______________________________________________________________________________*/ 
 void imprimir_menu(int cantidad_elecciones){ 
-    if(cantidad_elecciones == 6){
+    if(cantidad_elecciones == 6){ //Menú principal
         cout << endl << "*****   MENU   *****" << endl << endl;
         cout << "   1. Listar animales." << endl; 
         cout << "   2. Rescatar un animal." << endl; 
@@ -81,7 +73,7 @@ void imprimir_menu(int cantidad_elecciones){
         cout << "   4. Cuidar animales." << endl;
         cout << "   5. Adoptar un animal." << endl;
         cout << "   6. Guardar y salir." << endl << endl;
-    }else if (cantidad_elecciones == 4) {
+    }else if (cantidad_elecciones == 4) { //Menú de cuidar animales
         cout << endl << "*****   CUIDAR ANIMALES: MENU   *****" << endl << endl;
         cout << "   1. Elegir Individualmente." << endl; 
         cout << "   2. Alimentar a todos." << endl; 
@@ -100,7 +92,6 @@ int pedir_eleccion(int cantidad_opciones){
 
     string eleccion;
 
-    //imprimir_menu(cantidad_opciones); -> Comentada, se imprime menu desde afuera para poder reutilizar verificación
     cout << "Ingrese el numero de la opcion elegida: " << endl << " >> ";
 
     cin >> eleccion;
@@ -108,8 +99,6 @@ int pedir_eleccion(int cantidad_opciones){
     int eleccion_int = string_a_entero(eleccion);
     
     while(!eleccion_valida(eleccion_int, cantidad_opciones)){
-        //cin.clear();
-        //cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
         cout << "La opcion ingresada es invalida, por favor ingrese una opcion valida: " << endl << " >> ";
         cin >> eleccion;
         eleccion_int = string_a_entero(eleccion);
@@ -123,8 +112,6 @@ int pedir_eleccion(int cantidad_opciones){
 
 void ejecutar_eleccion(Guarderia* mi_guarderia, int eleccion){ 
 
-    //if( (3 <= eleccion && eleccion <= 7)  &&  ( es_lista_vacia( mi_guarderia ) )  ); 
     funcion_elegida[ eleccion - 1 ]( mi_guarderia );
 
 }
-
