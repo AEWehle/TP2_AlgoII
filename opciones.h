@@ -1,7 +1,7 @@
 #ifndef OPCIONES_H
 #define OPCIONES_H
-#include <string>
-#include "funciones_main.h"
+//#include <string>
+//#include "funciones_main.h"
 using namespace std; 
 
 

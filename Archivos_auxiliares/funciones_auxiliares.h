@@ -32,7 +32,6 @@ _______________________________________________________________________________*
 string elimina_espacios(string texto);
 
 
-
 /*________string_a_entero()____________________________________________________
  PRE: Recive un texto (string)
  POST: Devuelve un entero con los numeros que fueron apareciendo.
@@ -70,5 +69,6 @@ void llenar_con_int ( int* array_int, int entero, int largo );
 
 
 void validar_opcion(string &st_opcion, int &opcion, int cant_opciones);
+
 
 #endif

@@ -1,10 +1,9 @@
-#include <iostream> 
-#include <string>
-#include <fstream> 
+#include <iostream>
+#include <fstream>
 #include "funciones_main.h"
 #include "Guarderia.h"
 #include "opciones.h"
-using namespace std; 
+using namespace std;
 
 /*_____________________________TP2: LA RESERVA SOÑADA____________________*/
 int main(){
@@ -19,7 +18,6 @@ int main(){
         imprimir_menu(CANTIDAD_OPCIONES);
         eleccion = pedir_eleccion(CANTIDAD_OPCIONES);
         ejecutar_eleccion(mi_guarderia, eleccion);
-
     }
     while ( eleccion != GUARDAR_Y_SALIR );
     

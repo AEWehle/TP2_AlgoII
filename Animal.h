@@ -20,6 +20,7 @@ const string TAMANOS_STRING[ CANTIDAD_TAMANOS ] = { "diminuto", "pequeño", "med
 enum Especie { ESPECIE_INVALIDA = 0, P, G, C, R, O, E, L }; 
 
 class Animal{
+
     protected:
         string nombre;
         int    edad;	        //  [0-100]
@@ -29,6 +30,8 @@ class Animal{
         int    hambre; 	        //	[0-100]
         int    higiene;	        //	[0-100]
         string comida;	        //	[lo define la especie, es lo que va a imprimir]
+    
+    
     public:
 
     /*________constructor Animal default___________________________________________
@@ -45,6 +48,7 @@ class Animal{
     _______________________________________________________________________________*/
         Animal( string nombre, int edad, string tamano, string personalidad );
 
+
     /*________destructor Animal con parametros____________________________________
      PRE: 
      POST: 
@@ -57,7 +61,6 @@ class Animal{
      POST: Establece hambre = 0 y muestra al usuario su nombre y comida
     _______________________________________________________________________________*/
         virtual void alimentar();
-
 
 
     /*________duchar()_____________________________________________________________
@@ -97,6 +100,7 @@ class Animal{
     _______________________________________________________________________________*/
         string obtener_nombre();
 
+
     /*________obtener_edad()_____________________________________________________
      PRE: -
      POST:  Devuelve la edad del animal
@@ -117,7 +121,9 @@ class Animal{
     _______________________________________________________________________________*/
         string obtener_personalidad();
 
+
         virtual Especie resolver_especie() = 0;
+
 
     /*________es_adoptable()_____________________________________________________
      PRE: -
@@ -125,7 +131,6 @@ class Animal{
     _______________________________________________________________________________*/
         bool es_adoptable();
 
-    
     
     /*________obtener_hambre()_____________________________________________________
      PRE: -
@@ -141,13 +146,11 @@ class Animal{
         int obtener_higiene();
 
 
-
         void setear_hambre(int hambre_int);
 
 
         void setear_higiene(int higiene_int);
 
-
-
 };
+
 #endif
