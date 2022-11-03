@@ -41,3 +41,4 @@ TP2
 
 *.dSYM
 *.DS_Store
+Dockerfile
