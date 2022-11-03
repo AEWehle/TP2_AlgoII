@@ -39,13 +39,16 @@ string pedir_nombre(){
     string nombre; 
 
     while ( nombre.length() == 0 ){ 
-        cout << " >> "; 
+         
         getline( cin, nombre, '\n' ); 
+        cout << " >> ";
 
         if(string_a_mayuscula(nombre) == CANCELAR){
             cout << "Este nombre no puede ser usado, deberías elegir otro:" << endl;
+            cout << " >> ";
             nombre = "";
         }
+
     } 
 
     return nombre; 
@@ -62,12 +65,9 @@ int buscar_nombre (Guarderia* mi_guarderia, string animal_buscado){
 
 bool validar_edad(string edad_st, int &edad){
 
-    bool edad_valida = true;
+    bool edad_valida = es_numero(edad_st);
 
-    if(!isdigit(edad_st[0]))
-        edad_valida = false;
-    
-    else{
+    if(edad_valida){
         edad = stoi(edad_st);
         edad_valida = (edad >= 0 && edad <= EDAD_MAX);
     }
@@ -110,17 +110,25 @@ string pedir_tamano(){
     << "3 - Mediano  -> 10 m^2 o más" << endl
     << "4 - Grande   -> 20 m^2 o más" << endl
     << "5 - Gigante  -> 50 m^2 o más" << endl << endl << " >> ";
-    
-    int tamano;  
-    cin >> tamano;
 
-    while( !(tamano >= 1 && tamano <= 5)){ 
+    string tamano_string;
+    int tamano;
+
+    cin >> tamano_string;
+
+    if(es_numero(tamano_string)){
+        tamano = stoi(tamano_string);
+    }
+
+    while( !es_numero(tamano_string) || !(tamano >= 1 && tamano <= 5)){
         cout << "Ingresá el número correspondiente a una categoría:" << endl << " >> ";
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin >> tamano;
+        cin >> tamano_string;
+        if(es_numero(tamano_string))
+            tamano = stoi(tamano_string);
     }
-    
+
     return TAMANOS_STRING[ tamano-1];
 
 }
@@ -139,14 +147,22 @@ int pedir_especie(){
     << "6 - Erizo" << endl
     << "7 - Lagartija" << endl << endl << " >> ";
     
+    string especie_string;
     int especie;
-    cin >> especie;
 
-    while( !(especie >= 1 && especie <= 7)){ 
+    cin >> especie_string;
+
+    if(es_numero(especie_string)){
+        especie = stoi(especie_string);
+    }
+
+    while( !es_numero(especie_string) || !(especie >= 1 && especie <= 7)){
         cout << "Ingresá el número correspondiente a una especie:" << endl << " >> ";
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin >> especie;
+        cin >> especie_string;
+        if(es_numero(especie_string))
+            especie = stoi(especie_string);
     }
     
     return especie-1;
@@ -164,14 +180,22 @@ int pedir_personalidad(){
     << "3 - Sociable" << endl
     << "4 - Travieso" << endl << endl << " >> ";
     
-    int personalidad;  
-    cin >> personalidad;
+    string personalidad_string;
+    int personalidad;
 
-    while( !(personalidad >= 1 && personalidad <= 4)){ 
+    cin >> personalidad_string;
+
+    if(es_numero(personalidad_string)){
+        personalidad = stoi(personalidad_string);
+    }
+
+    while( !es_numero(personalidad_string) || !(personalidad >= 1 && personalidad <= 4)){
         cout << "Ingresá el número correspondiente a una personalidad:" << endl << " >> ";
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin >> personalidad;
+        cin >> personalidad_string;
+        if(es_numero(personalidad_string))
+            personalidad = stoi(personalidad_string);
     }
     
     return personalidad-1;
@@ -250,7 +274,7 @@ void buscar_animal( Guarderia* mi_guarderia ){
     afectar_animales(mi_guarderia);
 
     string nombre;
-    cout << "Ingrese el nombre del animal que busca:" << endl << " >> ";
+    cout << "Ingrese el nombre del animal que busca:" << endl;
     nombre = pedir_nombre();
 
     if(buscar_nombre(mi_guarderia,nombre) == mi_guarderia->obtener_cantidad()+1)
@@ -282,9 +306,9 @@ void menu_elegir_individualmente(){
 
 void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
 
-    cout << endl << "Elegiste la opción: Elegir Individualmente." << endl;
+    cout << endl << "Elegiste la opción: Elegir Individualmente." << endl << endl;
     cout << "Vamos a pasar por todos los animales en la Guardería." << endl;
-    cout << "Ingresá la opción correspondiente según lo que quieras hacer con cada uno." << endl;
+    cout << "Ingresá la opción correspondiente según lo que quieras hacer con cada uno." << endl << ESPECIE_INVALIDA;
 
     int i = 1;
     int eleccion = -1;
@@ -315,7 +339,7 @@ void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
     }
 
     if(i == (mi_guarderia->obtener_cantidad()+1))
-        cout << "No hay más animales en la lista, volviendo a menú principal..." << endl;
+        cout << "No hay más animales en la lista, volviendo atrás..." << endl;
     
 }
 

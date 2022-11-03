@@ -58,12 +58,13 @@ Animal* Guarderia::obtener_animal(int posicion){
 
 void Guarderia::ver_lista_de_animales(){
 
-    cout << "Hay " << lista_de_animales.obtener_cantidad() << " animales en la reserva." << endl;
-
     if(lista_de_animales.obtener_cantidad()){
+
+        cout << "Hay " << lista_de_animales.obtener_cantidad() << " animales en la reserva." << endl;
         for( int i = 1 ; i < (lista_de_animales.obtener_cantidad()+1) ; i++){
             lista_de_animales.consulta(i)->mostrar();
         }
+        
     }
     
     else
