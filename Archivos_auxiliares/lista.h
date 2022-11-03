@@ -96,6 +96,8 @@ Dato* Lista<Dato>::consulta(int pos) {
 template <typename Dato>
 void Lista<Dato>::baja(int pos) {
     Nodo<Dato>* a_borrar = this -> primero;
+    cout << "CANTIDAD ACAAAAA " << cantidad << endl;
+    cout << "POSICION " << pos << endl;
     if (pos == 1) {
         this -> primero = a_borrar->obtener_siguiente();
     }
@@ -103,7 +105,9 @@ void Lista<Dato>::baja(int pos) {
         Nodo<Dato>* anterior = obtener_nodo(pos - 1);
         a_borrar = anterior->obtener_siguiente();
         anterior->cambiar_siguiente(a_borrar->obtener_siguiente());
+        
     }
+    delete a_borrar->obtener_dato();
     delete a_borrar; // Ojo si dentro de los nodos pedimos memoria
     this -> cantidad--;
 }
