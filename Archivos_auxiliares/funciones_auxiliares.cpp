@@ -33,17 +33,15 @@ string string_a_mayuscula(string texto){
 
 int string_a_entero( string texto ){
 
-    long unsigned int largo = (long unsigned int)texto.length();
     int entero = 0;
     
-    if (largo == 0) 
-        entero = 0;
+    if(texto.length() != 0){
 
-    else{
-        for(long unsigned int i = 0; i < largo; i++){
+        for(long unsigned int i = 0; i < (long unsigned int)texto.length(); i++){
             if (texto[i] >= '0' && texto[i] <= '9')
                 entero =  10 * entero + ((int) texto[i] - 48);
         }
+
     }
 
     return entero;
@@ -126,5 +124,17 @@ void llenar_con_int ( int* array_int, int entero, int largo ){
     for( int i = 0; i < largo; i++ ){
         array_int[ i ] = entero;
     }
+
+}
+
+bool es_numero(string st){
+
+    int i = 0;
+    while(i < (int)st.length()){
+        if(!isdigit(st[i]) || st[i] == '-')
+            return false;
+        i++;
+    }
+    return true;
 
 }

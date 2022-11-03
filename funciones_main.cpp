@@ -1,6 +1,7 @@
 #include <iostream>  
 #include <string> 
-#include <fstream> 
+#include <fstream>
+#include <limits>
 #include "Archivos_auxiliares/funciones_auxiliares.h" 
 #include "Archivos_auxiliares/nodo.h" 
 #include "funciones_main.h" 
@@ -96,20 +97,27 @@ bool eleccion_valida(int eleccion, int cantidad_opciones){
 
 int pedir_eleccion(int cantidad_opciones){ 
 
-    string eleccion;
     cout << "Ingrese el numero de la opcion elegida: " << endl << " >> ";
-    cin >> eleccion;
+    string eleccion_string;
+    int eleccion;
 
-    int eleccion_int = string_a_entero(eleccion);
-    
-    while(!eleccion_valida(eleccion_int, cantidad_opciones)){
-        cout << "La opcion ingresada es invalida, por favor ingrese una opcion valida: " << endl << " >> ";
-        cin >> eleccion;
-        eleccion_int = string_a_entero(eleccion);
+    cin >> eleccion_string;
 
+    if(es_numero(eleccion_string)){
+        eleccion = stoi(eleccion_string);
     }
 
-    return eleccion_int;
+    while( !es_numero(eleccion_string) || !(eleccion >= 1 && eleccion <= 6)){
+        cout << "Ingresá una opción válida:" << endl << " >> ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> eleccion_string;
+        if(es_numero(eleccion_string))
+            eleccion = stoi(eleccion_string);
+    }
+    cout << endl;
+
+    return eleccion;
 
 }
 
