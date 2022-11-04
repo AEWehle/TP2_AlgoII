@@ -49,9 +49,9 @@ class Animal{
         Animal( string nombre, int edad, string tamano, string personalidad );
 
 
-    /*________destructor Animal con parametros____________________________________
-     PRE: 
-     POST: 
+    /*________destructor Animal_____________________________________________________
+     PRE: -
+     POST: Destruye animal
     _______________________________________________________________________________*/
         virtual ~Animal() = 0;
 
@@ -145,10 +145,17 @@ class Animal{
     _______________________________________________________________________________*/
         int obtener_higiene();
 
-
+    
+    /*________setear_hambre(int hambre_int)__________________________________________
+     PRE: int debe ser entre 0 y 100
+     POST: Establece el hambre en el valor hambre_int
+    _______________________________________________________________________________*/
         void setear_hambre(int hambre_int);
 
-
+    /*________setear_higiene(int higiene_int)_________________________________________
+     PRE: int debe ser entre 0 y 100
+     POST: Establece la higiene en el valor higiene_int
+    _______________________________________________________________________________*/
         void setear_higiene(int higiene_int);
 
 };

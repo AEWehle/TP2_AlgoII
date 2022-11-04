@@ -45,7 +45,7 @@ class Guarderia{
             void ver_lista_de_animales();
 
         /*Agregar
-            PRE: Recibe puntero a Animal, debe estar cargardo con los datos correctos
+            PRE: Puntero a Animal está creado correctamente
             PPOST: Agrega un animal a la lista de animales */
             void agregar_animal(Animal* nuevo_animal);
 
