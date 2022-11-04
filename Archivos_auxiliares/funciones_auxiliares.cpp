@@ -127,11 +127,11 @@ void llenar_con_int ( int* array_int, int entero, int largo ){
 
 }
 
-bool es_numero(string st){
+bool es_numero(string st){ //Incluye enteros (positivos negativos y 0) y números con coma (se usa el punto .)
 
     unsigned long i = 0;
     while(i < st.length()){
-        if(!isdigit(st[i]) || st[i] == '-')
+        if(!isdigit(st[i]) && st[i] != '-' && st[i] != '.')
             return false;
         i++;
     }

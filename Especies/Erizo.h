@@ -7,6 +7,7 @@ using namespace std;
 
 
 class Erizo: public Animal{
+
 public:
 
     /*________constructor Erizo default___________________________________________
@@ -28,13 +29,11 @@ public:
     _______________________________________________________________________________*/
     void mostrar() override;
 
-
     /*________resolver_especie()_____________________________________________________
      PRE: - 
      POST: Devuelve Especie E
     _______________________________________________________________________________*/
     Especie resolver_especie() override;
-
 
     /*________Destructor_____________________________________________________________
      PRE: - 

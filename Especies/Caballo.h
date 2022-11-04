@@ -7,7 +7,9 @@ using namespace std;
 
 
 class Caballo: public Animal{
+
 public:
+
     /*________constructor Caballo default___________________________________________
      PRE: - 
      POST: Crea un animal tipo Caballo, establece comida = "manzanas", es_domestico = true
@@ -27,13 +29,11 @@ public:
     _______________________________________________________________________________*/
     void mostrar() override;
 
-
     /*________resolver_especie()_____________________________________________________
      PRE: - 
      POST: Devuelve Especie C
     _______________________________________________________________________________*/
     Especie resolver_especie() override;
-
 
     /*________Destructor_____________________________________________________________
      PRE: - 

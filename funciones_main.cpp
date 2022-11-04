@@ -107,7 +107,7 @@ int pedir_eleccion(int cantidad_opciones){
         eleccion = stoi(eleccion_string);
     }
 
-    while( !es_numero(eleccion_string) || !(eleccion >= 1 && eleccion <= 6)){
+    while( !es_numero(eleccion_string) || !(eleccion >= 1 && eleccion <= cantidad_opciones)){
         cout << "Ingresá una opción válida:" << endl << " >> ";
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');

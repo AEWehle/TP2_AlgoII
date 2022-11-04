@@ -7,6 +7,7 @@ using namespace std;
 
 
 class Perro: public Animal{
+
 public:
 
     /*________constructor Perro default___________________________________________
@@ -28,13 +29,11 @@ public:
     _______________________________________________________________________________*/
     void mostrar() override;
 
-
     /*________resolver_especie()_____________________________________________________
      PRE: - 
      POST: Devuelve Especie P
     _______________________________________________________________________________*/
     Especie resolver_especie() override;
-
 
     /*________Destructor_____________________________________________________________
      PRE: - 

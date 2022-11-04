@@ -7,7 +7,9 @@ using namespace std;
 
 
 class Gato: public Animal{
+    
 public:
+
     /*________constructor Gato default___________________________________________
      PRE: - 
      POST: Crea un animal tipo Gato, establece comida = "queso", es_domestico = true
