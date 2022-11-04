@@ -129,8 +129,8 @@ void llenar_con_int ( int* array_int, int entero, int largo ){
 
 bool es_numero(string st){
 
-    int i = 0;
-    while(i < (int)st.length()){
+    unsigned long i = 0;
+    while(i < st.length()){
         if(!isdigit(st[i]) || st[i] == '-')
             return false;
         i++;
