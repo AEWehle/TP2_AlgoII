@@ -55,10 +55,10 @@ bool es_cancelar(string nombre){
 string pedir_nombre(){
     string nombre = ingresar_nombre();
 
-    if (es_cancelar(nombre)) {
+    while(es_cancelar(nombre)) {
         cout << "Este nombre no puede ser usado, deberías elegir otro:" << endl;
         cout << " >> ";
-        nombre = "";
+        nombre = ingresar_nombre();
     }
 
     return nombre;
@@ -252,6 +252,7 @@ void rescatar_animal( Guarderia* mi_guarderia ){
 
     cout << endl << "Rescataste un animal?" << endl;
     cout << endl << "Cómo se llama?" << endl;
+    cout << " >> ";
     string nombre = pedir_nombre();
 
     if ( !otro_nombre( mi_guarderia, nombre )){
