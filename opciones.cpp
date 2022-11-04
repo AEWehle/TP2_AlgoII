@@ -36,25 +36,32 @@ void listar_animales( Guarderia* mi_guarderia ){
 //Rescatar animal
 
 
-string pedir_nombre(){ 
+string ingresar_nombre(){ 
 
     string nombre; 
 
     while ( nombre.length() == 0 ){ 
-
         getline( cin, nombre, '\n' ); 
-        cout << " >> ";
-
-        if(string_a_mayuscula(nombre) == CANCELAR){
-            cout << "Este nombre no puede ser usado, deberías elegir otro:" << endl;
-            cout << " >> ";
-            nombre = "";
-        }
-
     } 
 
     return nombre; 
+}
 
+
+bool es_cancelar(string nombre){
+    return (string_a_mayuscula(nombre) == CANCELAR);
+}
+
+string pedir_nombre(){
+    string nombre = ingresar_nombre();
+
+    if (es_cancelar(nombre)) {
+        cout << "Este nombre no puede ser usado, deberías elegir otro:" << endl;
+        cout << " >> ";
+        nombre = "";
+    }
+
+    return nombre;
 }
 
 
@@ -326,7 +333,6 @@ void elegir_animal_a_cuidar(Guarderia* mi_guarderia){
         mi_guarderia->obtener_animal(i)->mostrar();
         menu_elegir_individualmente();
         eleccion = pedir_eleccion(CANTIDAD_OPCIONES_EA);
-        cout << eleccion << endl;
 
         switch (eleccion) {
             case ALIMENTAR:
@@ -484,9 +490,9 @@ int pedir_el_adoptado( Guarderia* mi_guarderia , Guarderia* lista_adoptables ){
     while ( ( elegido == (cant_adoptables +1) ) && ( string_a_mayuscula(entrada) != CANCELAR)){ 
 
         cout << "En caso de no querer adoptar ingrese CANCELAR, y volvera al menú inicial" << endl;
-        entrada = pedir_nombre();
+        entrada = ingresar_nombre();
 
-        if( string_a_mayuscula( entrada ) == CANCELAR ){
+        if( es_cancelar(entrada)){
             cout << "Se ha cancelado la adopción" << endl;
             elegido = cant_adoptables+1;
         }
