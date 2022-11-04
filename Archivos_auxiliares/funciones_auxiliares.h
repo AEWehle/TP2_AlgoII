@@ -68,9 +68,11 @@ _______________________________________________________________________________*
 void llenar_con_int ( int* array_int, int entero, int largo );
 
 
-void validar_opcion(string &st_opcion, int &opcion, int cant_opciones);
-
-
+/*________es_numero()___________________________________________________________
+PRE: -
+POST: Verifica si todos los caracteres de string son numericos, devuelve true
+      Caso contrario devuelve false.
+_______________________________________________________________________________*/
 bool es_numero(string st);
 
 
