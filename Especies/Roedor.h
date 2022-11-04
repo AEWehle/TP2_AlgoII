@@ -7,6 +7,7 @@ using namespace std;
 
 
 class Roedor: public Animal{
+    
 public:
 
     /*________constructor Roedor default___________________________________________

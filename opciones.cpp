@@ -525,17 +525,37 @@ void adoptar_animal( Guarderia* mi_guarderia ){
         float espacio;
 
         cin >> espacio_string;
+
+        if(es_numero(espacio_string)){
+            espacio = stof(espacio_string);
+        }
+
+        while( !es_numero(espacio_string) || espacio <= 0){
+            cout << "Ingresá un espacio válido:" << endl << " >> ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> espacio_string;
+            if(es_numero(espacio_string))
+                espacio = stof(espacio_string);
+        }
+
+
+/*
+        string espacio_string;
+        float espacio;
+
+        cin >> espacio_string;
         espacio = stof(espacio_string);
 
         while(espacio <= 0){
 
-            cout << "Ingrese un  espacio válido:" << endl;
+            cout << "Ingrese un espacio válido:" << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
             cin >> espacio_string;
             espacio = stof(espacio_string);
 
-        }
+        }*/
 
         Guarderia* lista_adoptables = crear_lista_adoptables( mi_guarderia, espacio);
 

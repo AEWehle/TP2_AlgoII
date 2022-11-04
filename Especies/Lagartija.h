@@ -7,6 +7,7 @@ using namespace std;
 
 
 class Lagartija: public Animal{
+
 public:
     
     /*________constructor Lagartija default___________________________________________
@@ -22,13 +23,11 @@ public:
     _______________________________________________________________________________*/
     Lagartija( string nombre, int edad, string tamano, string personalidad );
     
-    
     /*________mostrar()_____________________________________________________________
      PRE: - 
      POST: Imprime en pantalla que se trata de un LAGARTIJA y muestra sus datos
     _______________________________________________________________________________*/
     void mostrar() override;
-    
     
     /*________duchar()______________________________________________________________
      PRE: - 
@@ -36,13 +35,11 @@ public:
     _______________________________________________________________________________*/
     void duchar() override;
 
-
     /*________ensuciar()_____________________________________________________________
      PRE: - 
      POST: Reestablece la higiene a 100 sin decrementarla
     _______________________________________________________________________________*/
     void ensuciar() override;
-
 
     /*________resolver_especie()_____________________________________________________
      PRE: - 
