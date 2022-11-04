@@ -76,3 +76,4 @@ MGC. - Me queda revisar leaks de memoria que no pude encontrar por qué pasan. M
 A.V.H. - Arreglé la función de adoptar, ahora si hace lo qeu dice el enunciado.
 A.V.H. - Ahora "cancelar" no es un nombre válido.
 A.V.H. - Emprolijé todos los archivo, cambios más bien estéticos, con los enter y ese tipo de cosas. No rompí nada.
+A.V.H. - Probé a romper el programa de todas las formas que se me ocurrió, y cambie cosas para que no pase. Debería ser bastante robusto ahora.
