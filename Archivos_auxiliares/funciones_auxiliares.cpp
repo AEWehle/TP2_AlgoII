@@ -27,6 +27,21 @@ string string_a_mayuscula(string texto){
     return texto;}
 
 
+int string_a_entero( string texto ){
+    long unsigned int largo = texto.length();
+    int entero = 0;
+    
+    if (largo == 0) entero = 0;
+    else{
+        for(long unsigned int i = 0; i < largo; i++){
+            if (texto[i] >= '0' && texto[i] <= '9') { 
+                entero =  10 * entero + ((int) texto[i] - 48);
+            }
+        }
+    }
+    return entero;
+}
+
 
 string elimina_espacios(string texto){
     texto.erase( remove_if( texto.begin(), texto.end(), ::isspace ) , texto.end());

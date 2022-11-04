@@ -26,6 +26,7 @@ void Guarderia::agregar_animal( Animal* nuevo_animal ){
 
 
 //Obtener Posicion
+// Si no lo encuentra dvuelve la cantidad +1 
 int Guarderia::obtener_posicion( string nombre ){
     int cantidad_de_animales = lista_de_animales.obtener_cantidad();
     int posicion = 1;
