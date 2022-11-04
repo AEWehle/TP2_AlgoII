@@ -5,12 +5,12 @@
 using namespace std; 
 
 Gato::Gato(){
-    comida = "atún";
+    comida = "atun";
     es_domestico = true;
 }
 Gato::Gato( string nombre, int edad, string tamano, string personalidad ) : Animal( nombre, edad, tamano, personalidad ){
     // especie = 'G';
-    comida = "atún";
+    comida = "atun";
     es_domestico = true;
 }
 

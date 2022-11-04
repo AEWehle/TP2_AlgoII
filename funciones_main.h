@@ -43,27 +43,23 @@ enum OpcionElegirAnimal {
 
 
 /*________crear_nuevo_animal()__________________________________________________ 
- PRE:  Recibe datos para crear un animal. En base a la especie recibida crea
-      un animal de la clase correspondiente (hija de Animal).
- POST: Devuelve un puntero al animal creado. 
+ PRE:  Datos para crear el animal son correctos
+ POST: Crea un animal y devuelve un puntero al animal creado. 
 _______________________________________________________________________________*/ 
 Animal* crear_nuevo_animal( char especie, string nombre, int edad, string tamano, string personalidad );
 
 
 /*________cargar_guarderia()_______________________________________________________ 
- PRE:  Recibe puntero a mi_guarderia (Guarderia con lista de animales)
-             
- POST: La guarderia queda cargada con los animales leídos de un archivo
-      predeterminado.
+ PRE: Guarderia fue creada correctamente
+ POST: Carga la guardería con los animales leídos de un archivo
+      predeterminado. Si el archivo no existe, lo crea y deja la guardería vacía.
 _______________________________________________________________________________*/ 
 void cargar_guarderia(Guarderia* mi_guarderia); 
 
 
 /*________imprimir_menu()_______________________________________________________ 
- PRE:  Recibe la cantidad de opciones que tiene el menu (el programa tiene
-      dos menúes: uno con 4 opciones y otro con 6)
-             
- POST: Imprime un menú u otro.
+ PRE:  La cantidad de elecciones es un entero 4 o 6 
+ POST: Imprime en pantalla el menú de acuerdo con el valor de cantidad_elecciones
 _______________________________________________________________________________*/ 
 void imprimir_menu(int cantidad_elecciones);
 
@@ -71,15 +67,15 @@ void imprimir_menu(int cantidad_elecciones);
 /*________pedir_eleccion()_____________________________________________________ 
  PRE:  Recibe cantidad_opciones que es 4 o 6 según el menú que se esté
       ejecutando.
- POST: Le pide al usuario que ingrese una opcion de la lista hasta que sea una  
- opcion valida, y la devuelve. 
+ POST: Pide al usuario opcion a ejecutar y devuelve la elección. Si no se ingresó
+       una opcion correcta, la pide nuevamente.
 _______________________________________________________________________________*/ 
 int  pedir_eleccion(int cantidad_opciones); 
 
 
 /*________ejecutar_eleccion()__________________________________________________ 
- PRE:  Recibe un puntero mi_Guarderia (Guarderia con lista de animales). 
-       Recibe la eleccion del usuario verificada (int) entre 1 y CANTIDAD_OPCIONES 
+ PRE:  Guarderia fue creada correctamente, la elección es entero entre 1 y 
+       CANTIDAD_OPCIONES 
  POST: Ejecuta la funcion correpondiente a la eleccion del usuario. 
 _______________________________________________________________________________*/ 
 void ejecutar_eleccion( Guarderia* mi_Guarderia, int eleccion); 

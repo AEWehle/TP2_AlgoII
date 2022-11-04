@@ -12,14 +12,14 @@ _______________________________________________________________________________*
 
 
 /*________char_a_mayuscula()___________________________________________________
- PRE: Recive una letra (char), no entiende letras con tilde
+ PRE: Char no tiene tildes
  POST: Devuelve la misma (char) pero en mayucula.
 _______________________________________________________________________________*/
 char char_a_mayuscula(char letra);
 
 
 /*________string_a_mayuscula()_________________________________________________
- PRE: Recive un texto (string)
+ PRE: String no tiene caracteres con tildes
  POST: Devuelve el mismo (string) pero en mayucula.
 _______________________________________________________________________________*/
 string string_a_mayuscula(string texto);
@@ -33,37 +33,37 @@ string elimina_espacios(string texto);
 
 
 /*________string_a_entero()____________________________________________________
- PRE: Recive un texto (string)
- POST: Devuelve un entero con los numeros que fueron apareciendo.
+ PRE: String no es nulo
+ POST: Devuelve la conversión de string ingresado a entero. 
 _______________________________________________________________________________*/
 int string_a_entero(string texto);
 
 
 /*________buscar_en_array_de_string()__________________________________________
-PRE:  Recibe el array de strings, el string buscado y el largo del array
+PRE: largo coincide con longitud de array.
 POST: Devuelve la posicion correspondiente en el array.
- Si no lo encuentra devuelve el largo del array.
+      Si no lo encuentra devuelve el largo del array.
 _______________________________________________________________________________*/
 int buscar_en_array_de_string( const string* array, string buscado, int largo );
 
 
 /*________shiftear_a_derecha()_________________________________________________
-PRE:  Recibe el array de enteros, y el largo del array
-POST: mueve todos los elementos a la derecha y el utimo queda primero
+PRE:  largo coincide con longitud del array
+POST: Shifteo circular a derecha de elementos de string, el utimo queda primero
 _______________________________________________________________________________*/
 void shiftear_a_derecha( int * array, int largo);
 
 
 /*________menor_alfabetico()___________________________________________________
-PRE:  Recibe dos string a comparar
+PRE:  strings ingresados no tienen caracteres con tilde
 POST: Devuelve el string que esta primeor alfabeticamente
 _______________________________________________________________________________*/
 string menor_alfabetico( string texto1, string texto2);
 
 
 /*________llenar_con_int()_____________________________________________________
-PRE:  Recibe el array a llenar, el valor con el cual llenarlo y el largo
-POST: Llena el array ngresado con el enterod eseado
+PRE:  largo coincide con longitud de array_int
+POST: Llena el array ingresado con el entero deseado
 _______________________________________________________________________________*/
 void llenar_con_int ( int* array_int, int entero, int largo );
 

@@ -3,11 +3,12 @@
 #include <fstream>
 #include <limits>
 #include "Archivos_auxiliares/funciones_auxiliares.h"
-#include "funciones_main.h"
-#include "Guarderia.h"
 #include "opciones.h"
 using namespace std;
 
+/* afectar_animal()
+Esta función disminuye la higiene y aumenta el hambre de todos los 
+animales de la lista */
 
 void afectar_animales(Guarderia* mi_guarderia){
 
@@ -25,6 +26,7 @@ void afectar_animales(Guarderia* mi_guarderia){
 void listar_animales( Guarderia* mi_guarderia ){
 
     afectar_animales(mi_guarderia); 
+    
     mi_guarderia->ver_lista_de_animales();
 
 }
@@ -39,7 +41,7 @@ string pedir_nombre(){
     string nombre; 
 
     while ( nombre.length() == 0 ){ 
-         
+
         getline( cin, nombre, '\n' ); 
         cout << " >> ";
 
@@ -273,16 +275,22 @@ void buscar_animal( Guarderia* mi_guarderia ){
 
     afectar_animales(mi_guarderia);
 
-    string nombre;
-    cout << "Ingrese el nombre del animal que busca:" << endl;
-    nombre = pedir_nombre();
 
-    if(buscar_nombre(mi_guarderia,nombre) == mi_guarderia->obtener_cantidad()+1)
-        cout << nombre << " no se encuentra en la guardería." << endl << endl;
-    
-    else{
-        cout << "SI! " << nombre << " está en la guardería: " << endl ;
-        mi_guarderia -> obtener_animal(buscar_nombre(mi_guarderia,nombre))->mostrar();
+    if (mi_guarderia->obtener_cantidad() == 0) {
+        cout << "No hay animales para buscar." << endl;   
+    }else{
+        string nombre;
+        cout << "Ingrese el nombre del animal que busca:" << endl << " >> ";
+        nombre = pedir_nombre();
+
+
+        if(buscar_nombre(mi_guarderia,nombre) == mi_guarderia->obtener_cantidad()+1)
+            cout << nombre << " no se encuentra en la guardería." << endl << endl;
+        
+        else{
+            cout << "SI! " << nombre << " está en la guardería: " << endl ;
+            mi_guarderia -> obtener_animal(buscar_nombre(mi_guarderia,nombre))->mostrar();
+        }   
     }
     
 }
@@ -396,8 +404,6 @@ void ejecutar_eleccion_op4(Guarderia* mi_guarderia, int eleccion){
 
 void cuidar_animales( Guarderia* mi_guarderia ){
 
-    cout << mi_guarderia->obtener_cantidad() << endl;
-
     if(mi_guarderia->obtener_cantidad()==0)
         cout << "No tenés ningún animal agregado a la guardería para cuidar" << endl;
     
@@ -502,51 +508,55 @@ void adoptar_animal( Guarderia* mi_guarderia ){
 
     afectar_animales(mi_guarderia);
 
-    cout << endl << "Para adoptar un animal es necesario saber de cuánto espacio dispondrán, según eso se le mostrará una lista de los disponibles" << endl;
-    cout << "Ingrese cuántos metros cuadrados tiene disponibles:" << endl;
+    if(mi_guarderia->obtener_cantidad()==0){
+        cout << "No hay animales disponibles para adoptar." << endl;
+    }else{
+        cout << endl << "Para adoptar un animal es necesario saber de cuánto espacio dispondrán, según eso se le mostrará una lista de los disponibles" << endl;
+        cout << "Ingrese cuántos metros cuadrados tiene disponibles:" << endl;
 
-    string espacio_string;
-    float espacio;
+        string espacio_string;
+        float espacio;
 
-    cin >> espacio_string;
-    espacio = stof(espacio_string);
-
-    while(espacio <= 0){
-
-        cout << "Ingrese un  espacio válido:" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
         cin >> espacio_string;
         espacio = stof(espacio_string);
 
-    }
+        while(espacio <= 0){
 
-    Guarderia* lista_adoptables = crear_lista_adoptables( mi_guarderia, espacio);
+            cout << "Ingrese un  espacio válido:" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');    //Por si el usuario ingresa caracteres que no sean números, sean la cantidad que sean
+            cin >> espacio_string;
+            espacio = stof(espacio_string);
 
-    if(lista_adoptables->obtener_cantidad() != 0){
-
-        cout << endl << "Estos son los animales que podés adoptar:" << endl;
-
-        lista_adoptables->ver_lista_de_animales();
-
-        cout << endl << "Si desea adoptar alguno, ingrese el nombre como se muestra." << endl;
-        cout << "Nuestros Erizos y Lagartijas NO SON ADOPTABLES ya que son salvajes, por lo que no aparecerán en la lista" << endl;
-
-        int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
-
-        if ( elegido != ( lista_adoptables -> obtener_cantidad()+1)  ){
-            string nombre = lista_adoptables -> obtener_animal( elegido ) -> obtener_nombre();
-            cout << endl << "Adoptaste a " << nombre << endl;
-            int posicion_en_guarderia = mi_guarderia -> obtener_posicion( nombre );
-            mi_guarderia -> obtener_animal( posicion_en_guarderia ) -> mostrar();
-            mi_guarderia -> eliminar_animal( posicion_en_guarderia );
         }
-    }
 
-    else
-        cout << endl << "No hay animales para adoptar para el espacio ingresado. Volviendo a menú principal..." << endl;
-    
-    delete lista_adoptables;
+        Guarderia* lista_adoptables = crear_lista_adoptables( mi_guarderia, espacio);
+
+        if(lista_adoptables->obtener_cantidad() != 0){
+
+            cout << endl << "Estos son los animales que podés adoptar:" << endl;
+
+            lista_adoptables->ver_lista_de_animales();
+
+            cout << endl << "Si desea adoptar alguno, ingrese el nombre como se muestra." << endl;
+            cout << "Nuestros Erizos y Lagartijas NO SON ADOPTABLES ya que son salvajes, por lo que no aparecerán en la lista" << endl;
+
+            int elegido = pedir_el_adoptado( mi_guarderia, lista_adoptables );
+
+            if ( elegido != ( lista_adoptables -> obtener_cantidad()+1)  ){
+                string nombre = lista_adoptables -> obtener_animal( elegido ) -> obtener_nombre();
+                cout << endl << "Adoptaste a " << nombre << endl;
+                int posicion_en_guarderia = mi_guarderia -> obtener_posicion( nombre );
+                mi_guarderia -> obtener_animal( posicion_en_guarderia ) -> mostrar();
+                mi_guarderia -> eliminar_animal( posicion_en_guarderia );
+            }
+        }
+
+        else
+            cout << endl << "No hay animales para adoptar para el espacio ingresado. Volviendo a menú principal..." << endl;
+        
+        delete lista_adoptables;
+    }
 
 }
 

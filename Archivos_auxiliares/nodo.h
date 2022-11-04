@@ -11,17 +11,25 @@ class Nodo{
 
     public:
         // Constructor
-        // crea un nodo con dato = d y siguiente = 0
+        /*  PRE: -
+            POS: Crea un nodo con dato = d y siguiente = 0
+            */
         Nodo(Dato* dato);
 
-        /* Recibe el nodo que se quiere aputar con Siguiente, 
-        hace que el atrivuto Siguinete apunte a este */
+   
+        /*  PRE: Nodo nuevo_siguiente existe
+            POS: Atributo Siguiente apunta a nodo ingresado
+            */
         void cambiar_siguiente(Nodo* nuevo_siguiente);
 
-        /* Devuelve un puntero que apunta a lo mismo que el atributo Dato*/
+        /*  PRE: -
+            POS: Devuelve un puntero que apunta a lo mismo que el atributo Dato
+            */
         Dato* obtener_dato();
 
-        /* Devuelve un puntero que apunta a lo mismo que el atributo Siguiente*/
+        /*  PRE: -
+            POS: Devuelve un puntero que apunta a lo mismo que el atributo Siguiente
+            */
         Nodo* obtener_siguiente();
 };
 
